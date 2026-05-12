@@ -1,0 +1,107 @@
+<%= render partial: "shared/head" %>
+<div class="h-screen overflow-hidden grid bg-background dark:bg-dark-bg" style="grid-template-rows: 60px 1fr; grid-template-columns: 280px 1fr 320px;">
+  <%= render partial: "shared/topbar" %>
+  <%= render partial: "shared/sidebar" %>
+  <main class="overflow-y-auto p-6 space-y-6 bg-background dark:bg-dark-bg" style="grid-column: 2; grid-row: 2;">
+
+    <!-- Hero -->
+    <section class="relative w-full h-[480px] flex items-end overflow-hidden rounded-xl">
+      <div class="absolute inset-0 z-0">
+        <img class="w-full h-full object-cover" alt="Playa turquesa en Maldivas al atardecer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzb-QOEEt0Gpfv4rywSWthrXE735KDpXqllV2rj_hUhTzKZcyn7hgGeDPcy0WxbpsaWlQZvjwX2qrd0HRNJePX-20GTaKUAJeEJ_KJUMy8imFxVfoknV8fTrWeD3VZckkaFEhxgupeIsOZphZ3hmt4UB2kQhLB2zsZNSa1ki3iSuoRxeRRGOdxXfNAgdUZol26JqWTwnUzexja5yljvpJuEAz5PpRG_1rOYQ-OAcA4TCTJd6F2H8d4U3HcxSV-0T1eFMOtj1tmX5kV"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+      </div>
+      <div class="relative z-10 max-w-3xl bg-surface/70 backdrop-blur-xl p-6 rounded-xl border border-border m-6">
+        <span class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-3">Historia Destacada</span>
+        <h1 class="text-2xl font-semibold text-text-primary mb-3">El Futuro de los Viajes: Cómo la IA Personaliza tu Próxima Aventura</h1>
+        <p class="text-base text-text-secondary mb-4">Descubre cómo la inteligencia generativa está yendo más allá de las reservas simples para crear experiencias profundas y culturalmente resonantes, adaptadas a tu alma única.</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
+            <img class="w-full h-full object-cover" alt="Elena Rodriguez" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_zEpwQInKbXRYQUS7Gs-esvy-ut--jhMI3YrhH9Laavsq1RZbXFu5phDL45iQV6kwbhUd8nrkqCtRJbZFpJMkVFBj-l2A4Ekj0XrEKMoXH0ZwMLVsPnBiOrXZG8z8wC62ipl6_-kpEZpEaYflVSW6X-RXTAtUJv5ff7y69RJlz4Q0TcMYeDr3t9On98J8EERfdqDS_by-_rBDNldBeUUg75DAQU6GiL-aV1fd-XpEm4QFPr0nHGIFLThkoO6xxMRMOLV_YtC3MW-i"/>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-sm font-semibold text-text-primary">Elena Rodriguez</span>
+            <span class="text-xs text-text-secondary">Estratega Jefe de Viajes &bull; 8 min de lectura</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="flex flex-wrap items-center justify-between gap-4">
+      <div class="flex flex-wrap gap-2">
+        <button class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium">Todos</button>
+        <button class="bg-surface text-text-secondary px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Destinos</button>
+        <button class="bg-surface text-text-secondary px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Tips</button>
+        <button class="bg-surface text-text-secondary px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">IA</button>
+        <button class="bg-surface text-text-secondary px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Comunidad</button>
+      </div>
+      <div class="relative min-w-[280px]">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary">search</span>
+        <input class="w-full pl-10 pr-4 py-2 bg-surface border border-border rounded-full focus:ring-2 focus:ring-primary text-sm" placeholder="Buscar historias..." type="text"/>
+      </div>
+    </section>
+
+    <!-- Grid de Blog -->
+    <section>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% articles = [
+          { slug: 'tesoros-ocultos-barcelona', title: 'Los Tesoros Ocultos de Barcelona: Más Allá de Gaudí', tag: 'Destinos', date: '24 Oct, 2024', read: '5 min', excerpt: 'Aléjate de las rutas turísticas y explora los jardines secretos, clubes de jazz subterráneos y mercados locales que definen el verdadero espíritu de Cataluña.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBa0clPIMZ60hhAnvdXYdOfRWyW3LO-iyWpvFRBBo0epvtEB90I3yarDUnV9HxtmlJtFp2hnzyMSwIT_u8ruhJ3fOP-r1yh_E8qYmt3g7tcmaokSDwXSzBL7eU6u3hvrL_nZhD0XJ5rMQDvCg_bhm5AsxS4hhA63xjhBVrnMEKSySZyvHoyXDCqXx5Nl4vHAnY3ajhDBYSJYWwQ_YJEUh0D1NrZhcaNqNpq84ju_fM21AQ1fqWe1v_2nItegbKUzY5zqrei_F-JpHQG' },
+          { slug: 'conserje-neural-tecnologia', title: 'Conserje Neural: La Tecnología Detrás de TravelIA', tag: 'IA', date: '22 Oct, 2024', read: '12 min', excerpt: 'Una mirada interna a cómo nuestros algoritmos propietarios analizan millones de datos para predecir tu itinerario perfecto antes de que lo sueñes.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDmqg3mvKLiMwKga24NPS4exwz6QCkTS67C996c-TNhY40GvOHGfip1Nif2h-b1XiM1BXmCzEUF0c-NtdFl8o_dyJoOciLbeBvWgOAzcYBlWjfVgZLl3aOO86f42UG_Kogffv3w10Pl-NSQr3MDmNCJBSZ1mV4uSQ5s_vtUlcHf-L7LxCXxtTHIOGB9SvsrjnXiakzJCqaPT9mqumPguacsyNAMHn7yBomQ5Q24Mx68J1Sd_StPk04ScdT4kIfIKoVZLGn9U7UEla2B' },
+          { slug: 'viajero-solitario-alpes', title: 'Viajero Destacado: Solitario en los Alpes Suizos', tag: 'Comunidad', date: '18 Oct, 2024', read: '6 min', excerpt: 'Conoce a Sarah, una miembro de TravelIA que usó nuestra IA para planificar una expedición de un mes en solitario por los Alpes suizos.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDVnAZx8IU6hc0e4NkqaoWpHmg_S9viCVY-Q8twUcsz5dJ_x4-Ruq-lCu0eJwfpy9MHngx4XAf63Sq2WOiNZ9qzAgG1e5g_h6RGKk00hGnVgK31IGUBAXNuNsNS6j3w6a4FGtMe4f3dIdriYexF8mYG4xDNsCSiuAy6kVA2LhYSzl1gXXy_4a9rjVJFHY28F51y45a67argLDMr9pBJT52cwJLZtetINHfLeEvfYXjVrD4ACh0rD11yYMqkBefchVGCniH4f8Z-oE65' },
+          { slug: 'empacar-ligero-regla-5-4-3-2-1', title: 'Empacar Ligero: La Regla 5-4-3-2-1', tag: 'Tips', date: '15 Oct, 2024', read: '4 min', excerpt: 'Domina el arte del equipaje de mano con nuestra guía definitiva para empacar de forma minimalista en un viaje de 10 días sin sacrificar estilo.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC_YhacPQ7z7AyLFyOjB4w2ZZAom5JuQ7P3PHEyslf1W5QKytvcMTqHR0iubgjTgG8Pc91zLbljfVU6kvsTs4VvslTgzTd52ENHvnZMrW4ePBoAwOnxDnS5GWG7Ki84GdBQyWhIuU0BpBYnJyPwxbS1pN7bpmTsR07BlCUqP-ocyEzXfdA9ZPArchXCEKyOHF3TLwW7XPLH_3Ml_y1FdzyUeZ9f0ngVda_sziD5OYaSnrgXwVhne5sdP2deW_fPLMY6BVzWCPXuHwsM' },
+          { slug: 'dolomitas-itinerario-7-dias', title: 'Dolomitas: El Itinerario Perfecto de 7 Días', tag: 'Destinos', date: '10 Oct, 2024', read: '7 min', excerpt: 'Desde los icónicos picos de Tre Cime hasta los valles escondidos de Val Gardena, desglosamos la guía definitiva de senderismo y gastronomía por el norte de Italia.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC5LbEt3YKqbna3wKGrP__Sx7xGtkJZYl0t7S3tjE7X42j9fjpjPBfVgUilpMETm5YvuS3BAbnTUAmdiZTEHwd3w6ZkkBE2UzXRAH3ePDLqtEDiEMveJVPUXaNT8xZ-0Mx3Uy7LZUHmRhZzkVejApOyt7H7XucMLBndxMxq2UqYoT9gKcY4LBlZOGKxcqU7caFg2VhmMsOeftsBQnhKEqlXmyaUHZZFtPQgKJUa86-bu51sJcXmsjjJ1YkkGU4KCsaSZ_IvH2zg4x19' },
+          { slug: 'asistente-invisible-ia', title: 'El Asistente Invisible: Viviendo con IA', tag: 'IA', date: '05 Oct, 2024', read: '9 min', excerpt: 'Cómo la inteligencia ambiental está cambiando la forma en que navegamos nuevas ciudades, desde traducciones en tiempo real hasta reprogramaciones predictivas.', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDDk-PWZ87zxO8S07A471hnMXhR1xSihVfHq6xG9xjpSnlY8eEHKq3FPco9BUwFjczOiMbRT15OJc6Of6g1l692t3KS01kTpG8QBk07JHykLAtFPuAmJj0dKpyCEW-QXPO9X1wOHB-yyoVEXh2qAWYKbHcXeuQcVwutorwR4nGn9xFvrIBKXWS5XdDycF9m15EgMCcrQ4WYTSEUJ7HoURM3nJ5O9zmUgsBP0AtgsaZMrbuLHYgGw1XL3NvQ2kC2HQAjGNIUEaWqidTQ' },
+        ].each do |article| %>
+          <a href="/blog/<%= article[:slug] %>" class="flex flex-col bg-surface rounded-xl overflow-hidden shadow-card hover:shadow-lg transition-shadow group">
+            <div class="relative h-56 overflow-hidden">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<%= article[:img] %>"/>
+              <span class="absolute top-3 left-3 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-primary"><%= article[:tag] %></span>
+            </div>
+            <div class="p-5 flex-grow flex flex-col">
+              <div class="flex items-center gap-1 text-text-secondary text-xs mb-2">
+                <span class="material-symbols-outlined text-sm">calendar_today</span>
+                <%= article[:date] %> &bull; <%= article[:read] %> de lectura
+              </div>
+              <h3 class="text-lg font-semibold text-text-primary mb-2 group-hover:text-primary transition-colors"><%= article[:title] %></h3>
+              <p class="text-sm text-text-secondary line-clamp-3 mb-4"><%= article[:excerpt] %></p>
+              <div class="mt-auto pt-4 border-t border-border flex justify-between items-center">
+                <span class="text-sm font-semibold text-primary">Leer m&aacute;s</span>
+                <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </div>
+          </a>
+        <% end %>
+      </div>
+      <!-- Paginación -->
+      <div class="mt-8 flex justify-center items-center gap-3">
+        <button class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text-secondary hover:border-primary hover:text-primary transition-colors">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center text-sm font-medium">1</button>
+        <button class="w-10 h-10 rounded-full border border-transparent hover:bg-surface flex items-center justify-center text-sm font-medium transition-colors">2</button>
+        <button class="w-10 h-10 rounded-full border border-transparent hover:bg-surface flex items-center justify-center text-sm font-medium transition-colors">3</button>
+        <span class="text-text-secondary">...</span>
+        <button class="w-10 h-10 rounded-full border border-transparent hover:bg-surface flex items-center justify-center text-sm font-medium transition-colors">12</button>
+        <button class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text-secondary hover:border-primary hover:text-primary transition-colors">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section>
+      <div class="bg-surface/70 backdrop-blur-xl p-8 rounded-xl border border-border flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="max-w-xl">
+          <h2 class="text-xl font-semibold text-text-primary mb-2">No te pierdas ninguna historia desde el borde del descubrimiento.</h2>
+          <p class="text-sm text-text-secondary">Únete a más de 50,000 viajeros que reciben nuestras ideas semanales sobre IA, cultura y destinos exclusivos.</p>
+        </div>
+        <div class="flex w-full md:w-auto flex-col sm:flex-row gap-3">
+          <input class="min-w-[260px] px-4 py-3 bg-white dark:bg-gray-800 border border-border rounded-full focus:ring-2 focus:ring-primary text-sm" placeholder="Ingresa tu email" type="email"/>
+          <button class="bg-primary text-white px-6 py-3 rounded-full text-sm font-medium whitespace-nowrap shadow-md hover:shadow-lg active:scale-95 transition-all">Suscribirse</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <%= render partial: "shared/right_panel" %>
+</div>

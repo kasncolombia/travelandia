@@ -1,0 +1,45 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          primary: '#0D9488', 'primary-dark': '#0B7A71', 'primary-light': '#DFF7F5',
+          secondary: '#38BDF8', accent: '#F4C542', success: '#22C55E',
+          background: '#F8F7F4', surface: '#FFFFFF', border: '#EAEAEA',
+          'text-primary': '#1E293B', 'text-secondary': '#64748B', 'text-muted': '#94A3B8',
+          sidebar: '#F7F5F1',
+          dark: { bg: '#1a1c1a', surface: '#2f312f', border: '#3d4947', text: '#e2e8f0', 'text-sec': '#94a3b8', sidebar: '#242624' },
+        },
+        fontFamily: { sans: ['Inter', 'sans-serif'], poppins: ['Poppins', 'sans-serif'] },
+        fontSize: {
+          xs: ['11px', { lineHeight: '1.5' }], sm: ['12px', { lineHeight: '1.5' }],
+          base: ['14px', { lineHeight: '1.6' }], md: ['16px', { lineHeight: '1.6' }],
+          lg: ['18px', { lineHeight: '1.6' }], xl: ['22px', { lineHeight: '1.4' }],
+          '2xl': ['28px', { lineHeight: '1.3' }], '3xl': ['38px', { lineHeight: '1.2' }],
+        },
+        borderRadius: { xs: '10px', sm: '12px', md: '14px', lg: '18px', xl: '24px' },
+        boxShadow: { card: '0 2px 8px rgba(0,0,0,0.04)', hover: '0 8px 24px rgba(0,0,0,0.08)' },
+      }
+    }
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+    }
+  });
+  function toggleDark() {
+    const html = document.documentElement;
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  }
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap');
+  * { font-family: 'Inter', sans-serif; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+</style>

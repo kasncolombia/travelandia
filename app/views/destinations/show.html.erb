@@ -1,0 +1,234 @@
+<%= render partial: "shared/head" %>
+<div class="h-screen overflow-hidden grid bg-background dark:bg-dark-bg" style="grid-template-rows: 60px 1fr; grid-template-columns: 280px 1fr 320px;">
+  <%= render partial: "shared/topbar" %>
+  <%= render partial: "shared/sidebar" %>
+  <main class="overflow-y-auto p-6 space-y-6 bg-background dark:bg-dark-bg" style="grid-column: 2; grid-row: 2;">
+    <!-- IMMERSIVE HERO -->
+    <div class="relative h-[500px] rounded-lg overflow-hidden shadow-card group">
+      <div class="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-2">
+        <div class="col-span-2 row-span-2 relative overflow-hidden">
+          <img alt="Bali Rice Terrace" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC71cEAfpBoCJXP5zOiue0hOpcd0vNxE05Wae2se0oYpe8rgoef55dOqgg2yMlikn1XSdnfnk0PG1TagJSqy6Jhq0vtY6ANM61TSiaE3OUuxLkQt3KAUuPufLQKkIeramzfz_o_WvtRz2NP7B701NEfUx56OWpg4DL-cG-2PyYujy5TYYHzErh4zhnxUb5jNAkb-1jZMWUnsTfwd8N2w6Azt3iN-F6GUvb68rmKGUUTEOVpn1nm54YfzcxzPgb8om3ULhs_99MQ24n_"/>
+        </div>
+        <div class="col-span-2 row-span-1 relative overflow-hidden">
+          <img alt="Templo Balinés" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBurljYO2uMFAVMzjOilF4Yl2RI_98QHnY502BcGcL8O4sv_2e89MJacMMpsvOjBydFQEH2gWgpj_Hl3zQnsHkA1Loh-dOx8NBA-D3v5MDsvY0RjCvXy6Ybfvvfdc0b4qFEnTAJ1-u0bmCSzngQO5mSi0nUbcfuLsPZqG0PVhQt-FwuS7XKaP5Lhp8DVsgmugbnPGiC4fVTIY1AEb_x-nOTf_vjfwe7dVTcRwTmTGBItIyPvGq_DRXahBOb4Pfx9OkvH59dvVou7mxz"/>
+        </div>
+        <div class="col-span-1 row-span-1 relative overflow-hidden">
+          <img alt="Piscina de Lujo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9czsxgtX9VJjw5w5efg6Vnk9ZktptnIP_hn9U9cSTa1aNM4qjzoYdsyKxIqi4SKP1jO95ekAL7zEkrsCzyNvXjK33w10YWXL8OcrmHN9MpPzplc1XP4fbiIfEf8-IwNmDRZzM5_shzHxxovRO2zg24vq8K4ZwRHJntm0_mF6HJpeI2VsSqMwzTlvXneKjPLJSq-ZsAHINdrtZl6BhKeMNJKABTS2TeKXyAnIyfKUQ6SSSmBOk91sH1MgDbLssXVNRZ76ucD7bqFW2"/>
+        </div>
+        <div class="col-span-1 row-span-1 relative overflow-hidden">
+          <img alt="Amanecer en Bali" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn6I2Nfjh6i3J_ot_fIlauqRxyr_E3JSf2Cev_enQyx1INS7F7Vy_lILJZI6xf06JJw-DdqYgt_fx5GrS2AzMraAjrJ5-SUttyi9JVst507EsiRRl_SglDBVerh-8Z4xo7_5PE7RLPVwbrHEXzmiZwb_rr-kkvso4bQqb5m4U7GtOkN_slZFP3oNUP2AcgPtaQcIS1FuHfbltSb0PTaKswl4zyWkbS2MdwWe650BNHV-I4lRr_yr96dXzW_bJgbvkUG582Hp0LDbqK"/>
+        </div>
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+        <div class="flex justify-between items-end">
+          <div>
+            <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-sm uppercase tracking-wider inline-block mb-2">Destino Trending</span>
+            <h1 class="text-display-lg font-display-lg text-white">Bali, Indonesia</h1>
+            <p class="text-base text-white/90 max-w-xl">La Isla de los Dioses ofrece variados paisajes de colinas y montañas, costas escarpadas y playas de arena blanca.</p>
+          </div>
+          <div class="flex gap-4">
+            <button class="bg-white/20 text-white px-5 py-3 rounded-lg flex items-center gap-2 hover:bg-white/30 transition-all">
+              <span class="material-symbols-outlined text-sm">share</span>
+              <span class="text-sm">Compartir</span>
+            </button>
+            <button class="bg-primary text-on-primary px-5 py-3 rounded-lg flex items-center gap-2 shadow-card hover:shadow-lg transition-all">
+              <span class="material-symbols-outlined text-sm" data-weight="fill">bookmark</span>
+              <span class="text-sm">Guardar Destino</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="md:col-span-2 flex flex-col gap-4">
+        <h2 class="font-headline-xl text-headline-xl text-text-primary">Descripción General</h2>
+        <p class="text-base text-text-secondary leading-relaxed">
+          Bali es más que un destino; es un estado de ánimo, una aspiración, un paraíso tropical. Ya sea que busques la tranquilidad espiritual de los arrozales de Ubud, el surf de alta energía de Canggu o los lujosos retiros en los acantilados de Uluwatu, este paraíso indonesio satisface todos los caprichos del viajero.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-4">
+          <span class="bg-surface text-text-secondary px-3 py-1.5 rounded-full text-sm">Tropical</span>
+          <span class="bg-surface text-text-secondary px-3 py-1.5 rounded-full text-sm">Cultural</span>
+          <span class="bg-surface text-text-secondary px-3 py-1.5 rounded-full text-sm">Luxury</span>
+          <span class="bg-surface text-text-secondary px-3 py-1.5 rounded-full text-sm">Adventure</span>
+        </div>
+      </div>
+      <div class="bg-surface p-5 rounded-lg shadow-card border border-border flex flex-col gap-4">
+        <div class="flex items-center gap-2 text-primary">
+          <span class="material-symbols-outlined">thermostat</span>
+          <span class="text-sm font-bold">28°C · Soleado</span>
+        </div>
+        <hr class="border-border"/>
+        <div class="flex items-center gap-2 text-text-secondary">
+          <span class="material-symbols-outlined">currency_exchange</span>
+          <span class="text-sm">1 USD = 15,700 IDR</span>
+        </div>
+        <hr class="border-border"/>
+        <div class="flex items-center gap-2 text-text-secondary">
+          <span class="material-symbols-outlined">translate</span>
+          <span class="text-sm">Indonesio, Balinés, Inglés</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI RECOMMENDATIONS -->
+    <h2 class="font-headline-xl text-headline-xl text-text-primary">Recomendaciones de IA</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="md:col-span-2 bg-primary-container text-on-primary-container p-6 rounded-lg shadow-card flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="material-symbols-outlined">calendar_month</span>
+            <span class="font-headline-lg">Mejor Época para Visitar</span>
+          </div>
+          <p class="text-base opacity-90">El análisis de IA sugiere viajar entre <strong>abril y octubre</strong> para la temporada seca. Las mejores condiciones para surfear ocurren entre mayo y septiembre.</p>
+        </div>
+        <div class="mt-5 flex gap-4">
+          <div class="flex-1 bg-white/10 rounded-lg p-3">
+            <span class="block text-sm opacity-80">Ideal para Bienestar</span>
+            <span class="block font-bold">Mayo — Junio</span>
+          </div>
+          <div class="flex-1 bg-white/10 rounded-lg p-3">
+            <span class="block text-sm opacity-80">Mejor Calidad-Precio</span>
+            <span class="block font-bold">Sept — Oct</span>
+          </div>
+        </div>
+      </div>
+      <div class="md:col-span-2 bg-surface p-6 rounded-lg border border-border shadow-card flex flex-col gap-4">
+        <div class="flex items-center gap-2 text-secondary">
+          <span class="material-symbols-outlined">payments</span>
+          <span class="font-headline-lg">Desglose de Presupuesto</span>
+        </div>
+        <div class="space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-text-secondary">Lujo Diario</span>
+            <span class="font-bold text-text-primary">$250+</span>
+          </div>
+          <div class="w-full bg-surface-container rounded-full h-2">
+            <div class="bg-secondary h-2 rounded-full" style="width: 100%"></div>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-text-secondary">Gama Media Diaria</span>
+            <span class="font-bold text-text-primary">$80 — $150</span>
+          </div>
+          <div class="w-full bg-surface-container rounded-full h-2">
+            <div class="bg-primary h-2 rounded-full" style="width: 60%"></div>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-text-secondary">Mochilero Diario</span>
+            <span class="font-bold text-text-primary">$30 — $50</span>
+          </div>
+          <div class="w-full bg-surface-container rounded-full h-2">
+            <div class="bg-outline h-2 rounded-full" style="width: 25%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOP ACTIVITIES -->
+    <div class="flex justify-between items-center">
+      <h2 class="font-headline-xl text-headline-xl text-text-primary">Actividades Principales</h2>
+      <div class="flex gap-2">
+        <button class="material-symbols-outlined p-1.5 border border-border rounded-full hover:bg-surface transition-all">chevron_left</button>
+        <button class="material-symbols-outlined p-1.5 border border-border rounded-full hover:bg-surface transition-all">chevron_right</button>
+      </div>
+    </div>
+    <div class="flex gap-6 overflow-x-auto no-scrollbar pb-6 -mx-4 px-4">
+      <!-- Activity 1 -->
+      <div class="min-w-[320px] bg-surface rounded-lg overflow-hidden shadow-card hover:shadow-md transition-shadow group border border-border">
+        <div class="h-48 relative overflow-hidden">
+          <img alt="Surf Uluwatu" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0Auob3HpTnoQUvLUJM954medMlzqiA7jTuS57skRKIC528avXyuFYpBkd7kkTPcCPgU5y1Be82972P1UI2_BhFmvvFExDqlUE9G_lrDxMBhmatTsh0TSTqBbYcIHlNaCe4wqaDLoRKcxH7EltR6YywK4YGl6SM-44aom9dEJg1YLEfUDVf21-ssIiBnnoyxzTwCwyynxDezRlWZEJxPTI8m5jZdHa3UFwmeOpLWQzPGZLHVkv2zT2oYrfcgf4Jfn65Lr6rxHZfAJC"/>
+          <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-sm font-bold text-primary">Aventura</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-headline-lg text-lg mb-1">Surf en Uluwatu</h3>
+          <p class="text-sm text-text-secondary mb-4">Olas de clase mundial con vistas espectaculares a los acantilados.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold">$45 / persona</span>
+            <button class="text-primary text-sm flex items-center gap-1">Detalles <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+          </div>
+        </div>
+      </div>
+      <!-- Activity 2 -->
+      <div class="min-w-[320px] bg-surface rounded-lg overflow-hidden shadow-card hover:shadow-md transition-shadow group border border-border">
+        <div class="h-48 relative overflow-hidden">
+          <img alt="Yoga Ubud" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUhYGoqif_FskVHCDUC0d6h9f1sT33X_1Ud7KR5NiKkLNb2vOVRGmoJsV83g49ThlupTkxWE6rNpp5w-M5zT-ZfXYAePI1IrzrHfsksiaGdmFWc5T-H-KGT82eX5RyFAX5d-jKVAVvT49yBiUojppVYBTrTewjRetfk_i_d81XZSrjCyUrjNdEs3XEqUl0WMELNFJ8g2vewJoAk04m5Qs2ty_ikuFZpyhdS27NyORCjELQi5n6S2N6oTbOX-u1LqtN3CxisdVyW4Gl"/>
+          <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-sm font-bold text-primary">Bienestar</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-headline-lg text-lg mb-1">Retiro de Yoga en Ubud</h3>
+          <p class="text-sm text-text-secondary mb-4">Encuentra paz interior en el corazón de la jungla.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold">$30 / sesión</span>
+            <button class="text-primary text-sm flex items-center gap-1">Detalles <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+          </div>
+        </div>
+      </div>
+      <!-- Activity 3 -->
+      <div class="min-w-[320px] bg-surface rounded-lg overflow-hidden shadow-card hover:shadow-md transition-shadow group border border-border">
+        <div class="h-48 relative overflow-hidden">
+          <img alt="Clase de Cocina" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUt4QDqDHYH9tCBjeJK9AP6mAZEx3q3KltCx9awc23gZOCrHsvr9RjKqgxDwOMSRmC_0KzwXqJibuxOyj_ZBOD1IV9KYOWHy17nHR7gn8GAzuQciCVhmIIe_a7TnpF8NQ7Nek2iIm7aPPQNC0ZikKtrp47pNjOmtgavpjl6JDUqr9nu3DPJZWoj2GPPpcFX6lSgR9o0Wrxf_RyrhKGob2LO2t7JNgoNMohd1eSvbk9rac9ex71LGU15fXndTuZe6aonZtELCiafzmn"/>
+          <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-sm font-bold text-primary">Cultura</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-headline-lg text-lg mb-1">Clase de Cocina Balinesa</h3>
+          <p class="text-sm text-text-secondary mb-4">Domina el arte de las especias tradicionales indonesias.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold">$55 / persona</span>
+            <button class="text-primary text-sm flex items-center gap-1">Detalles <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECOMMENDED STAYS -->
+    <h2 class="font-headline-xl text-headline-xl text-text-primary">Estancias Recomendadas</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="flex gap-4 bg-surface p-4 rounded-lg border border-border shadow-card hover:shadow-md transition-all group">
+        <div class="w-32 h-32 rounded-lg overflow-hidden shrink-0">
+          <img alt="Viceroy Bali" class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqVfeeG439e1bOalUQXtSVEcw_ib-3e0h2jdlfesw4htYD6Pul9qBQSbeI8YB_peola_CoJQNilyHdEEWHt44gspqiz9JZfAXTJAyRdeg-vMjW2gLuRw_B2FIcY4OU4-nj8jVhKPXZPv7RYd271lgn6YKFePXZarprsVpZ6inw3Qh8ke9md1dz3e0mXq2PPVxiCoQ1SCMs9M68GMcs3W_O18c6QsHX7OemRLj9W7gZnwficiYq5smo6AYy9PBMYlRgrGyAcK0OjTuS"/>
+        </div>
+        <div class="flex flex-col justify-between py-1">
+          <div>
+            <h4 class="font-headline-lg text-md">Viceroy Bali</h4>
+            <div class="flex items-center gap-0.5 text-secondary">
+              <span class="material-symbols-outlined text-sm" data-weight="fill">star</span>
+              <span class="material-symbols-outlined text-sm" data-weight="fill">star</span>
+              <span class="material-symbols-outlined text-sm" data-weight="fill">star</span>
+              <span class="material-symbols-outlined text-sm" data-weight="fill">star</span>
+              <span class="material-symbols-outlined text-sm" data-weight="fill">star</span>
+              <span class="text-sm text-text-secondary ml-1">(4.9)</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-end">
+            <span class="text-sm text-text-secondary">Ubud, Bali</span>
+            <span class="font-bold text-primary">Desde $480/noche</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex gap-4 bg-surface p-4 rounded-lg border border-border shadow-card hover:shadow-md transition-all group">
+        <div class="w-32 h-32 rounded-lg overflow-hidden shrink-0">
+          <img alt="Potato Head Suites" class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgUEFScR_97ODU9c6nzQQRi7jcrB0KbZO8jrtIVl6k0aEx3lQbUCF6eiqDOVgnjf4u2ABtqGkc_wmISYmfsi77xCvKNyHqaKMTuaVLJWZLDMcIEfnq76vG2-geKFDUwfXMMEZ6NOqLFsRA8eovvSBD30oYJCNjtKbPnYEdeidV3IwlFmziSJfHvZahD2L1L5chxMHPX_O7wN3_Z-M0QoTOiOoxwyhpnQiwhTUGsbimiPp4MhUMp8VSLQSOvpaoGOklOPIueg7H_tTR"/>
+        </div>
+        <div class="flex flex-col justify-between py-1">
+          <div>
+            <h4 class="font-headline-lg text-md">Potato Head Suites</h4>
+            <div class="flex items-center gap-0.5 text-secondary">
+              <span class="material-symbols-outlined text-sm" data-weight="fill">star</span>
+              <span class="material-symbols-outlined text-sm" data-weight="fill">star</span>
+              <span class="material-symbols-outlined text-sm" data-weight="fill">star</span>
+              <span class="material-symbols-outlined text-sm" data-weight="fill">star</span>
+              <span class="material-symbols-outlined text-sm">star</span>
+              <span class="text-sm text-text-secondary ml-1">(4.7)</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-end">
+            <span class="text-sm text-text-secondary">Seminyak, Bali</span>
+            <span class="font-bold text-primary">Desde $320/noche</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <%= render partial: "shared/right_panel" %>
+</div>

@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #00685f;
+  --color-primary-container: #008378;
+  --color-primary-dark: #005049;
+  --color-primary-light: #89f5e7;
+  --color-primary-fixed: #89f5e7;
+  --color-primary-fixed-dim: #6bd8cb;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #f4fffc;
+  --color-on-primary-fixed: #00201d;
+  --color-on-primary-fixed-variant: #005049;
+  --color-inverse-primary: #6bd8cb;
+
+  --color-secondary: #765b00;
+  --color-secondary-container: #fece4b;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #725800;
+  --color-on-secondary-fixed: #241a00;
+  --color-on-secondary-fixed-variant: #594400;
+
+  --color-tertiary: #006387;
+  --color-tertiary-container: #007da9;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #fcfcff;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  --color-background: #faf9f6;
+  --color-on-background: #1a1c1a;
+  --color-surface: #faf9f6;
+  --color-surface-dim: #dbdad7;
+  --color-surface-bright: #faf9f6;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f4f3f0;
+  --color-surface-container: #efeeeb;
+  --color-surface-container-high: #e9e8e5;
+  --color-surface-container-highest: #e3e2df;
+  --color-surface-variant: #e3e2df;
+  --color-on-surface: #1a1c1a;
+  --color-on-surface-variant: #3d4947;
+  --color-inverse-surface: #2f312f;
+  --color-inverse-on-surface: #f2f1ee;
+
+  --color-outline: #6d7a77;
+  --color-outline-variant: #bcc9c6;
+  --color-sidebar-bg: #f7f5f1;
+
+  --font-primary: "Inter", sans-serif;
+  --font-secondary: "Poppins", sans-serif;
+  --font-headline-lg: "Poppins", sans-serif;
+  --font-label-md: "Inter", sans-serif;
+  --font-display-lg: "Poppins", sans-serif;
+  --font-body-lg: "Inter", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+
+  --text-headline-lg: 24px;
+  --text-label-md: 14px;
+  --text-display-lg: 48px;
+  --text-headline-xl: 32px;
+  --text-body-lg: 18px;
+  --text-body-md: 16px;
+  --text-label-sm: 12px;
+}

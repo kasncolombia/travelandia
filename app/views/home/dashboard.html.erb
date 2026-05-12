@@ -1,0 +1,99 @@
+<%= render partial: "shared/head" %>
+
+<div class="h-screen overflow-hidden grid bg-background dark:bg-dark-bg" style="grid-template-rows: 60px 1fr; grid-template-columns: 280px 1fr 320px;">
+
+  <%= render partial: "shared/topbar" %>
+  <%= render partial: "shared/sidebar" %>
+
+  <!-- MAIN CONTENT -->
+  <main class="overflow-y-auto p-6 space-y-6 bg-background dark:bg-dark-bg" style="grid-column: 2; grid-row: 2;">
+    <!-- Hero -->
+    <section class="relative h-56 rounded-lg overflow-hidden bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAeTTP3F4Ila_HqFywPakWizTC4J1mCYuohQiKQLu7buj0j1qMhK_FRwGQijMxl6DDMWVR6EpzlWRNBAIBIzf6uK97vKtApELIDH78jCN3FyD3x2BldT86NU9yfIyJMQN49DFVDmuJPRS-GbzFSu7748tk97EJ_Ql6PFLiimE1On1gCRX0kmT3Pn1RjoxOZ4dvKyO45bxdG56UQX31STpfbNess-xCOsgvrwwcMFssPd7Q0tpZ4hYU7Zbt0Mede4k2kNtLOzjKNTDc2');">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>
+      <div class="relative h-full flex flex-col justify-center px-10 text-white">
+        <h2 class="text-3xl font-bold leading-tight font-poppins">Descubre el mundo<br/>a tu manera</h2>
+        <p class="mt-2 text-base max-w-md opacity-90">Planifica viajes perfectos con IA, encuentra las mejores ofertas y vive experiencias inolvidables.</p>
+        <div class="mt-6 flex gap-3">
+          <button class="bg-primary text-white px-6 py-3 rounded-sm text-base font-semibold hover:bg-primary-dark transition-all flex items-center gap-2 shadow-card">✨ Planear viaje con IA</button>
+          <button class="bg-white/90 text-text-primary hover:bg-white px-6 py-3 rounded-sm text-base font-semibold backdrop-blur-sm">Explorar destinos</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <div class="flex gap-3 overflow-x-auto">
+      <% [['✈️','Vuelos'],['🏨','Hoteles'],['🎁','Paquetes'],['📷','Actividades'],['🚗','Autos'],['🛡️','Seguros'],['🧭','Guías']].each do |icon, label| %>
+        <div class="min-w-[100px] bg-surface p-4 rounded-md border border-border flex flex-col items-center gap-2 cursor-pointer hover:shadow-hover transition-shadow">
+          <div class="w-10 h-10 rounded-sm flex items-center justify-center text-xl"><%= icon %></div>
+          <span class="text-xs font-medium text-text-secondary text-center"><%= label %></span>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Row: Trip + AI Planner -->
+    <div class="grid grid-cols-2 gap-6">
+      <section>
+        <div class="flex justify-between items-center mb-4"><h3 class="text-lg font-bold text-text-primary">Mi próximo viaje</h3><a class="text-sm text-primary font-semibold" href="#">Ver itinerario →</a></div>
+        <div class="bg-surface p-5 rounded-lg border border-border shadow-card">
+          <div class="flex gap-4">
+            <img class="w-20 h-20 rounded-md object-cover" src="https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?w=200&q=80"/>
+            <div class="flex-1">
+              <h4 class="text-base font-bold text-text-primary">Tailandia Mágica</h4>
+              <p class="text-sm text-text-muted mt-1">En 12 días • 24 Jun - 05 Jul</p>
+              <div class="flex gap-4 mt-2 text-sm text-text-secondary"><span>🕒 7 días</span><span>👥 2 personas</span><span>🏔️ Aventura</span></div>
+            </div>
+          </div>
+          <div class="mt-4"><div class="flex justify-between text-sm mb-1.5"><span class="text-text-secondary">Progreso del viaje</span><span class="font-bold text-primary">75%</span></div><div class="w-full bg-gray-100 h-2 rounded-full"><div class="bg-primary h-2 rounded-full" style="width:75%"></div></div></div>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li class="flex items-center gap-2 text-green-600 font-medium">✅ Vuelos confirmados</li>
+            <li class="flex items-center gap-2 text-green-600 font-medium">✅ Hotel reservado</li>
+            <li class="flex items-center justify-between text-text-muted"><div class="flex items-center gap-2">⚪ Actividades pendientes</div><span class="font-medium">2/4</span></li>
+            <li class="flex items-center justify-between text-text-muted"><div class="flex items-center gap-2">⚪ Documentos listos</div><span class="font-medium">3/4</span></li>
+          </ul>
+          <button class="w-full mt-4 py-2.5 border border-border rounded-xs text-sm font-semibold text-text-secondary hover:bg-gray-50 transition-colors">Ver itinerario completo</button>
+        </div>
+      </section>
+      <section>
+        <div class="flex justify-between items-center mb-4"><h3 class="text-lg font-bold text-text-primary">Planificador IA</h3><a class="text-sm text-primary font-semibold" href="#">Nuevo viaje +</a></div>
+        <div class="bg-surface p-5 rounded-lg border border-border shadow-card space-y-4">
+          <div><label class="text-sm font-semibold text-text-secondary">¿A dónde quieres viajar?</label><input class="w-full mt-1.5 border border-border rounded-xs text-sm px-4 py-3 bg-gray-50 outline-none focus:ring-2 focus:ring-primary placeholder:text-text-muted" placeholder="Ej: 5 días en Italia con presupuesto medio"/></div>
+          <div><p class="text-sm font-semibold text-text-secondary mb-2">Tipo de viaje</p><div class="flex flex-wrap gap-2">
+            <span class="bg-primary text-white px-3 py-1.5 rounded-full text-sm">💎 Económico</span>
+            <span class="bg-gray-100 text-text-secondary px-3 py-1.5 rounded-full text-sm">🧗 Aventura</span>
+            <span class="bg-gray-100 text-text-secondary px-3 py-1.5 rounded-full text-sm">❤️ Romántico</span>
+            <span class="bg-gray-100 text-text-secondary px-3 py-1.5 rounded-full text-sm">👨‍👩‍👧‍👦 Familiar</span>
+            <span class="bg-gray-100 text-text-secondary px-3 py-1.5 rounded-full text-sm">👑 Lujo</span>
+          </div></div>
+          <div class="grid grid-cols-2 gap-4">
+            <div><label class="text-sm font-semibold text-text-secondary">Duración</label><div class="flex items-center mt-1.5 bg-gray-50 border border-border rounded-xs"><button class="text-text-muted px-3 py-2.5 text-base">−</button><span class="flex-1 text-center text-base font-medium">5 días</span><button class="text-text-muted px-3 py-2.5 text-base">+</button></div></div>
+            <div><label class="text-sm font-semibold text-text-secondary">Presupuesto</label><div class="flex items-center mt-1.5 bg-gray-50 border border-border rounded-xs"><button class="text-text-muted px-3 py-2.5 text-base">−</button><span class="flex-1 text-center text-base font-medium">Medio</span><button class="text-text-muted px-3 py-2.5 text-base">+</button></div></div>
+          </div>
+          <button class="w-full bg-primary text-white py-3 rounded-sm text-base font-bold hover:bg-primary-dark transition-all shadow-card flex items-center justify-center gap-2">✨ Generar mi viaje con IA</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Destinos Populares -->
+    <section>
+      <div class="flex justify-between items-center mb-4"><h3 class="text-lg font-bold text-text-primary">Destinos populares</h3><a class="text-sm text-primary font-semibold" href="#">Ver todos →</a></div>
+      <div class="grid grid-cols-5 gap-4">
+        <% [['Bali','Indonesia','4.8','$4.120.000','https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&q=80'],['París','Francia','4.7','$3.250.000','https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&q=80'],['Cancún','México','4.6','$2.100.000','https://images.unsplash.com/photo-1510097467424-192d713fd8b1?w=400&q=80'],['Tokio','Japón','4.9','$5.890.000','https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=80'],['Dubái','EAU','4.7','$4.990.000','https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=80']].each do |name, country, rating, price, img| %>
+          <div class="cursor-pointer group"><div class="relative rounded-md overflow-hidden"><img class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" src="<%= img %>"/><span class="absolute top-2 right-2 text-white/80 text-xl drop-shadow-md">🤍</span><span class="absolute bottom-2 left-2 bg-white/90 text-text-primary text-xs font-bold px-2 py-0.5 rounded">⭐ <%= rating %></span></div><div class="mt-2"><p class="text-sm font-bold text-text-primary"><%= name %></p><p class="text-xs text-text-muted"><%= country %></p><p class="text-sm font-bold text-primary mt-1">Desde <%= price %></p></div></div>
+        <% end %>
+      </div>
+    </section>
+
+    <!-- Categorías Inspiración -->
+    <section>
+      <div class="flex justify-between items-center mb-4"><h3 class="text-lg font-bold text-text-primary">Categorías de inspiración</h3><a class="text-sm text-primary font-semibold" href="#">Ver todas →</a></div>
+      <div class="grid grid-cols-4 gap-4">
+        <% [['Playas','124','https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80'],['Aventura','86','https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80'],['Ciudades','212','https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&q=80'],['Naturaleza','153','https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80']].each do |cat, count, img| %>
+          <div class="h-20 rounded-md overflow-hidden relative cursor-pointer group"><img class="absolute inset-0 w-full h-full object-cover" src="<%= img %>"/><div class="absolute inset-0 bg-black/35 flex flex-col justify-end p-3 group-hover:bg-black/45 transition-colors"><p class="text-base text-white font-bold"><%= cat %></p><p class="text-sm text-white/80"><%= count %> destinos</p></div></div>
+        <% end %>
+      </div>
+    </section>
+  </main>
+
+  <%= render partial: "shared/right_panel" %>
+
+</div>

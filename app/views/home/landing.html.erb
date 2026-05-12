@@ -1,0 +1,494 @@
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<!-- TopNavBar -->
+<header class="bg-surface/70 backdrop-blur-md border-b border-outline-variant/30 docked full-width top-0 sticky z-50 shadow-sm flex justify-between items-center w-full px-lg h-16">
+  <div class="flex items-center gap-md">
+    <span class="font-headline-xl text-primary font-bold tracking-tight">TravelIA</span>
+    <div class="hidden md:flex ml-xl gap-lg">
+      <a class="text-primary font-semibold border-b-2 border-primary font-label-md text-label-md transition-all" href="#">Inicio</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Explorar</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Vuelos</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Ofertas</a>
+    </div>
+  </div>
+  <div class="flex items-center gap-md">
+    <button class="p-sm text-on-surface-variant hover:text-primary transition-colors">
+      <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+    </button>
+    <button class="p-sm text-on-surface-variant hover:text-primary transition-colors">
+      <span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+    </button>
+    <div class="flex items-center gap-sm bg-surface-container-low px-sm py-xs rounded-full">
+      <img alt="User profile of Laura, Explorer" class="w-8 h-8 rounded-full border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGp5gkj54K_AdPdz0ASRMC7ZASpMTHjWMzxvrpiN6jRoG-X3T1pCmaqpmwreuvfuOH81_Cq10Vl5RzDMCa3OP1YBxOnELwOJx-ofrSUwiAvAdYvaQiV--Jqa0RclKyLEYp7j91Fg1NB2_Idn5pAYZijGqXCrDlD8uo-WRWLNueKbfK4w4gX4Fhy6trSFqK9PpYCNlEdHJ7V-mX8xrESuuysb2jVMoa2H1zuSh1jGyO-3lqnqRRCEzDhRKrHEj38XFOglIvKI8P4qvA"/>
+      <span class="hidden sm:inline font-label-md text-label-md text-on-surface">Hola, Laura</span>
+      <span class="material-symbols-outlined text-sm" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+    </div>
+  </div>
+</header>
+
+<div class="flex">
+  <!-- SideNavBar -->
+  <aside class="hidden lg:flex flex-col p-md gap-sm bg-surface border-r border-outline-variant/20 fixed left-0 top-16 h-[calc(100vh-64px)] w-[280px] overflow-y-auto z-40">
+    <div class="flex flex-col gap-xs mb-lg">
+      <div class="flex items-center gap-md bg-secondary-container text-on-secondary-container rounded-lg px-md py-sm font-semibold cursor-pointer">
+        <span class="material-symbols-outlined" data-icon="home">home</span>
+        <span class="font-label-md">Inicio</span>
+      </div>
+      <div class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all cursor-pointer">
+        <span class="material-symbols-outlined" data-icon="explore">explore</span>
+        <span class="font-label-md">Explorar destinos</span>
+      </div>
+      <div class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all cursor-pointer">
+        <span class="material-symbols-outlined text-primary" data-icon="smart_toy">smart_toy</span>
+        <span class="font-label-md">Planificador IA</span>
+        <span class="ml-auto bg-primary-container text-on-primary-container text-[10px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wider">Nuevo</span>
+      </div>
+      <div class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all cursor-pointer">
+        <span class="material-symbols-outlined" data-icon="flight">flight</span>
+        <span class="font-label-md">Vuelos</span>
+      </div>
+      <div class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all cursor-pointer">
+        <span class="material-symbols-outlined" data-icon="hotel">hotel</span>
+        <span class="font-label-md">Hoteles</span>
+      </div>
+      <div class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all cursor-pointer">
+        <span class="material-symbols-outlined" data-icon="local_activity">local_activity</span>
+        <span class="font-label-md">Actividades</span>
+      </div>
+    </div>
+    <div class="text-on-surface-variant/60 font-label-sm text-[11px] px-md uppercase tracking-widest mb-sm">Comunidad</div>
+    <div class="flex flex-col gap-xs mb-lg">
+      <div class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all cursor-pointer">
+        <span class="material-symbols-outlined" data-icon="article">article</span>
+        <span class="font-label-md">Blog &amp; Guías</span>
+      </div>
+      <div class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-high rounded-lg px-md py-sm transition-all cursor-pointer">
+        <span class="material-symbols-outlined" data-icon="forum">forum</span>
+        <span class="font-label-md">Foros</span>
+      </div>
+    </div>
+    <div class="mt-auto bg-primary-container text-on-primary-container p-md rounded-xl shadow-lg relative overflow-hidden group">
+      <div class="relative z-10">
+        <div class="flex justify-between items-start mb-sm">
+          <span class="font-headline-lg font-bold">Hazte PRO</span>
+          <span class="material-symbols-outlined text-secondary-container" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+        </div>
+        <ul class="text-[12px] space-y-1 mb-md">
+          <li class="flex items-center gap-xs"><span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span> Itinerarios ilimitados</li>
+          <li class="flex items-center gap-xs"><span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span> Alertas de precios</li>
+          <li class="flex items-center gap-xs"><span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span> IA Inteligente avanzada</li>
+        </ul>
+        <button class="w-full bg-white text-primary font-bold py-sm rounded-lg hover:bg-secondary-fixed transition-colors text-label-md">Upgrade ahora</button>
+      </div>
+      <div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-9xl" data-icon="flight_takeoff">flight_takeoff</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 lg:ml-[280px] p-lg bg-background min-h-screen">
+    <!-- Hero Section -->
+    <section class="relative h-[480px] rounded-xxl overflow-hidden mb-xl flex items-center px-xxl group">
+      <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2000ms]" data-alt="A breathtaking cinematic landscape of a tropical Indonesian island at sunset, featuring limestone cliffs emerging from turquoise waters and traditional wooden boats. The lighting is golden and warm, casting a luxurious and serene glow across the entire scene, perfectly aligning with a premium travel aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeTTP3F4Ila_HqFywPakWizTC4J1mCYuohQiKQLu7buj0j1qMhK_FRwGQijMxl6DDMWVR6EpzlWRNBAIBIzf6uK97vKtApELIDH78jCN3FyD3x2BldT86NU9yfIyJMQN49DFVDmuJPRS-GbzFSu7748tk97EJ_Ql6PFLiimE1On1gCRX0kmT3Pn1RjoxOZ4dvKyO45bxdG56UQX31STpfbNess-xCOsgvrwwcMFssPd7Q0tpZ4hYU7Zbt0Mede4k2kNtLOzjKNTDc2"/>
+      <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
+      <div class="relative z-10 max-w-2xl text-white">
+        <span class="inline-block bg-primary/20 backdrop-blur-md border border-white/30 px-md py-sm rounded-full font-label-md text-label-md mb-md">IA Travel Assistant v2.0</span>
+        <h1 class="font-display-lg text-display-lg mb-md leading-tight">El futuro de tus viajes, <span class="text-secondary-fixed-dim">diseñado por IA</span></h1>
+        <p class="font-body-lg text-body-lg mb-xl opacity-90">Planifica viajes perfectos en segundos. Encuentra las mejores rutas, hoteles exclusivos y experiencias locales únicas adaptadas a tu estilo.</p>
+        <div class="flex gap-md">
+          <button class="bg-primary text-white px-xl py-md rounded-xl font-bold flex items-center gap-sm shadow-xl hover:shadow-primary/40 hover:-translate-y-1 transition-all">
+            <span class="material-symbols-outlined" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+            Empezar gratis
+          </button>
+          <button class="bg-white/20 backdrop-blur-md border border-white/40 text-white px-xl py-md rounded-xl font-bold hover:bg-white/30 transition-all">
+            Explorar destinos
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Service Grid -->
+    <section class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-md mb-xl">
+      <div class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col items-center gap-xs border border-transparent hover:border-primary-fixed">
+        <div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center text-primary">
+          <span class="material-symbols-outlined" data-icon="flight">flight</span>
+        </div>
+        <span class="font-label-md text-on-surface">Vuelos</span>
+      </div>
+      <div class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col items-center gap-xs border border-transparent hover:border-primary-fixed">
+        <div class="w-12 h-12 bg-secondary-container/10 rounded-full flex items-center justify-center text-secondary">
+          <span class="material-symbols-outlined" data-icon="hotel">hotel</span>
+        </div>
+        <span class="font-label-md text-on-surface">Hoteles</span>
+      </div>
+      <div class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col items-center gap-xs border border-transparent hover:border-primary-fixed">
+        <div class="w-12 h-12 bg-tertiary-container/10 rounded-full flex items-center justify-center text-tertiary">
+          <span class="material-symbols-outlined" data-icon="package">inventory_2</span>
+        </div>
+        <span class="font-label-md text-on-surface">Paquetes</span>
+      </div>
+      <div class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col items-center gap-xs border border-transparent hover:border-primary-fixed">
+        <div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center text-primary">
+          <span class="material-symbols-outlined" data-icon="local_activity">local_activity</span>
+        </div>
+        <span class="font-label-md text-on-surface">Actividades</span>
+      </div>
+      <div class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col items-center gap-xs border border-transparent hover:border-primary-fixed">
+        <div class="w-12 h-12 bg-secondary-container/10 rounded-full flex items-center justify-center text-secondary">
+          <span class="material-symbols-outlined" data-icon="car_rental">directions_car</span>
+        </div>
+        <span class="font-label-md text-on-surface">Autos</span>
+      </div>
+      <div class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col items-center gap-xs border border-transparent hover:border-primary-fixed">
+        <div class="w-12 h-12 bg-tertiary-container/10 rounded-full flex items-center justify-center text-tertiary">
+          <span class="material-symbols-outlined" data-icon="shield">verified_user</span>
+        </div>
+        <span class="font-label-md text-on-surface">Seguros</span>
+      </div>
+      <div class="bg-surface-container-lowest p-md rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col items-center gap-xs border border-transparent hover:border-primary-fixed">
+        <div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center text-primary">
+          <span class="material-symbols-outlined" data-icon="map">map</span>
+        </div>
+        <span class="font-label-md text-on-surface">Guías</span>
+      </div>
+    </section>
+
+    <!-- Bento Dashboard Layout -->
+    <div class="grid grid-cols-12 gap-lg">
+      <!-- AI Planner Widget -->
+      <div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-lg rounded-xxl shadow-sm flex flex-col gap-lg border border-outline-variant/10">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-md">
+            <div class="bg-primary/10 p-sm rounded-lg">
+              <span class="material-symbols-outlined text-primary" data-icon="auto_awesome">auto_awesome</span>
+            </div>
+            <div>
+              <h2 class="font-headline-lg text-on-surface">Generador de Itinerarios IA</h2>
+              <p class="font-body-md text-on-surface-variant text-sm">Tu viaje soñado a un solo prompt de distancia</p>
+            </div>
+          </div>
+          <button class="text-primary font-bold text-sm hover:underline">Ver ejemplos</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+          <div class="space-y-md">
+            <label class="block font-label-md text-on-surface-variant">¿A dónde quieres ir?</label>
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant/40" data-icon="location_on">location_on</span>
+              <input class="w-full bg-surface-container-low border-none rounded-xl py-md pl-12 focus:ring-2 focus:ring-primary transition-all" placeholder="Ej: 5 días en Islandia bajo la aurora boreal" type="text"/>
+            </div>
+            <div class="flex gap-sm overflow-x-auto pb-sm scrollbar-hide">
+              <button class="px-md py-sm bg-primary text-white rounded-full text-sm font-bold whitespace-nowrap">Económico</button>
+              <button class="px-md py-sm bg-surface-container-high text-on-surface-variant rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-container-highest transition-colors">Aventura</button>
+              <button class="px-md py-sm bg-surface-container-high text-on-surface-variant rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-container-highest transition-colors">Romántico</button>
+              <button class="px-md py-sm bg-surface-container-high text-on-surface-variant rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-container-highest transition-colors">Familiar</button>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-md">
+            <div class="space-y-md">
+              <label class="block font-label-md text-on-surface-variant">Duración</label>
+              <div class="flex items-center justify-between bg-surface-container-low rounded-xl p-sm">
+                <button class="w-8 h-8 flex items-center justify-center bg-white rounded-lg shadow-sm text-primary">-</button>
+                <span class="font-bold">5 días</span>
+                <button class="w-8 h-8 flex items-center justify-center bg-white rounded-lg shadow-sm text-primary">+</button>
+              </div>
+            </div>
+            <div class="space-y-md">
+              <label class="block font-label-md text-on-surface-variant">Presupuesto</label>
+              <div class="flex items-center justify-between bg-surface-container-low rounded-xl p-sm">
+                <button class="w-8 h-8 flex items-center justify-center bg-white rounded-lg shadow-sm text-primary">-</button>
+                <span class="font-bold">Medio</span>
+                <button class="w-8 h-8 flex items-center justify-center bg-white rounded-lg shadow-sm text-primary">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="w-full bg-primary-container text-on-primary-container font-headline-lg py-md rounded-xl flex items-center justify-center gap-md hover:scale-[1.01] transition-transform shadow-lg shadow-primary-container/20">
+          <span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+          Generar mi viaje con IA
+        </button>
+      </div>
+
+      <!-- Price Alert Widget -->
+      <div class="col-span-12 lg:col-span-4 bg-surface-container-lowest p-lg rounded-xxl shadow-sm border border-outline-variant/10 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-lg">
+            <h3 class="font-headline-lg">Alertas de Precios</h3>
+            <span class="bg-error-container text-on-error-container px-sm py-xs rounded-lg text-xs font-bold">-18% hoy</span>
+          </div>
+          <div class="flex items-center gap-md mb-lg">
+            <div class="flex flex-col items-center">
+              <span class="font-headline-lg font-bold">BOG</span>
+              <span class="text-xs text-on-surface-variant">Bogotá</span>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant/30" data-icon="flight_takeoff">flight_takeoff</span>
+            <div class="flex flex-col items-center">
+              <span class="font-headline-lg font-bold">MAD</span>
+              <span class="text-xs text-on-surface-variant">Madrid</span>
+            </div>
+          </div>
+          <div class="text-center mb-md">
+            <span class="text-3xl font-extrabold text-primary">$2.340.000</span>
+            <span class="text-xs text-on-surface-variant ml-xs block">Vuelo ida y vuelta por persona</span>
+          </div>
+          <div class="h-20 w-full bg-surface-container-low rounded-xl relative overflow-hidden flex items-end px-xs gap-1">
+            <div class="w-full bg-primary/20 h-[40%] rounded-t-sm"></div>
+            <div class="w-full bg-primary/20 h-[50%] rounded-t-sm"></div>
+            <div class="w-full bg-primary/20 h-[45%] rounded-t-sm"></div>
+            <div class="w-full bg-primary h-[35%] rounded-t-sm"></div>
+            <div class="w-full bg-primary/20 h-[60%] rounded-t-sm"></div>
+            <div class="w-full bg-primary/20 h-[55%] rounded-t-sm"></div>
+            <div class="w-full bg-primary/20 h-[70%] rounded-t-sm"></div>
+          </div>
+        </div>
+        <button class="mt-lg w-full border border-primary text-primary py-sm rounded-xl font-bold hover:bg-primary/5 transition-colors">Activar rastreo</button>
+      </div>
+
+      <!-- Featured Destinations -->
+      <div class="col-span-12">
+        <div class="flex justify-between items-end mb-lg">
+          <div>
+            <h2 class="font-headline-xl text-on-surface">Destinos Populares</h2>
+            <p class="text-on-surface-variant">Lo que otros viajeros están descubriendo esta semana</p>
+          </div>
+          <button class="text-primary font-bold hover:underline">Ver todos los destinos</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-md">
+          <!-- Card 1 - Santorini -->
+          <div class="group cursor-pointer">
+            <div class="relative aspect-[3/4] rounded-xxl overflow-hidden mb-sm shadow-md">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A modern luxury villa in a Mediterranean setting, featuring white architectural lines, a pristine infinity pool, and vibrant blue skies. The scene is bright and airy, representing high-end travel and architectural elegance, with soft natural light enhancing the clean surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL3TS1M3EOyUJzVH65flr6kBQ4T7yA6kat7WAvWaG_VOopmU9nsVrTNUsrfK0Hr8NBjeMVGyx4UUFW2X4K9AYRb4UJy_cOopr7BIfPmOj8D7W1uq7S8BqCegzCyTRcFO1gzEDAMGErFdDtW3QqrInGT9jtnNamdFiSz-xQfl0iwIMtvvw78l7ljTHZy9A0hEaH-QIL1bwU9ryQzmUXTVqBQcFYqwlrCpuqKy7lPwVJeN9PGqbiJdOCfmpqESoPvI6fxsRFp6PquXia"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div class="absolute bottom-md left-md text-white">
+                <span class="text-xs uppercase tracking-widest font-bold opacity-80">Europa</span>
+                <h4 class="font-headline-lg font-bold">Santorini</h4>
+              </div>
+              <button class="absolute top-md right-md bg-white/20 backdrop-blur-md p-xs rounded-full text-white">
+                <span class="material-symbols-outlined text-sm" data-icon="favorite">favorite</span>
+              </button>
+            </div>
+            <div class="flex justify-between items-center px-xs">
+              <span class="font-label-md text-primary font-bold">Desde $3.250k</span>
+              <div class="flex items-center gap-xs">
+                <span class="material-symbols-outlined text-secondary text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="text-sm font-bold">4.9</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 - Kyoto -->
+          <div class="group cursor-pointer">
+            <div class="relative aspect-[3/4] rounded-xxl overflow-hidden mb-sm shadow-md">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A tranquil Japanese Zen garden at a Kyoto temple during autumn, showing vibrant red maple leaves framing a traditional wooden pagoda and a raked sand garden. The mood is peaceful and culturally rich, with soft diffused light creating a serene, meditative atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtjRjgGrf9xrwbfw5TTNOlbEg3l9XjRd1wy2yJIEYomeB3Ejtchp48eKKDjX5keDSBD3-HjT-NRNwhw0e9j-ZwzzwQ_dUq1IudrZRW2KakY2NbrlOmpfxsy-KPtyq-9RyyOws9Hl0NIrwC7lYTzogIAOHmjOlxOAgBqKC291C0P7li4NvxXHjAwk48R3ZjnZuRyotbU6pHCWZX4fZ7LN7vsgopu7VNToVPDUVhVmY9deNUMdre8NIIUNAyU3xplVnUcZ3VkMfYZnIg"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div class="absolute bottom-md left-md text-white">
+                <span class="text-xs uppercase tracking-widest font-bold opacity-80">Asia</span>
+                <h4 class="font-headline-lg font-bold">Kyoto</h4>
+              </div>
+            </div>
+            <div class="flex justify-between items-center px-xs">
+              <span class="font-label-md text-primary font-bold">Desde $4.120k</span>
+              <div class="flex items-center gap-xs">
+                <span class="material-symbols-outlined text-secondary text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="text-sm font-bold">4.8</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 - New York -->
+          <div class="group cursor-pointer">
+            <div class="relative aspect-[3/4] rounded-xxl overflow-hidden mb-sm shadow-md">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="The glowing skyline of New York City at twilight, with the Empire State Building illuminated against a deep blue sky. The city lights are vibrant and energetic, conveying a bustling urban atmosphere with sophisticated high-contrast lighting and modern metropolitan vibes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5uVywTVYNRFHeRyRt-3TfQ5L8Cu1MS1Zdno1Vh7heefM5amgfbNMhOx51M5-WOwwZ1b39kLUPQSQ3ZU3RA1XJ_nYnRGoqM4O2HxgbzyjXcUOSWQszwSMhJivtaTK6KEW87ciTNQ0aO6DdzaHLJwg-3uqSCGRxLLiSGoh_m0xQNbehnz6f2EwOKTAbR_J18nw3cBrw-0DrG7OMQ2v7ABU3RYIU_E_tEaJRo3Eim4sq-qhWWcwafCcpOhLDyEE2BFMNaRjmrRJhHvW0"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div class="absolute bottom-md left-md text-white">
+                <span class="text-xs uppercase tracking-widest font-bold opacity-80">Norteamérica</span>
+                <h4 class="font-headline-lg font-bold">New York</h4>
+              </div>
+            </div>
+            <div class="flex justify-between items-center px-xs">
+              <span class="font-label-md text-primary font-bold">Desde $5.890k</span>
+              <div class="flex items-center gap-xs">
+                <span class="material-symbols-outlined text-secondary text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="text-sm font-bold">4.7</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 - Costa Rica -->
+          <div class="group cursor-pointer">
+            <div class="relative aspect-[3/4] rounded-xxl overflow-hidden mb-sm shadow-md">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A lush tropical waterfall in Costa Rica surrounded by dense green rainforest foliage and exotic flowers. The water is pristine and cascading into a turquoise pool, with morning mist and soft sunlight filtered through the canopy, creating a fresh and vibrant nature scene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQHcUAiHlXMiJvH_VrtTQ98AN4iFH97c2Yiu1RdHzldBidXjI705l7wQIRmOhqxl_pqCV2Fipme7gwnMZHcChaBQ7nqXrV7EjVfNGrcNYB-0Rq3rqiy7h0_BlGqDIcNcBax3omYANMufdq4bD3iqvAsx_c-ymTt5csCNVMXGVWhP6A-C-q6nvetUFxaXj88_fcCH6nOoN4-xVmzXuWpiKZnKlbNX2my6Fs7lDQVZfk8ZNb9aRs_G9weRCXl1is06J2p0_kIQ0hnGwV"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div class="absolute bottom-md left-md text-white">
+                <span class="text-xs uppercase tracking-widest font-bold opacity-80">Centroamérica</span>
+                <h4 class="font-headline-lg font-bold">Costa Rica</h4>
+              </div>
+            </div>
+            <div class="flex justify-between items-center px-xs">
+              <span class="font-label-md text-primary font-bold">Desde $2.100k</span>
+              <div class="flex items-center gap-xs">
+                <span class="material-symbols-outlined text-secondary text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="text-sm font-bold">4.9</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 - Dubai -->
+          <div class="group cursor-pointer">
+            <div class="relative aspect-[3/4] rounded-xxl overflow-hidden mb-sm shadow-md">
+              <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="The modern futuristic skyline of Dubai featuring the Burj Khalifa under a hazy sunset sky. The architecture is sleek and metallic, with the city's unique infrastructure highlighted by warm desert light, creating an aspirational and technologically advanced atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6-eDO1X-5LZkBGoJr19Hclc54hOgGi5yUK7lzJ2gHzVEsSv0Y29PUpHNjXn5qotjmgLzsbCjLPek7yhvi-hU-LKei5l4xqy-rCmNohfZZ5zrCXAn9LjS-t3UoYPbo4Eskq10O2SVgzaXTG20ZRMNP8ChFf5NemLfAaO40vRm18jFk_7nKldK4QaP3HJTflln1-NFe8YkGkVzJvpiTDdn6Bwjn_CGvjYFgmpIPIJj1pECiWL4vHhRS9eOknzUhLUDrozBgLfpEwvH6"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div class="absolute bottom-md left-md text-white">
+                <span class="text-xs uppercase tracking-widest font-bold opacity-80">Medio Oriente</span>
+                <h4 class="font-headline-lg font-bold">Dubai</h4>
+              </div>
+            </div>
+            <div class="flex justify-between items-center px-xs">
+              <span class="font-label-md text-primary font-bold">Desde $4.990k</span>
+              <div class="flex items-center gap-xs">
+                <span class="material-symbols-outlined text-secondary text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="text-sm font-bold">4.8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Trip Status Widget -->
+      <div class="col-span-12 lg:col-span-4 bg-surface-container-lowest p-lg rounded-xxl shadow-sm border border-outline-variant/10">
+        <div class="flex justify-between items-center mb-lg">
+          <h3 class="font-headline-lg">Mi próximo viaje</h3>
+          <span class="material-symbols-outlined text-primary cursor-pointer" data-icon="more_vert">more_vert</span>
+        </div>
+        <div class="flex gap-md items-center mb-lg">
+          <img class="w-16 h-16 rounded-xl object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv_zz9bzPHVWkXoUF9gDm_apbtiJm78suiiWLrtqohyG4UlagfrHUVXIbiG_vRDABl3oG0eyCEX5a7h2R935J7ZrVFQ9nRr3DA8m7cNWb_BKxf9mFavPP6M3rpKFAzWu6CQnhwxkXQyL08ox3x3w62Rj6D9NoZRDJy0aYI7RPOBdajmpbwtzoE1GtF-qhTPawOAkhS7piWJCcoXZmEFV9g3v-22p9yN3jD4Z-ZEeIuSgja3hNuKyU3cS082Ywx29TL6jttgwfZt_bu"/>
+          <div>
+            <h4 class="font-bold">Tailandia Mágica</h4>
+            <p class="text-sm text-on-surface-variant">En 12 días &bull; 24 Jun - 05 Jul</p>
+          </div>
+        </div>
+        <div class="space-y-sm mb-lg">
+          <div class="flex justify-between text-sm mb-1">
+            <span class="text-on-surface-variant">Progreso del viaje</span>
+            <span class="font-bold">75%</span>
+          </div>
+          <div class="w-full bg-surface-container-low h-2 rounded-full overflow-hidden">
+            <div class="bg-primary h-full w-3/4 rounded-full"></div>
+          </div>
+        </div>
+        <div class="space-y-sm">
+          <div class="flex items-center gap-md text-sm text-on-surface-variant">
+            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            Vuelos confirmados
+          </div>
+          <div class="flex items-center gap-md text-sm text-on-surface-variant">
+            <span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            Hotel reservado
+          </div>
+          <div class="flex items-center gap-md text-sm text-on-surface-variant">
+            <span class="material-symbols-outlined text-on-surface-variant/30 text-sm" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+            Actividades pendientes (2/4)
+          </div>
+        </div>
+        <button class="mt-lg w-full bg-surface-container-high py-sm rounded-xl font-bold hover:bg-surface-container-highest transition-colors">Ver itinerario completo</button>
+      </div>
+
+      <!-- Special AI Recommendation Widget -->
+      <div class="col-span-12 lg:col-span-8 bg-gradient-to-br from-primary/5 to-secondary/5 p-lg rounded-xxl shadow-sm premium-border flex flex-col md:flex-row gap-lg items-center">
+        <div class="w-full md:w-1/3">
+          <div class="relative bg-white/40 backdrop-blur-xl p-lg rounded-xxl border border-white/50 text-center">
+            <div class="bg-primary w-12 h-12 rounded-full mx-auto mb-md flex items-center justify-center text-white shadow-lg">
+              <span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+            </div>
+            <span class="inline-block bg-secondary-container text-on-secondary-container px-xs py-[2px] rounded-full text-[10px] font-bold mb-xs">BETA</span>
+            <p class="font-label-md text-xs opacity-70">RECOMENDACIÓN IA</p>
+            <h4 class="font-headline-lg font-bold mb-xs">Tailandia</h4>
+            <p class="text-sm font-bold text-primary">7 días desde $1.890k</p>
+          </div>
+        </div>
+        <div class="flex-1 space-y-md">
+          <h3 class="font-headline-lg">¿Por qué este destino?</h3>
+          <p class="font-body-md text-on-surface-variant">Según tus preferencias de aventura y presupuesto anterior, Tailandia ofrece la mejor relación calidad-precio para julio. La temporada de monzones es baja en el este, ideal para las islas de Koh Samui.</p>
+          <div class="flex gap-md flex-wrap">
+            <div class="flex items-center gap-xs text-xs font-bold bg-white/60 px-md py-sm rounded-full">
+              <span class="material-symbols-outlined text-sm" data-icon="beach_access">beach_access</span> Playas
+            </div>
+            <div class="flex items-center gap-xs text-xs font-bold bg-white/60 px-md py-sm rounded-full">
+              <span class="material-symbols-outlined text-sm" data-icon="ramen_dining">ramen_dining</span> Gastronomía
+            </div>
+            <div class="flex items-center gap-xs text-xs font-bold bg-white/60 px-md py-sm rounded-full">
+              <span class="material-symbols-outlined text-sm" data-icon="temple_buddhist">temple_buddhist</span> Cultura
+            </div>
+          </div>
+          <button class="bg-primary text-white px-xl py-sm rounded-xl font-bold hover:shadow-lg transition-all text-sm">Explorar recomendación</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="mt-xxl pt-xxl border-t border-outline-variant/20 grid grid-cols-1 md:grid-cols-4 gap-xl">
+      <div class="col-span-1 md:col-span-1">
+        <span class="font-headline-xl text-primary font-bold tracking-tight block mb-md">TravelIA</span>
+        <p class="text-sm text-on-surface-variant opacity-70 leading-relaxed">Redefiniendo la forma de viajar a través de inteligencia artificial y diseño centrado en el humano.</p>
+      </div>
+      <div class="col-span-1">
+        <h5 class="font-bold mb-md">Empresa</h5>
+        <ul class="text-sm text-on-surface-variant space-y-sm">
+          <li><a class="hover:text-primary" href="#">Sobre nosotros</a></li>
+          <li><a class="hover:text-primary" href="#">Carreras</a></li>
+          <li><a class="hover:text-primary" href="#">Prensa</a></li>
+        </ul>
+      </div>
+      <div class="col-span-1">
+        <h5 class="font-bold mb-md">Soporte</h5>
+        <ul class="text-sm text-on-surface-variant space-y-sm">
+          <li><a class="hover:text-primary" href="#">Ayuda y FAQ</a></li>
+          <li><a class="hover:text-primary" href="#">Seguridad</a></li>
+          <li><a class="hover:text-primary" href="#">Términos de servicio</a></li>
+        </ul>
+      </div>
+      <div class="col-span-1">
+        <h5 class="font-bold mb-md">Newsletter</h5>
+        <p class="text-xs text-on-surface-variant mb-md">Recibe ofertas exclusivas y tips de IA.</p>
+        <div class="flex gap-xs">
+          <input class="bg-surface-container-low border-none rounded-lg text-sm px-md py-xs w-full focus:ring-1 focus:ring-primary" placeholder="Tu email" type="email"/>
+          <button class="bg-primary text-white p-xs rounded-lg">
+            <span class="material-symbols-outlined" data-icon="send">send</span>
+          </button>
+        </div>
+      </div>
+      <div class="col-span-full pt-xl flex flex-col md:flex-row justify-between items-center text-xs text-on-surface-variant opacity-50">
+        <span>&copy; 2024 TravelIA Inc. Todos los derechos reservados.</span>
+        <div class="flex gap-xl mt-md md:mt-0">
+          <a href="#">Privacidad</a>
+          <a href="#">Cookies</a>
+          <a href="#">Configuración</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<!-- Mobile Navigation Bar (Bottom) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface/80 backdrop-blur-lg border-t border-outline-variant/30 px-lg h-16 flex justify-around items-center z-50">
+  <button class="flex flex-col items-center gap-xs text-primary">
+    <span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+    <span class="text-[10px] font-bold">Inicio</span>
+  </button>
+  <button class="flex flex-col items-center gap-xs text-on-surface-variant">
+    <span class="material-symbols-outlined" data-icon="explore">explore</span>
+    <span class="text-[10px]">Explorar</span>
+  </button>
+  <button class="bg-primary text-white w-12 h-12 rounded-full -translate-y-4 shadow-lg shadow-primary/40 flex items-center justify-center">
+    <span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+  </button>
+  <button class="flex flex-col items-center gap-xs text-on-surface-variant">
+    <span class="material-symbols-outlined" data-icon="flight">flight</span>
+    <span class="text-[10px]">Vuelos</span>
+  </button>
+  <button class="flex flex-col items-center gap-xs text-on-surface-variant">
+    <span class="material-symbols-outlined" data-icon="person">person</span>
+    <span class="text-[10px]">Perfil</span>
+  </button>
+</nav>

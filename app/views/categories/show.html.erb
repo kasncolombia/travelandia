@@ -1,0 +1,21 @@
+<div class="min-h-screen bg-background pt-24">
+  <div class="max-w-7xl mx-auto px-6 py-10">
+    <%= link_to categories_path, class: "inline-flex items-center gap-1.5 text-sm text-text-secondary hover:text-primary transition mb-6" do %>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+      Todas las categorías
+    <% end %>
+
+    <div class="mb-10">
+      <h1 class="font-secondary text-3xl md:text-4xl font-bold text-text-primary mb-2"><%= @category.name %></h1>
+      <p class="text-text-secondary text-lg"><%= @subcategories.size %> subcategorías</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <% @subcategories.each do |sub| %>
+        <div class="bg-white rounded-xl border border-border p-4 hover:shadow-sm transition cursor-pointer">
+          <h3 class="font-medium text-text-primary text-sm"><%= sub.name %></h3>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

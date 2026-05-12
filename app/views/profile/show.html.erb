@@ -1,0 +1,151 @@
+<%= render partial: "shared/head" %>
+<div class="h-screen overflow-hidden grid bg-background dark:bg-dark-bg" style="grid-template-rows: 60px 1fr; grid-template-columns: 280px 1fr 320px;">
+  <%= render partial: "shared/topbar" %>
+  <%= render partial: "shared/sidebar" %>
+  <main class="overflow-y-auto p-6 space-y-6 bg-background dark:bg-dark-bg" style="grid-column: 2; grid-row: 2;">
+    <header class="flex flex-col md:flex-row items-end gap-6 relative">
+      <div class="relative">
+        <div class="w-32 h-32 rounded-full border-4 border-white overflow-hidden shadow-card">
+          <img class="w-full h-full object-cover" alt="Avatar de Laura" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3viZcjXNlcjtPiOyE9cIt502FJAg1QwkSJUiRU516JmoQK9J7m5qihozGX-Hx04SBI4sFkMrgg26QtXegluG1y6sKnECHCpUFf4u2dPr7Se2mvduN7kU8jYWKcgq2_tLoYd8EkpdDw1vRmGcD-2j_-JuP1FRRpyNH2JYjFTRN1puPKo6YEHI7C5x2unPSsojCtpVZYKF_MR9Ly-WS-4GoSh4YXIs2y60Vf41aIBkq8TIbvVM2rHQfPc07wZ9gFUZp1-jiPnCo8vtx"/>
+        </div>
+        <button class="absolute bottom-0 right-0 p-2 bg-primary text-white rounded-full shadow-lg border-2 border-white hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-[20px]">edit</span>
+        </button>
+      </div>
+      <div class="flex-1 pb-unit">
+        <div class="flex items-center gap-2 mb-1">
+          <h2 class="font-poppins text-2xl font-bold text-text-primary dark:text-dark-text">Laura</h2>
+          <span class="px-2 py-0.5 bg-primary-light dark:bg-primary/20 text-primary text-xs font-semibold rounded-full flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+            Exploradora
+          </span>
+        </div>
+        <p class="text-text-secondary dark:text-dark-text-sec text-base flex items-center gap-1">
+          <span class="material-symbols-outlined text-[18px]">location_on</span>
+          Basada en Miami, FL • Se unió en Enero 2024
+        </p>
+      </div>
+      <div class="flex gap-2">
+        <button class="px-5 py-2 bg-primary text-white rounded-xl text-sm font-semibold shadow-card hover:opacity-90 transition-opacity">Editar perfil</button>
+        <button class="px-5 py-2 bg-surface dark:bg-dark-surface text-text-primary dark:text-dark-text rounded-xl text-sm font-semibold border border-border dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-border transition-colors">Compartir</button>
+      </div>
+    </header>
+
+    <div class="flex gap-6 border-b border-border dark:border-dark-border">
+      <button class="pb-3 text-sm font-semibold text-primary border-b-2 border-primary">Información</button>
+      <button class="pb-3 text-sm font-semibold text-text-secondary dark:text-dark-text-sec hover:text-primary transition-colors">Mis viajes</button>
+      <button class="pb-3 text-sm font-semibold text-text-secondary dark:text-dark-text-sec hover:text-primary transition-colors">Destinos guardados</button>
+    </div>
+
+    <div class="grid grid-cols-12 gap-6">
+      <section class="col-span-12 lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="col-span-1 p-5 bg-surface dark:bg-dark-surface rounded-xl shadow-card border border-border dark:border-dark-border flex flex-col items-center text-center">
+          <span class="w-12 h-12 rounded-full bg-primary-light dark:bg-primary/20 flex items-center justify-center text-primary mb-3">
+            <span class="material-symbols-outlined">public</span>
+          </span>
+          <span class="text-xl font-bold text-text-primary dark:text-dark-text">24</span>
+          <span class="text-text-secondary dark:text-dark-text-sec text-xs font-medium">Países visitados</span>
+        </div>
+        <div class="col-span-1 p-5 bg-surface dark:bg-dark-surface rounded-xl shadow-card border border-border dark:border-dark-border flex flex-col items-center text-center">
+          <span class="w-12 h-12 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 mb-3">
+            <span class="material-symbols-outlined">flight_takeoff</span>
+          </span>
+          <span class="text-xl font-bold text-text-primary dark:text-dark-text">142k</span>
+          <span class="text-text-secondary dark:text-dark-text-sec text-xs font-medium">Millas recorridas</span>
+        </div>
+        <div class="col-span-1 p-5 bg-surface dark:bg-dark-surface rounded-xl shadow-card border border-border dark:border-dark-border flex flex-col items-center text-center">
+          <span class="w-12 h-12 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center text-sky-600 mb-3">
+            <span class="material-symbols-outlined">calendar_today</span>
+          </span>
+          <span class="text-xl font-bold text-text-primary dark:text-dark-text">3</span>
+          <span class="text-text-secondary dark:text-dark-text-sec text-xs font-medium">Próximos viajes</span>
+        </div>
+        <div class="col-span-1 md:col-span-3 p-5 bg-surface dark:bg-dark-surface rounded-xl shadow-card border border-border dark:border-dark-border">
+          <div class="flex justify-between items-center mb-5">
+            <h3 class="text-lg font-bold text-text-primary dark:text-dark-text">Información personal</h3>
+            <button class="text-primary text-sm font-semibold flex items-center gap-1">
+              <span class="material-symbols-outlined text-[18px]">settings</span>
+              Gestionar
+            </button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="space-y-1">
+              <label class="text-xs font-semibold text-text-muted dark:text-dark-text-sec uppercase tracking-wider">Nombre completo</label>
+              <p class="text-base p-3 bg-gray-50 dark:bg-dark-bg rounded-lg text-text-primary dark:text-dark-text">Laura</p>
+            </div>
+            <div class="space-y-1">
+              <label class="text-xs font-semibold text-text-muted dark:text-dark-text-sec uppercase tracking-wider">Correo electrónico</label>
+              <p class="text-base p-3 bg-gray-50 dark:bg-dark-bg rounded-lg text-text-primary dark:text-dark-text">laura@travelia.vip</p>
+            </div>
+            <div class="space-y-1">
+              <label class="text-xs font-semibold text-text-muted dark:text-dark-text-sec uppercase tracking-wider">Teléfono</label>
+              <p class="text-base p-3 bg-gray-50 dark:bg-dark-bg rounded-lg text-text-primary dark:text-dark-text">+1 (555) 000-5678</p>
+            </div>
+            <div class="space-y-1">
+              <label class="text-xs font-semibold text-text-muted dark:text-dark-text-sec uppercase tracking-wider">Aeropuerto preferido</label>
+              <p class="text-base p-3 bg-gray-50 dark:bg-dark-bg rounded-lg text-text-primary dark:text-dark-text">MIA - Aeropuerto Internacional de Miami</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+        <div class="bg-gradient-to-br from-primary-light/50 to-white dark:from-primary/10 dark:to-dark-surface p-5 rounded-xl border border-primary/20 shadow-card relative overflow-hidden">
+          <div class="absolute top-0 right-0 p-5 opacity-10">
+            <span class="material-symbols-outlined text-[64px] text-primary">auto_awesome</span>
+          </div>
+          <h3 class="text-lg font-bold text-primary mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined">smart_toy</span>
+            Conserje IA
+          </h3>
+          <p class="text-text-secondary dark:text-dark-text-sec text-base mb-4">
+            "Laura, he encontrado una bajada del 15% en tu próximo viaje a Tokio. ¿Quieres reprogramar ahora?"
+          </p>
+          <button class="w-full py-2.5 bg-primary text-white rounded-xl text-sm font-semibold hover:shadow-xl transition-all">Revisar insights</button>
+        </div>
+
+        <div class="p-5 bg-surface dark:bg-dark-surface rounded-xl shadow-card border border-border dark:border-dark-border">
+          <h3 class="text-lg font-bold text-text-primary dark:text-dark-text mb-4">Guardados recientemente</h3>
+          <div class="flex flex-col gap-3">
+            <div class="flex gap-3 group cursor-pointer">
+              <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0">
+                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Kioto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoQ8r7UXt84t7SAocq7_OES-ZQNhthAtzgmSzAB_gyQg9rszqMd0agR_mX6764WyU__Oqkjdz5viBVf2Xe8l8dJi8SIbB5JhYK_8sOusosL9BzAIQxZwqgVXpQ-p1WK6HnSW85iTw7cP4v30Aw8Ilx8N_DRFaepEgFsZNrJyxCZrHDlXSwuarUHaKAosmfzjwhZF98TBhrbugTxQ1HN_FXeBzk4nteO5m69r5GTWO3NDZ9zXDEwSwODY3FSbBHHee-nIyeG5yWq7oz"/>
+              </div>
+              <div class="flex flex-col justify-center">
+                <span class="text-sm font-semibold text-text-primary dark:text-dark-text">Kioto, Japón</span>
+                <span class="text-xs text-text-muted dark:text-dark-text-sec">Añadido hace 2 días</span>
+                <span class="text-primary text-xs font-semibold mt-1">$1,240 vuelo promedio</span>
+              </div>
+            </div>
+            <div class="flex gap-3 group cursor-pointer">
+              <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0">
+                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Santorini" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjvcpnDVRiJAbFCXpzsVUFUeoj5H3pcN0pDj_m_FNUsNr_UiJzcan2tS7tm6jrvnJkC8y5EBe_VvWsurO3BSFAv-h2louQOToHMNHrnxo88cf2su2xyoPvX1bBWKP2kQHoPML1mQLlgB_OiGoNmqW-R1ekQT-HalHW--SznwxaAyQ6fmV82jC51tFuMRDsCwyLth8f7TVQ7qNj1HBGpoloSc2_7zoAfrTH9HBQQOG-HPKhdl5B5IwblwVDoE-PUN9b8UWqLz1L6ejZ"/>
+              </div>
+              <div class="flex flex-col justify-center">
+                <span class="text-sm font-semibold text-text-primary dark:text-dark-text">Santorini, Grecia</span>
+                <span class="text-xs text-text-muted dark:text-dark-text-sec">Añadido hace 1 semana</span>
+                <span class="text-primary text-xs font-semibold mt-1">Estadías de lujo disponibles</span>
+              </div>
+            </div>
+          </div>
+          <button class="w-full mt-4 py-2.5 text-primary text-sm font-semibold border border-primary/20 rounded-xl hover:bg-primary-light/30 dark:hover:bg-primary/10 transition-colors">Ver todos los guardados</button>
+        </div>
+
+        <div class="p-5 bg-surface dark:bg-dark-surface rounded-xl shadow-card border border-border dark:border-dark-border">
+          <h3 class="text-lg font-bold text-text-primary dark:text-dark-text mb-3">Progreso de membresía</h3>
+          <div class="flex justify-between text-xs font-semibold text-text-muted dark:text-dark-text-sec mb-1">
+            <span>Exploradora</span>
+            <span>Nómada Global</span>
+          </div>
+          <div class="w-full h-2 bg-gray-200 dark:bg-dark-border rounded-full overflow-hidden mb-3">
+            <div class="w-3/4 h-full bg-primary rounded-full"></div>
+          </div>
+          <p class="text-xs text-text-secondary dark:text-dark-text-sec">
+            Viaja <span class="text-primary font-bold">2,400 millas</span> más para alcanzar el estatus <span class="text-primary font-bold">Nómada Global</span>.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+  <%= render partial: "shared/right_panel" %>
+</div>

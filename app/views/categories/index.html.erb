@@ -1,0 +1,20 @@
+<div class="min-h-screen bg-background pt-24">
+  <div class="max-w-7xl mx-auto px-6 py-10">
+    <div class="mb-10">
+      <h1 class="font-secondary text-3xl md:text-4xl font-bold text-text-primary mb-2">Categorías de viaje</h1>
+      <p class="text-text-secondary text-lg">Explora todas nuestras categorías y encuentra el contenido que buscas.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <% @categories.each do |category| %>
+        <%= link_to category_path(category.slug), class: "group bg-white rounded-xl border border-border p-5 hover:shadow-md hover:-translate-y-0.5 transition-all" do %>
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="font-semibold text-text-primary text-base group-hover:text-primary transition"><%= category.name %></h2>
+            <span class="text-xs text-text-muted bg-background px-2.5 py-1 rounded-full"><%= category.subcategories.size %></span>
+          </div>
+          <p class="text-xs text-text-secondary line-clamp-2"><%= category.subcategories.first(3).map(&:name).join(" · ") %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
