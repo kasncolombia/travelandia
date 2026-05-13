@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "login", to: "sessions#new"
   get "registro", to: "registrations#new"
 
+  get "hoteles", to: "hotels#index"
+
   # Profile
   get "perfil", to: "profile#show"
 
@@ -17,6 +19,8 @@ Rails.application.routes.draw do
   get "blog", to: "blog#index"
   get "blog/:slug", to: "blog#show", as: :article
 
-  resources :categories, only: [:index, :show], param: :slug
+  resources :categories, only: [:index, :show], param: :slug do
+    get ":slug", to: "categories#subcategory", as: :subcategory
+  end
   get "up" => "rails/health#show", as: :rails_health_check
 end

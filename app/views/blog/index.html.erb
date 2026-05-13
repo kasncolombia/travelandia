@@ -10,7 +10,7 @@
         <img class="w-full h-full object-cover" alt="Playa turquesa en Maldivas al atardecer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzb-QOEEt0Gpfv4rywSWthrXE735KDpXqllV2rj_hUhTzKZcyn7hgGeDPcy0WxbpsaWlQZvjwX2qrd0HRNJePX-20GTaKUAJeEJ_KJUMy8imFxVfoknV8fTrWeD3VZckkaFEhxgupeIsOZphZ3hmt4UB2kQhLB2zsZNSa1ki3iSuoRxeRRGOdxXfNAgdUZol26JqWTwnUzexja5yljvpJuEAz5PpRG_1rOYQ-OAcA4TCTJd6F2H8d4U3HcxSV-0T1eFMOtj1tmX5kV"/>
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
       </div>
-      <div class="relative z-10 max-w-3xl bg-surface/70 backdrop-blur-xl p-6 rounded-xl border border-border m-6">
+      <div class="relative z-10 max-w-3xl bg-surface/70 backdrop-blur-xl p-6 rounded-xl border border-border dark:border-dark-border m-6">
         <span class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-3">Historia Destacada</span>
         <h1 class="text-2xl font-semibold text-text-primary mb-3">El Futuro de los Viajes: Cómo la IA Personaliza tu Próxima Aventura</h1>
         <p class="text-base text-text-secondary mb-4">Descubre cómo la inteligencia generativa está yendo más allá de las reservas simples para crear experiencias profundas y culturalmente resonantes, adaptadas a tu alma única.</p>
@@ -37,7 +37,7 @@
       </div>
       <div class="relative min-w-[280px]">
         <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary">search</span>
-        <input class="w-full pl-10 pr-4 py-2 bg-surface border border-border rounded-full focus:ring-2 focus:ring-primary text-sm" placeholder="Buscar historias..." type="text"/>
+        <input class="w-full pl-10 pr-4 py-2 bg-surface border border-border dark:border-dark-border rounded-full focus:ring-2 focus:ring-primary text-sm" placeholder="Buscar historias..." type="text"/>
       </div>
     </section>
 
@@ -64,7 +64,7 @@
               </div>
               <h3 class="text-lg font-semibold text-text-primary mb-2 group-hover:text-primary transition-colors"><%= article[:title] %></h3>
               <p class="text-sm text-text-secondary line-clamp-3 mb-4"><%= article[:excerpt] %></p>
-              <div class="mt-auto pt-4 border-t border-border flex justify-between items-center">
+              <div class="mt-auto pt-4 border-t border-border dark:border-dark-border flex justify-between items-center">
                 <span class="text-sm font-semibold text-primary">Leer m&aacute;s</span>
                 <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
               </div>
@@ -74,7 +74,7 @@
       </div>
       <!-- Paginación -->
       <div class="mt-8 flex justify-center items-center gap-3">
-        <button class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text-secondary hover:border-primary hover:text-primary transition-colors">
+        <button class="w-10 h-10 rounded-full border border-border dark:border-dark-border flex items-center justify-center text-text-secondary hover:border-primary hover:text-primary transition-colors">
           <span class="material-symbols-outlined">chevron_left</span>
         </button>
         <button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center text-sm font-medium">1</button>
@@ -82,7 +82,7 @@
         <button class="w-10 h-10 rounded-full border border-transparent hover:bg-surface flex items-center justify-center text-sm font-medium transition-colors">3</button>
         <span class="text-text-secondary">...</span>
         <button class="w-10 h-10 rounded-full border border-transparent hover:bg-surface flex items-center justify-center text-sm font-medium transition-colors">12</button>
-        <button class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text-secondary hover:border-primary hover:text-primary transition-colors">
+        <button class="w-10 h-10 rounded-full border border-border dark:border-dark-border flex items-center justify-center text-text-secondary hover:border-primary hover:text-primary transition-colors">
           <span class="material-symbols-outlined">chevron_right</span>
         </button>
       </div>
@@ -90,13 +90,13 @@
 
     <!-- Newsletter -->
     <section>
-      <div class="bg-surface/70 backdrop-blur-xl p-8 rounded-xl border border-border flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="bg-surface/70 backdrop-blur-xl p-8 rounded-xl border border-border dark:border-dark-border flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="max-w-xl">
           <h2 class="text-xl font-semibold text-text-primary mb-2">No te pierdas ninguna historia desde el borde del descubrimiento.</h2>
           <p class="text-sm text-text-secondary">Únete a más de 50,000 viajeros que reciben nuestras ideas semanales sobre IA, cultura y destinos exclusivos.</p>
         </div>
         <div class="flex w-full md:w-auto flex-col sm:flex-row gap-3">
-          <input class="min-w-[260px] px-4 py-3 bg-white dark:bg-gray-800 border border-border rounded-full focus:ring-2 focus:ring-primary text-sm" placeholder="Ingresa tu email" type="email"/>
+          <input class="min-w-[260px] px-4 py-3 bg-white dark:bg-gray-800 border border-border dark:border-dark-border rounded-full focus:ring-2 focus:ring-primary text-sm" placeholder="Ingresa tu email" type="email"/>
           <button class="bg-primary text-white px-6 py-3 rounded-full text-sm font-medium whitespace-nowrap shadow-md hover:shadow-lg active:scale-95 transition-all">Suscribirse</button>
         </div>
       </div>

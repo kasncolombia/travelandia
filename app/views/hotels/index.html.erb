@@ -1,0 +1,108 @@
+<%= render partial: "shared/head" %>
+<div class="h-screen overflow-hidden grid bg-background dark:bg-dark-bg" style="grid-template-rows: 60px 1fr; grid-template-columns: 280px 1fr 320px;">
+  <%= render partial: "shared/topbar" %>
+  <%= render partial: "shared/sidebar" %>
+  <main class="overflow-y-auto p-6 space-y-6 bg-background dark:bg-dark-bg" style="grid-column: 2; grid-row: 2;">
+    <div class="flex flex-col md:flex-row justify-between items-end gap-4">
+      <div>
+        <h1 class="text-2xl font-bold text-text-primary font-poppins">Explorar hoteles</h1>
+        <p class="text-sm text-text-secondary mt-1"><%= @hotels.length %> hoteles seleccionados para tu próxima estadía.</p>
+      </div>
+      <div class="relative w-full md:w-72">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-base">search</span>
+        <input class="w-full pl-9 pr-4 py-2.5 bg-surface border border-border dark:border-dark-border rounded-lg text-sm focus:ring-2 focus:ring-primary outline-none placeholder:text-text-muted" placeholder="Buscar hoteles..." type="text"/>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center gap-3 bg-surface rounded-xl border border-border dark:border-dark-border p-4">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-text-muted text-base">location_on</span>
+        <select class="bg-background border border-border dark:border-dark-border rounded-lg text-sm px-3 py-2 text-text-secondary focus:ring-2 focus:ring-primary outline-none">
+          <option>Todos los destinos</option>
+          <% @destinations.each do |d| %>
+            <option><%= d %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="w-px h-6 bg-border"></div>
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-text-muted text-base">star</span>
+        <select class="bg-background border border-border dark:border-dark-border rounded-lg text-sm px-3 py-2 text-text-secondary focus:ring-2 focus:ring-primary outline-none">
+          <option>Cualquier categoría</option>
+          <% @star_options.each do |s| %>
+            <option><%= s %> estrellas</option>
+          <% end %>
+        </select>
+      </div>
+      <div class="w-px h-6 bg-border"></div>
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-text-muted text-base">payments</span>
+        <select class="bg-background border border-border dark:border-dark-border rounded-lg text-sm px-3 py-2 text-text-secondary focus:ring-2 focus:ring-primary outline-none">
+          <option>Cualquier precio</option>
+          <% @price_ranges.each do |r| %>
+            <option><%= r %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="flex items-center gap-2 ml-auto">
+        <button class="p-2 rounded-lg bg-primary-light text-primary">
+          <span class="material-symbols-outlined text-base">grid_view</span>
+        </button>
+        <button class="p-2 rounded-lg bg-background dark:bg-dark-bg text-text-muted hover:bg-gray-100 dark:hover:bg-dark-border transition-colors">
+          <span class="material-symbols-outlined text-base">view_list</span>
+        </button>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <% @hotels.each do |hotel| %>
+        <div class="bg-surface rounded-xl border border-border dark:border-dark-border overflow-hidden hover:shadow-hover transition-all duration-200 group cursor-pointer">
+          <div class="relative h-48 overflow-hidden">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<%= hotel[:img] %>" alt="<%= hotel[:name] %>"/>
+            <div class="absolute top-3 left-3">
+              <span class="bg-white/90 backdrop-blur-sm text-xs font-bold px-2.5 py-1 rounded-full"><%= hotel[:tag] %></span>
+            </div>
+            <div class="absolute top-3 right-3">
+              <button class="p-1.5 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/40 transition-colors">
+                <span class="material-symbols-outlined text-sm">favorite</span>
+              </button>
+            </div>
+            <div class="absolute bottom-3 left-3 flex items-center gap-1 bg-black/40 backdrop-blur-sm px-2 py-1 rounded-lg">
+              <% (1..hotel[:stars]).each do %>
+                <span class="text-yellow-400 text-xs">★</span>
+              <% end %>
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="flex items-start justify-between mb-1">
+              <h3 class="font-bold text-text-primary text-sm group-hover:text-primary transition-colors"><%= hotel[:name] %></h3>
+              <div class="flex items-center gap-0.5 shrink-0 ml-2">
+                <span class="text-yellow-500 text-xs">★</span>
+                <span class="text-xs font-bold text-text-primary"><%= hotel[:rating] %></span>
+              </div>
+            </div>
+            <p class="text-xs text-text-muted mb-2 flex items-center gap-1">
+              <span class="material-symbols-outlined text-xs">location_on</span>
+              <%= hotel[:destination] %>, <%= hotel[:country] %>
+            </p>
+            <p class="text-xs text-text-secondary line-clamp-2 mb-3"><%= hotel[:description] %></p>
+            <div class="flex flex-wrap gap-1 mb-3">
+              <% hotel[:amenities].first(3).each do |a| %>
+                <span class="text-[10px] bg-background text-text-muted px-2 py-0.5 rounded-md border border-border dark:border-dark-border"><%= a %></span>
+              <% end %>
+              <% if hotel[:amenities].length > 3 %>
+                <span class="text-[10px] bg-background text-text-muted px-2 py-0.5 rounded-md border border-border dark:border-dark-border">+<%= hotel[:amenities].length - 3 %></span>
+              <% end %>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-border dark:border-dark-border">
+              <div>
+                <span class="text-xs text-text-muted">Desde</span>
+                <p class="text-base font-bold text-primary"><%= hotel[:currency] %><%= hotel[:price] %> <span class="text-xs text-text-secondary font-normal">/ noche</span></p>
+              </div>
+              <button class="text-xs font-semibold text-primary bg-primary-light px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-all">Reservar</button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </main>
+  <%= render partial: "shared/right_panel" %>
+</div>

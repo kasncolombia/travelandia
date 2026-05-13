@@ -1,21 +1,148 @@
-<div class="min-h-screen bg-background pt-24">
-  <div class="max-w-7xl mx-auto px-6 py-10">
-    <%= link_to categories_path, class: "inline-flex items-center gap-1.5 text-sm text-text-secondary hover:text-primary transition mb-6" do %>
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-      Todas las categorías
-    <% end %>
-
-    <div class="mb-10">
-      <h1 class="font-secondary text-3xl md:text-4xl font-bold text-text-primary mb-2"><%= @category.name %></h1>
-      <p class="text-text-secondary text-lg"><%= @subcategories.size %> subcategorías</p>
+<% content_for :head do %>
+  <title><%= @category.name %> - TravelIA | Categoría de viajes</title>
+  <meta name="description" content="Explora nuestra guía completa de <%= @category.name.downcase %>. Descubre los mejores destinos, experiencias, actividades y más.">
+  <meta property="og:title" content="<%= @category.name %> - TravelIA">
+  <meta property="og:description" content="Guía completa de <%= @category.name.downcase %> con recomendaciones expertas para tu próximo viaje.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="<%= category_url(@category.slug) %>">
+<% end %>
+<%= render partial: "shared/head" %>
+<div class="h-screen overflow-hidden grid bg-background dark:bg-dark-bg" style="grid-template-rows: 60px 1fr; grid-template-columns: 280px 1fr 320px;">
+  <%= render partial: "shared/topbar" %>
+  <%= render partial: "shared/sidebar" %>
+  <main class="overflow-y-auto p-6 space-y-6 bg-background dark:bg-dark-bg" style="grid-column: 2; grid-row: 2;">
+    <% icons = {
+      'Playas' => '🏖️', 'Aventura' => '🧗', 'Ciudades' => '🏙️', 'Naturaleza' => '🌲',
+      'Cultura' => '🏛️', 'Gastronomía' => '🍜', 'Lujo' => '💎', 'Ecoturismo' => '🌿',
+      'Romántico' => '❤️', 'Familiar' => '👨‍👩‍👧‍👦', 'Mochilero' => '🎒', 'Bienestar' => '🧘'
+    } %>
+    <% icon = icons[@category.name] || '🌍' %>
+    <% hero_bg = {
+      'Playas' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80',
+      'Aventura' => 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80',
+      'Ciudades' => 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80',
+      'Naturaleza' => 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=80',
+      'Cultura' => 'https://images.unsplash.com/photo-1524666049514-63e90aba43a5?w=1200&q=80',
+      'Gastronomía' => 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80',
+      'Lujo' => 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=80',
+      'Ecoturismo' => 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=80',
+      'Romántico' => 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1200&q=80',
+      'Familiar' => 'https://images.unsplash.com/photo-1503919545889-6f2d70e9c5b6?w=1200&q=80',
+      'Mochilero' => 'https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=1200&q=80',
+      'Bienestar' => 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=1200&q=80',
+    } %>
+    <% hero_img = hero_bg[@category.name] || 'https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1200&q=80' %>
+    <% descriptions = {
+      'Playas' => 'Sumérgete en las costas más espectaculares del planeta. Desde el Caribe mexicano hasta las islas paradisíacas del Pacífico, nuestra selección de playas te llevará a destinos de arena blanca, aguas cristalinas y atardeceres inolvidables. Encuentra el lugar perfecto para relajarte, bucear o simplemente desconectar.',
+      'Aventura' => 'Para los que buscan emociones fuertes y experiencias que aceleran el corazón. Trekking en glaciares, rafting en rápidos, buceo en arrecifes vírgenes o escalada en acantilados. Cada destino está seleccionado para los viajeros que quieren ir más allá del turismo convencional.',
+      'Ciudades' => 'Explora las metrópolis más fascinantes del mundo. Rascacielos, historia, cultura, gastronomía y vida nocturna se fusionan en destinos urbanos inolvidables. Desde Tokio hasta Nueva York, pasando por París y Dubái, descubre el pulso de las grandes capitales globales.',
+      'Naturaleza' => 'Conecta con la naturaleza en su estado más puro. Parques nacionales, reservas naturales, montañas imponentes y paisajes que quitan el aliento. Ideal para quienes buscan escapar del ruido y sumergirse en la belleza natural del mundo.',
+      'Cultura' => 'Viaja a través de la historia y las tradiciones del mundo. Templos milenarios, sitios arqueológicos, museos de clase mundial y expresiones culturales únicas. Cada destino es una ventana a la riqueza cultural de la humanidad.',
+      'Gastronomía' => 'Un viaje para el paladar. Recorre los sabores del mundo a través de mercados locales, restaurantes con estrella Michelin, rutas del vino y experiencias culinarias auténticas. La gastronomía como puerta de entrada a la cultura de cada destino.',
+      'Lujo' => 'Experiencias exclusivas para quienes buscan lo mejor. Resorts en Maldivas, cruceros premium, villas privadas y servicios de primera clase. Cada detalle está cuidado para ofrecerte una experiencia de viaje sin precedentes.',
+      'Ecoturismo' => 'Viaja de forma responsable y sostenible. Reservas naturales, ecolodges, turismo comunitario y experiencias que respetan el medio ambiente. Descubre cómo viajar puede ser una fuerza positiva para el planeta.',
+      'Romántico' => 'Los destinos más románticos del mundo para compartir en pareja. Atardeceres en Santorini, cenas en París, cabañas en los Alpes y playas en Bora Bora. Escapadas diseñadas para crear recuerdos inolvidables juntos.',
+      'Familiar' => 'Viajes pensados para disfrutar en familia. Parques temáticos, resorts con actividades para niños, playas seguras y destinos que ofrecen diversión para todas las edades. Crea recuerdos familiares que durarán toda la vida.',
+      'Mochilero' => 'Aventuras auténticas para viajeros con espíritu explorador. Rutas de mochilero por el sudeste asiático, Europa del este, América Latina y más. Consejos prácticos para viajar con presupuesto ajustado sin perder experiencias.',
+      'Bienestar' => 'Retiros, spas y experiencias de bienestar para cuerpo y mente. Yoga en India, meditación en Bali, baños termales en Islandia y programas de desintoxicación. Encuentra el equilibrio perfecto entre viaje y autocuidado.',
+    } %>
+    <% desc = descriptions[@category.name] || "Explora nuestra guía completa de #{@category.name.downcase}. Encuentra los mejores destinos, actividades y experiencias para tu próximo viaje." %>
+    <% metrics = {
+      'Playas' => { destinos: '48', paises: '32', viajeros: '12.5k', rating: '4.8' },
+      'Aventura' => { destinos: '36', paises: '28', viajeros: '9.2k', rating: '4.7' },
+      'Ciudades' => { destinos: '64', paises: '40', viajeros: '18.3k', rating: '4.9' },
+      'Naturaleza' => { destinos: '42', paises: '30', viajeros: '10.1k', rating: '4.8' },
+      'Cultura' => { destinos: '38', paises: '25', viajeros: '11.7k', rating: '4.7' },
+      'Gastronomía' => { destinos: '44', paises: '35', viajeros: '14.2k', rating: '4.8' },
+      'Lujo' => { destinos: '28', paises: '20', viajeros: '6.8k', rating: '4.9' },
+      'Ecoturismo' => { destinos: '32', paises: '24', viajeros: '7.5k', rating: '4.6' },
+      'Romántico' => { destinos: '26', paises: '18', viajeros: '8.9k', rating: '4.9' },
+      'Familiar' => { destinos: '30', paises: '22', viajeros: '9.5k', rating: '4.6' },
+      'Mochilero' => { destinos: '34', paises: '38', viajeros: '11.1k', rating: '4.5' },
+      'Bienestar' => { destinos: '22', paises: '16', viajeros: '5.3k', rating: '4.8' },
+    } %>
+    <% m = metrics[@category.name] || { destinos: '30', paises: '25', viajeros: '10k', rating: '4.7' } %>
+    <div class="flex items-center gap-2 text-sm text-text-secondary mb-2">
+      <a href="<%= categories_path %>" class="hover:text-primary transition-colors">Categorías</a>
+      <span class="material-symbols-outlined text-base text-text-muted">chevron_right</span>
+      <span class="text-text-primary font-medium"><%= @category.name %></span>
     </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <% @subcategories.each do |sub| %>
-        <div class="bg-white rounded-xl border border-border p-4 hover:shadow-sm transition cursor-pointer">
-          <h3 class="font-medium text-text-primary text-sm"><%= sub.name %></h3>
+    <section class="relative h-[420px] rounded-xl overflow-hidden">
+      <img class="w-full h-full object-cover" src="<%= hero_img %>" alt="<%= @category.name %>"/>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-8">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-md flex items-center justify-center text-xl border border-white/10"><%= icon %></span>
+          <span class="bg-primary text-white px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider"><%= @subcategories.size %> subcategorías</span>
+          <span class="bg-yellow-400/20 backdrop-blur-sm text-yellow-400 px-3 py-0.5 rounded-full text-xs font-semibold">★ <%= m[:rating] %></span>
         </div>
-      <% end %>
+        <h1 class="text-3xl md:text-4xl font-bold text-white font-poppins max-w-3xl"><%= @category.name %></h1>
+        <p class="text-white/60 mt-2 max-w-2xl text-sm leading-relaxed"><%= desc.truncate(180) %></p>
+        <div class="flex items-center gap-4 mt-5">
+          <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg">
+            <span class="material-symbols-outlined text-white text-sm">map</span>
+            <span class="text-white text-xs font-medium"><%= m[:destinos] %> destinos</span>
+          </div>
+          <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg">
+            <span class="material-symbols-outlined text-white text-sm">public</span>
+            <span class="text-white text-xs font-medium"><%= m[:paises] %> países</span>
+          </div>
+          <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg">
+            <span class="material-symbols-outlined text-white text-sm">groups</span>
+            <span class="text-white text-xs font-medium"><%= m[:viajeros] %> viajeros</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-6">
+      <h2 class="text-lg font-bold text-text-primary font-poppins mb-3">Acerca de <%= @category.name.downcase %></h2>
+      <p class="text-text-secondary leading-relaxed text-sm"><%= desc %></p>
+      <div class="flex flex-wrap gap-2 mt-4">
+        <span class="bg-primary-light text-primary text-xs font-semibold px-3 py-1 rounded-full">#Viajes</span>
+        <span class="bg-primary-light text-primary text-xs font-semibold px-3 py-1 rounded-full">#<%= @category.name.delete(' ').downcase %></span>
+        <span class="bg-primary-light text-primary text-xs font-semibold px-3 py-1 rounded-full">#TravelIA</span>
+        <span class="bg-background text-text-secondary text-xs px-3 py-1 rounded-full border border-border dark:border-dark-border">#Recomendados</span>
+      </div>
     </div>
-  </div>
+    <div>
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-lg font-bold text-text-primary">Explora las subcategorías</h2>
+          <p class="text-xs text-text-muted">Navega por cada especialidad dentro de <%= @category.name.downcase %></p>
+        </div>
+        <span class="text-xs text-text-muted bg-surface px-3 py-1 rounded-full border border-border dark:border-dark-border"><%= @subcategories.size %> en total</span>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+        <% @subcategories.each_with_index do |sub, idx| %>
+          <%= link_to category_subcategory_path(@category.slug, sub.slug), class: "bg-surface rounded-xl border border-border dark:border-dark-border p-4 hover:shadow-hover hover:border-primary/20 transition-all duration-200 group block" do %>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-primary-light flex items-center justify-center text-base group-hover:scale-110 transition-transform shrink-0"><%= idx + 1 %></div>
+              <div class="min-w-0 flex-1">
+                <h3 class="font-medium text-text-primary text-sm group-hover:text-primary transition-colors truncate"><%= sub.name %></h3>
+              </div>
+              <span class="material-symbols-outlined text-text-muted text-base group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="bg-gradient-to-br from-teal-900 via-teal-800 to-emerald-900 rounded-xl p-6 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3"></div>
+      <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/3"></div>
+      <div class="relative z-10 flex items-center justify-between gap-6">
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 rounded-xl bg-white/15 backdrop-blur-md flex items-center justify-center text-2xl border border-white/10 shrink-0"><%= icon %></div>
+          <div>
+            <h3 class="text-white font-bold text-lg font-poppins">¿Listo para tu próxima aventura?</h3>
+            <p class="text-white/60 text-sm">Deja que TravelIA planifique tu viaje ideal en <%= @category.name.downcase %>.</p>
+          </div>
+        </div>
+        <button class="bg-white text-teal-900 font-semibold px-6 py-3 rounded-lg text-sm hover:bg-white/90 transition-colors whitespace-nowrap cursor-pointer flex items-center gap-2">
+          <span class="material-symbols-outlined text-base">auto_awesome</span>
+          Planificar con IA
+        </button>
+      </div>
+    </div>
+  </main>
+  <%= render partial: "shared/right_panel" %>
 </div>

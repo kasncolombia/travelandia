@@ -1,20 +1,48 @@
-<div class="min-h-screen bg-background pt-24">
-  <div class="max-w-7xl mx-auto px-6 py-10">
-    <div class="mb-10">
-      <h1 class="font-secondary text-3xl md:text-4xl font-bold text-text-primary mb-2">Categorías de viaje</h1>
-      <p class="text-text-secondary text-lg">Explora todas nuestras categorías y encuentra el contenido que buscas.</p>
+<%= render partial: "shared/head" %>
+<div class="h-screen overflow-hidden grid bg-background dark:bg-dark-bg" style="grid-template-rows: 60px 1fr; grid-template-columns: 280px 1fr 320px;">
+  <%= render partial: "shared/topbar" %>
+  <%= render partial: "shared/sidebar" %>
+  <main class="overflow-y-auto p-6 space-y-6 bg-background dark:bg-dark-bg" style="grid-column: 2; grid-row: 2;">
+    <% icons = {
+      'Playas' => '🏖️', 'Aventura' => '🧗', 'Ciudades' => '🏙️', 'Naturaleza' => '🌲',
+      'Cultura' => '🏛️', 'Gastronomía' => '🍜', 'Lujo' => '💎', 'Ecoturismo' => '🌿',
+      'Romántico' => '❤️', 'Familiar' => '👨‍👩‍👧‍👦', 'Mochilero' => '🎒', 'Bienestar' => '🧘'
+    } %>
+    <div class="flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl font-bold text-text-primary dark:text-dark-text font-poppins">Categorías de viaje</h1>
+        <p class="text-sm text-text-secondary dark:text-dark-text-sec mt-1"><%= @categories.size %> categorías para inspirar tu próxima aventura</p>
+      </div>
+      <div class="relative">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted dark:text-dark-text-sec text-base">search</span>
+        <input class="w-64 pl-9 pr-4 py-2 bg-surface dark:bg-dark-surface border border-border dark:border-dark-border rounded-lg text-sm focus:ring-2 focus:ring-primary outline-none placeholder:text-text-muted dark:placeholder:text-dark-text-sec" placeholder="Buscar categorías..." type="text"/>
+      </div>
     </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       <% @categories.each do |category| %>
-        <%= link_to category_path(category.slug), class: "group bg-white rounded-xl border border-border p-5 hover:shadow-md hover:-translate-y-0.5 transition-all" do %>
-          <div class="flex items-center justify-between mb-3">
-            <h2 class="font-semibold text-text-primary text-base group-hover:text-primary transition"><%= category.name %></h2>
-            <span class="text-xs text-text-muted bg-background px-2.5 py-1 rounded-full"><%= category.subcategories.size %></span>
+        <% icon = icons[category.name] || '🌍' %>
+        <%= link_to category_path(category.slug), class: "group bg-surface dark:bg-dark-surface rounded-xl border border-border dark:border-dark-border p-5 hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200" do %>
+          <div class="flex items-start justify-between mb-3">
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-lg bg-primary-light flex items-center justify-center text-xl group-hover:scale-110 transition-transform"><%= icon %></div>
+              <div>
+                <h2 class="font-semibold text-text-primary dark:text-dark-text text-sm group-hover:text-primary transition-colors"><%= category.name %></h2>
+                <p class="text-xs text-text-muted dark:text-dark-text-sec"><%= pluralize(category.subcategories.size, 'subcategoría') %></p>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-text-muted dark:text-dark-text-sec text-lg group-hover:translate-x-0.5 transition-transform">chevron_right</span>
           </div>
-          <p class="text-xs text-text-secondary line-clamp-2"><%= category.subcategories.first(3).map(&:name).join(" · ") %></p>
+          <div class="flex flex-wrap gap-1.5">
+            <% category.subcategories.first(4).each do |sub| %>
+              <span class="text-[11px] bg-background dark:bg-dark-bg text-text-secondary dark:text-dark-text-sec px-2 py-0.5 rounded-md"><%= sub.name %></span>
+            <% end %>
+            <% if category.subcategories.size > 4 %>
+              <span class="text-[11px] bg-background dark:bg-dark-bg text-text-muted dark:text-dark-text-sec px-2 py-0.5 rounded-md">+<%= category.subcategories.size - 4 %></span>
+            <% end %>
+          </div>
         <% end %>
       <% end %>
     </div>
-  </div>
+  </main>
+  <%= render partial: "shared/right_panel" %>
 </div>

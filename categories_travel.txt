@@ -1,0 +1,14 @@
+CATEGORIES_TRAVEL = [
+  "Playas",
+  "Aventura",
+  "Ciudades",
+  "Naturaleza",
+  "Cultura",
+  "Gastronomía",
+  "Lujo",
+  "Ecoturismo",
+  "Romántico",
+  "Familiar",
+  "Mochilero",
+  "Bienestar"
+].freeze

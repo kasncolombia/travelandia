@@ -1,0 +1,281 @@
+<% content_for :head do %>
+  <title><%= @subcategory.name %> - TravelIA | Guía completa de viaje</title>
+  <meta name="description" content="Descubre todo sobre <%= @subcategory.name.downcase %>. Guía completa con mejores destinos, recomendaciones, clima, mejores épocas para viajar, alojamiento y más.">
+  <meta property="og:title" content="<%= @subcategory.name %> - TravelIA">
+  <meta property="og:description" content="Guía completa de <%= @subcategory.name.downcase %> con recomendaciones expertas para tu próximo viaje.">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="<%= category_subcategory_url(@category.slug, @subcategory.slug) %>">
+<% end %>
+<%= render partial: "shared/head" %>
+<div class="h-screen overflow-hidden grid bg-background dark:bg-dark-bg" style="grid-template-rows: 60px 1fr; grid-template-columns: 280px 1fr 320px;">
+  <%= render partial: "shared/topbar" %>
+  <%= render partial: "shared/sidebar" %>
+  <main class="overflow-y-auto p-6 space-y-6 bg-background dark:bg-dark-bg" style="grid-column: 2; grid-row: 2;">
+    <% hero_images = {
+      'Caribe Mexicano' => 'https://images.unsplash.com/photo-1510097467424-192d713fd8b1?w=1200&q=80',
+      'Polinesia Francesa' => 'https://images.unsplash.com/photo-1507876466758-bc54f384809c?w=1200&q=80',
+      'Costas de Tailandia' => 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1200&q=80',
+      'Islas Griegas' => 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200&q=80',
+      'Maldivas' => 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1200&q=80',
+      'Costa Amalfitana' => 'https://images.unsplash.com/photo-1534008897995-27a23e859048?w=1200&q=80',
+      'Trekking en Patagonia' => 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1200&q=80',
+      'Auroras Boreales en Islandia' => 'https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=1200&q=80',
+      'Safari en Kenia' => 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&q=80',
+      'Nueva York' => 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1200&q=80',
+      'Tokio' => 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&q=80',
+      'París' => 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80',
+      'Londres' => 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&q=80',
+      'Bangkok' => 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&q=80',
+      'Dubái' => 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80',
+      'Machu Picchu' => 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=80',
+      'Taj Mahal' => 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1200&q=80',
+      'Gran Muralla China' => 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1200&q=80',
+    } %>
+    <% hero = hero_images[@subcategory.name] || 'https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1200&q=80' %>
+    <% highlights = {
+      'Caribe Mexicano' => { rating: '4.8', reviews: '12.4k', price: '$$', best_time: 'Dic-Abr', days: '7-10', vibe: 'Fiesta y relax' },
+      'Polinesia Francesa' => { rating: '4.9', reviews: '8.1k', price: '$$$$', best_time: 'May-Oct', days: '10-14', vibe: 'Romántico' },
+      'Costas de Tailandia' => { rating: '4.7', reviews: '15.2k', price: '$', best_time: 'Nov-Feb', days: '7-14', vibe: 'Aventura' },
+      'Islas Griegas' => { rating: '4.8', reviews: '10.7k', price: '$$$', best_time: 'Jun-Sep', days: '5-10', vibe: 'Cultural' },
+      'Maldivas' => { rating: '4.9', reviews: '9.3k', price: '$$$$', best_time: 'Nov-Abr', days: '5-7', vibe: 'Lujo' },
+      'Costa Amalfitana' => { rating: '4.7', reviews: '7.8k', price: '$$$', best_time: 'Abr-Oct', days: '4-7', vibe: 'Romántico' },
+      'Nueva York' => { rating: '4.8', reviews: '22.1k', price: '$$$', best_time: 'Sep-Nov', days: '4-7', vibe: 'Urbano' },
+      'Tokio' => { rating: '4.9', reviews: '18.5k', price: '$$$', best_time: 'Mar-May', days: '7-10', vibe: 'Cultural' },
+      'París' => { rating: '4.8', reviews: '20.3k', price: '$$$', best_time: 'Abr-Jun', days: '4-6', vibe: 'Romántico' },
+      'Machu Picchu' => { rating: '4.7', reviews: '11.2k', price: '$$', best_time: 'May-Sep', days: '3-5', vibe: 'Aventura' },
+    } %>
+    <% info = highlights[@subcategory.name] || { rating: '4.7', reviews: '5.2k', price: '$$', best_time: 'Todo el año', days: '5-7', vibe: 'Variado' } %>
+    <% descriptions = {
+      'Caribe Mexicano' => 'El Caribe Mexicano es un paraíso tropical que baña las costas de Quintana Roo. Desde la energía vibrante de Cancún hasta la bohemia serena de Tulum y las cristalinas aguas de Cozumel, esta región ofrece una mezcla perfecta de relax, cultura maya y vida nocturna.',
+      'Polinesia Francesa' => 'Las islas de la Polinesia Francesa son el sueño de todo viajero. Bora Bora, Tahití y Moorea ofrecen paisajes de ensueño con aguas turquesa, arena blanca y lujosos resorts sobre el agua. El destino ideal para lunas de miel y escapadas románticas.',
+      'Costas de Tailandia' => 'Tailandia cuenta con algunas de las playas más espectaculares del sudeste asiático. Koh Phi Phi, Railay Beach y las islas Similan son destinos imperdibles que combinan aguas cristalinas, acantilados de piedra caliza y una cultura local fascinante.',
+      'Islas Griegas' => 'Las islas griegas del Egeo ofrecen un paisaje único de casas encaladas, cúpulas azules y atardeceres inolvidables. Santorini, Mykonos y Creta son solo el comienzo de un archipiélago lleno de historia, gastronomía y belleza natural.',
+      'Maldivas' => 'Las Maldivas son el epítome del lujo tropical. Con sus icónicos bungalows sobre el agua, arrecifes de coral vírgenes y una tranquilidad absoluta, este archipiélago en el océano Índico es el destino perfecto para quienes buscan desconexión total.',
+    } %>
+    <% desc = descriptions[@subcategory.name] || "Descubre los mejores destinos y experiencias de #{@subcategory.name.downcase}. Una guía completa preparada por expertos viajeros para ayudarte a planificar la aventura perfecta, con recomendaciones de alojamiento, gastronomía y actividades imperdibles." %>
+    <div class="flex items-center gap-2 text-sm text-text-secondary mb-2">
+      <a href="<%= categories_path %>" class="hover:text-primary transition-colors">Categorías</a>
+      <span class="material-symbols-outlined text-base text-text-muted">chevron_right</span>
+      <a href="<%= category_path(@category.slug) %>" class="hover:text-primary transition-colors"><%= @category.name %></a>
+      <span class="material-symbols-outlined text-base text-text-muted">chevron_right</span>
+      <span class="text-text-primary font-medium"><%= @subcategory.name %></span>
+    </div>
+    <section class="relative h-[420px] rounded-xl overflow-hidden">
+      <img class="w-full h-full object-cover" src="<%= hero %>" alt="<%= @subcategory.name %>"/>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-8">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="bg-primary text-white px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider"><%= @category.name %></span>
+          <span class="bg-white/20 backdrop-blur-sm text-white px-3 py-0.5 rounded-full text-xs font-semibold"><%= info[:vibe] %></span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold text-white font-poppins max-w-3xl"><%= @subcategory.name %></h1>
+        <p class="text-white/60 mt-2 max-w-2xl text-sm"><%= desc.truncate(150) %></p>
+        <div class="flex items-center gap-5 mt-4">
+          <div class="flex items-center gap-1.5 bg-yellow-400/20 backdrop-blur-sm px-3 py-1.5 rounded-lg">
+            <span class="text-yellow-400 text-sm">★</span>
+            <span class="text-white text-sm font-bold"><%= info[:rating] %></span>
+            <span class="text-white/50 text-xs">(<%= info[:reviews] %>)</span>
+          </div>
+          <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg">
+            <span class="material-symbols-outlined text-white text-sm">schedule</span>
+            <span class="text-white text-xs font-medium"><%= info[:best_time] %></span>
+          </div>
+          <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg">
+            <span class="material-symbols-outlined text-white text-sm">calendar_month</span>
+            <span class="text-white text-xs font-medium"><%= info[:days] %> días</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="grid grid-cols-4 gap-4">
+      <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-4 text-center hover:shadow-hover transition-shadow">
+        <div class="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center mx-auto mb-2">
+          <span class="material-symbols-outlined text-primary text-lg">star</span>
+        </div>
+        <p class="text-lg font-bold text-text-primary"><%= info[:rating] %></p>
+        <p class="text-xs text-text-muted">Valoración</p>
+      </div>
+      <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-4 text-center hover:shadow-hover transition-shadow">
+        <div class="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center mx-auto mb-2">
+          <span class="material-symbols-outlined text-primary text-lg">rate_review</span>
+        </div>
+        <p class="text-lg font-bold text-text-primary"><%= info[:reviews] %></p>
+        <p class="text-xs text-text-muted">Opiniones</p>
+      </div>
+      <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-4 text-center hover:shadow-hover transition-shadow">
+        <div class="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center mx-auto mb-2">
+          <span class="material-symbols-outlined text-primary text-lg">payments</span>
+        </div>
+        <p class="text-lg font-bold text-text-primary"><%= info[:price] %></p>
+        <p class="text-xs text-text-muted">Presupuesto</p>
+      </div>
+      <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-4 text-center hover:shadow-hover transition-shadow">
+        <div class="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center mx-auto mb-2">
+          <span class="material-symbols-outlined text-primary text-lg">calendar_month</span>
+        </div>
+        <p class="text-lg font-bold text-text-primary"><%= info[:best_time] %></p>
+        <p class="text-xs text-text-muted">Mejor época</p>
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-[1fr_360px] gap-8">
+      <div class="space-y-6">
+        <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-6">
+          <h2 class="text-xl font-bold text-text-primary font-poppins mb-4">Acerca de <%= @subcategory.name.downcase %></h2>
+          <p class="text-text-secondary leading-relaxed"><%= desc %></p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="bg-primary-light text-primary text-xs font-semibold px-3 py-1 rounded-full">#Viajes</span>
+            <span class="bg-primary-light text-primary text-xs font-semibold px-3 py-1 rounded-full">#<%= @category.name.delete(' ').downcase %></span>
+            <span class="bg-primary-light text-primary text-xs font-semibold px-3 py-1 rounded-full">#<%= @subcategory.name.delete(' ').downcase %></span>
+            <span class="bg-background text-text-secondary text-xs px-3 py-1 rounded-full border border-border dark:border-dark-border">#TravelIA</span>
+          </div>
+        </div>
+        <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold text-text-primary font-poppins">Destinos destacados</h2>
+            <a href="/destinos" class="text-sm text-primary font-semibold hover:underline">Ver todos →</a>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <% 4.times do |i| %>
+              <div class="bg-background rounded-lg border border-border dark:border-dark-border overflow-hidden hover:shadow-hover transition-shadow group cursor-pointer">
+                <div class="h-36 overflow-hidden">
+                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Destino"/>
+                </div>
+                <div class="p-3">
+                  <div class="flex items-center justify-between mb-1">
+                    <h3 class="font-semibold text-text-primary text-sm">Destino ejemplo <%= i + 1 %></h3>
+                    <span class="text-yellow-500 text-xs">★ <%= info[:rating] %></span>
+                  </div>
+                  <p class="text-xs text-text-muted line-clamp-2">Descubre este increíble destino con las mejores experiencias y actividades para tus próximas vacaciones.</p>
+                  <div class="flex items-center justify-between mt-2 pt-2 border-t border-border dark:border-dark-border">
+                    <span class="text-xs font-bold text-primary">Desde $XX</span>
+                    <span class="text-xs text-text-muted flex items-center gap-1">
+                      <span class="material-symbols-outlined text-xs">schedule</span>
+                      <%= info[:days] %> días
+                    </span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-6">
+          <h2 class="text-xl font-bold text-text-primary font-poppins mb-4">Lo que dicen los viajeros</h2>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <% [
+              { name: 'Laura M.', avatar: 'LM', text: 'Una experiencia increíble. Superó todas mis expectativas. Volvería una y otra vez.', rating: 5 },
+              { name: 'Carlos R.', avatar: 'CR', text: 'Viaje perfectamente organizado. TravelIA me ayudó a descubrir lugares que nunca imaginé.', rating: 5 },
+              { name: 'Ana S.', avatar: 'AS', text: 'Destino hermoso y muy bien recomendado. La guía fue súper útil para planificar.', rating: 4 },
+              { name: 'Pedro G.', avatar: 'PG', text: 'Excelente relación calidad-precio. Muy contento con la experiencia.', rating: 5 },
+            ].each do |review| %>
+              <div class="bg-background rounded-lg p-4 border border-border dark:border-dark-border">
+                <div class="flex items-center gap-1 mb-2">
+                  <% review[:rating].times do %><span class="text-yellow-400 text-sm">★</span><% end %>
+                </div>
+                <p class="text-sm text-text-secondary leading-relaxed mb-3">"<%= review[:text] %>"</p>
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold"><%= review[:avatar] %></div>
+                  <span class="text-xs font-medium text-text-primary"><%= review[:name] %></span>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-6">
+          <h2 class="text-xl font-bold text-text-primary font-poppins mb-4">Preguntas frecuentes</h2>
+          <div class="space-y-3">
+            <% [
+              { q: "¿Cuál es la mejor época para visitar #{@subcategory.name.downcase}?", a: "La mejor época para visitar #{@subcategory.name.downcase} es durante #{info[:best_time]}, cuando las condiciones climáticas son más favorables y podrás disfrutar al máximo tu experiencia." },
+              { q: "¿Cuántos días se recomienda para un viaje a #{@subcategory.name.downcase}?", a: "Recomendamos dedicar entre #{info[:days]} días para explorar #{@subcategory.name.downcase} a fondo y disfrutar de las principales atracciones y actividades." },
+              { q: "¿Qué presupuesto necesito para viajar a #{@subcategory.name.downcase}?", a: "El presupuesto puede variar según la temporada y el tipo de viaje. Generalmente se considera un rango de presupuesto #{info[:price]} por persona, incluyendo alojamiento, alimentación y actividades principales." },
+            ].each do |faq| %>
+              <details class="group bg-background rounded-lg border border-border dark:border-dark-border">
+                <summary class="flex items-center justify-between p-4 cursor-pointer text-sm font-medium text-text-primary hover:text-primary transition-colors list-none">
+                  <%= faq[:q] %>
+                  <span class="material-symbols-outlined text-text-muted group-open:rotate-180 transition-transform text-base">expand_more</span>
+                </summary>
+                <div class="px-4 pb-4 text-sm text-text-secondary leading-relaxed border-t border-border dark:border-dark-border pt-3"><%= faq[:a] %></div>
+              </details>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <aside class="space-y-4">
+        <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-5">
+          <h3 class="font-bold text-text-primary text-sm mb-3">Información útil</h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-base">category</span>
+              <div><span class="text-text-secondary">Categoría</span><p class="text-text-primary font-medium"><%= @category.name %></p></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-base">layers</span>
+              <div><span class="text-text-secondary">Subcategorías</span><p class="text-text-primary font-medium"><%= @category.subcategories.size %> disponibles</p></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-base">public</span>
+              <div><span class="text-text-secondary">Disponibilidad</span><p class="text-text-primary font-medium">Todo el año</p></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-base">payments</span>
+              <div><span class="text-text-secondary">Presupuesto estimado</span><p class="text-text-primary font-medium"><%= info[:price] %></p></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-base">event</span>
+              <div><span class="text-text-secondary">Mejor época</span><p class="text-text-primary font-medium"><%= info[:best_time] %></p></div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gradient-to-br from-teal-900 via-teal-800 to-emerald-900 rounded-xl p-5 text-white relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="relative z-10">
+            <span class="material-symbols-outlined text-3xl mb-2">auto_awesome</span>
+            <h3 class="font-bold text-base mb-1">Planifica con IA</h3>
+            <p class="text-sm text-white/70 mb-4">Deja que TravelIA cree un itinerario personalizado para tu viaje a <%= @subcategory.name.downcase %>.</p>
+            <button class="w-full bg-white/20 backdrop-blur-sm text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-white/30 transition-colors border border-white/10 cursor-pointer flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-base">auto_awesome</span>
+              Generar itinerario
+            </button>
+          </div>
+        </div>
+        <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-5">
+          <h3 class="font-bold text-text-primary text-sm mb-3">Compartir</h3>
+          <div class="flex gap-2">
+            <% [
+              { icon: 'share', label: 'Compartir' },
+              { icon: 'bookmark', label: 'Guardar' },
+              { icon: 'favorite', label: 'Favorito' },
+            ].each do |action| %>
+              <button class="flex-1 flex items-center justify-center gap-1.5 border border-border dark:border-dark-border rounded-lg py-2 text-xs text-text-secondary hover:bg-primary-light hover:text-primary hover:border-primary/20 transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-base"><%= action[:icon] %></span>
+                <%= action[:label] %>
+              </button>
+            <% end %>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <section>
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-lg font-bold text-text-primary">Más de <%= @category.name.downcase %></h2>
+          <p class="text-xs text-text-muted">Otras subcategorías que te pueden interesar</p>
+        </div>
+        <a href="<%= category_path(@category.slug) %>" class="text-sm text-primary font-semibold hover:underline flex items-center gap-1">Ver todas <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+        <% @sibling_subcategories.each do |sub| %>
+          <%= link_to category_subcategory_path(@category.slug, sub.slug), class: "bg-surface rounded-xl border border-border dark:border-dark-border p-4 hover:shadow-hover hover:border-primary/20 transition-all duration-200 group block" do %>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-primary-light flex items-center justify-center text-base group-hover:scale-110 transition-transform shrink-0">▸</div>
+              <div class="min-w-0">
+                <h3 class="font-medium text-text-primary text-sm group-hover:text-primary transition-colors truncate"><%= sub.name %></h3>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </section>
+  </main>
+  <%= render partial: "shared/right_panel" %>
+</div>
