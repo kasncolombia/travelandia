@@ -1,5 +1,5 @@
-load File.expand_path("../../categories_travel.txt", __dir__)
-load File.expand_path("../../subcategories_travel.txt", __dir__)
+load File.expand_path("../categories_travel.txt", __dir__)
+load File.expand_path("../subcategories_travel.txt", __dir__)
 
 puts "Seeding categories and subcategories..."
 
