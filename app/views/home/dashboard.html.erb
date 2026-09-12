@@ -27,12 +27,20 @@
         <h3 class="text-sm sm:text-base font-bold text-text-primary dark:text-dark-text">Servicios rápidos</h3>
         <span class="text-xs text-text-muted dark:text-dark-text-sec">Desliza para ver más →</span>
       </div>
-      <div class="flex gap-2.5 sm:gap-3 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x">
-        <% [['✈️','Vuelos'],['🏨','Hoteles'],['🎁','Paquetes'],['📷','Actividades'],['🚗','Autos'],['🛡️','Seguros'],['🧭','Guías']].each do |icon, label| %>
-          <div class="min-w-[85px] sm:min-w-[100px] bg-surface dark:bg-dark-surface p-3 sm:p-4 rounded-xl border border-border dark:border-dark-border flex flex-col items-center gap-1.5 cursor-pointer hover:shadow-hover hover:border-primary/40 transition-all snap-start">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gray-50 dark:bg-dark-bg flex items-center justify-center text-lg sm:text-xl"><%= icon %></div>
-            <span class="text-xs font-medium text-text-secondary dark:text-dark-text-sec text-center"><%= label %></span>
-          </div>
+      <div class="flex gap-2.5 sm:gap-3 overflow-x-auto no-scrollbar py-1.5 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x">
+        <% [
+          ['✈️','Vuelos','/destinos'],
+          ['🏨','Hoteles','/hoteles'],
+          ['🎁','Paquetes','/categories'],
+          ['📷','Actividades','/categories'],
+          ['🚗','Autos','/destinos'],
+          ['🛡️','Seguros','/perfil'],
+          ['🧭','Guías','/blog']
+        ].each do |icon, label, url| %>
+          <a href="<%= url %>" class="min-w-[85px] sm:min-w-[100px] bg-surface dark:bg-dark-surface p-3 sm:p-4 rounded-xl border border-border dark:border-dark-border flex flex-col items-center gap-1.5 cursor-pointer hover:border-primary hover:-translate-y-0.5 hover:shadow-card transition-all duration-200 snap-start group">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gray-50 dark:bg-dark-bg flex items-center justify-center text-lg sm:text-xl group-hover:bg-primary-light dark:group-hover:bg-primary/20 transition-colors"><%= icon %></div>
+            <span class="text-xs font-semibold text-text-secondary dark:text-dark-text-sec text-center group-hover:text-primary transition-colors"><%= label %></span>
+          </a>
         <% end %>
       </div>
     </section>
@@ -43,7 +51,7 @@
       <section class="flex flex-col">
         <div class="flex justify-between items-center mb-3">
           <h3 class="text-base sm:text-lg font-bold text-text-primary dark:text-dark-text">Mi próximo viaje</h3>
-          <a class="text-xs sm:text-sm text-primary font-semibold hover:underline" href="#">Ver itinerario →</a>
+          <a class="text-xs sm:text-sm text-primary font-semibold hover:underline" href="/planificador">Ver itinerario →</a>
         </div>
         <div class="flex-1 bg-surface dark:bg-dark-surface p-4 sm:p-5 rounded-xl border border-border dark:border-dark-border shadow-card flex flex-col justify-between">
           <div>
@@ -78,7 +86,7 @@
             </ul>
           </div>
 
-          <button class="w-full mt-4 py-2.5 border border-border dark:border-dark-border rounded-lg text-xs sm:text-sm font-semibold text-text-secondary dark:text-dark-text-sec hover:bg-gray-50 dark:hover:bg-dark-border transition-colors">Ver itinerario completo</button>
+          <a href="/planificador" class="w-full text-center mt-4 py-2.5 border border-border dark:border-dark-border rounded-lg text-xs sm:text-sm font-semibold text-text-secondary dark:text-dark-text-sec hover:bg-gray-50 dark:hover:bg-dark-border transition-colors block">Ver itinerario completo</a>
         </div>
       </section>
 
@@ -124,7 +132,7 @@
             </div>
           </div>
 
-          <button class="w-full bg-primary text-white py-3 rounded-lg text-xs sm:text-sm font-bold hover:bg-primary-dark transition-all shadow-card flex items-center justify-center gap-2">✨ Generar mi viaje con IA</button>
+          <a href="/planificador" class="w-full bg-primary text-white py-3 rounded-lg text-xs sm:text-sm font-bold hover:bg-primary-dark transition-all shadow-card flex items-center justify-center gap-2 block text-center">✨ Generar mi viaje con IA</a>
         </div>
       </section>
     </div>
@@ -137,7 +145,7 @@
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
         <% [['Bali','Indonesia','4.8','$4.120.000','https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&q=80'],['París','Francia','4.7','$3.250.000','https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&q=80'],['Cancún','México','4.6','$2.100.000','https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=400&q=80'],['Tokio','Japón','4.9','$5.890.000','https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=80'],['Dubái','EAU','4.7','$4.990.000','https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=80']].each do |name, country, rating, price, img| %>
-          <div class="cursor-pointer group bg-surface dark:bg-dark-surface p-2 sm:p-2.5 rounded-xl border border-border dark:border-dark-border hover:shadow-hover transition-all">
+          <a href="/destinos" class="cursor-pointer group bg-surface dark:bg-dark-surface p-2 sm:p-2.5 rounded-xl border border-border dark:border-dark-border hover:shadow-hover transition-all block">
             <div class="relative rounded-lg overflow-hidden aspect-[4/3]">
               <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="<%= img %>" alt="<%= name %>"/>
               <span class="absolute top-1.5 right-1.5 text-white/90 text-sm sm:text-base drop-shadow-md">🤍</span>
@@ -148,7 +156,7 @@
               <p class="text-[11px] text-text-muted dark:text-dark-text-sec truncate"><%= country %></p>
               <p class="text-xs sm:text-sm font-bold text-primary mt-1">Desde <%= price %></p>
             </div>
-          </div>
+          </a>
         <% end %>
       </div>
     </section>
@@ -161,13 +169,13 @@
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
         <% [['Playas','124','https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80'],['Aventura','86','https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80'],['Ciudades','212','https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&q=80'],['Naturaleza','153','https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80']].each do |cat, count, img| %>
-          <div class="h-20 sm:h-24 rounded-xl overflow-hidden relative cursor-pointer group shadow-card">
+          <a href="/categories" class="h-20 sm:h-24 rounded-xl overflow-hidden relative cursor-pointer group shadow-card block">
             <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="<%= img %>" alt="<%= cat %>"/>
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-3">
               <p class="text-sm sm:text-base text-white font-bold"><%= cat %></p>
               <p class="text-xs text-white/80"><%= count %> destinos</p>
             </div>
-          </div>
+          </a>
         <% end %>
       </div>
     </section>

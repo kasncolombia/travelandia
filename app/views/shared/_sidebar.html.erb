@@ -7,7 +7,7 @@
   <div class="flex items-center justify-between pb-3 mb-2 border-b border-border/60 dark:border-dark-border/60 lg:hidden">
     <div class="flex items-center gap-2">
       <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold">🌴</div>
-      <span class="font-bold text-base text-text-primary dark:text-dark-text">Travel<span class="text-primary">IA</span></span>
+      <span class="font-bold text-base text-text-primary dark:text-dark-text font-poppins">Travel<span class="text-primary">IA</span></span>
     </div>
     <button onclick="toggleMobileSidebar()" class="p-2 text-text-muted hover:text-text-primary dark:hover:text-dark-text text-lg">✕</button>
   </div>
@@ -23,25 +23,39 @@
     <a class="flex items-center gap-3 px-3 py-2.5 text-sm text-text-secondary dark:text-dark-text-sec hover:bg-white/50 dark:hover:bg-dark-border rounded-lg transition-colors" href="#"><span class="text-lg">🗺️</span> Itinerarios</a>
     <a class="flex items-center gap-3 px-3 py-2.5 text-sm text-text-secondary dark:text-dark-text-sec hover:bg-white/50 dark:hover:bg-dark-border rounded-lg transition-colors" href="#"><span class="text-lg">❤️</span> Favoritos</a>
     <a class="flex items-center justify-between px-3 py-2.5 text-sm text-text-secondary dark:text-dark-text-sec hover:bg-white/50 dark:hover:bg-dark-border rounded-lg transition-colors" href="#"><div class="flex items-center gap-3"><span class="text-lg">🏷️</span> Ofertas</div><span class="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">12</span></a>
+
     <div class="pt-5 pb-1"><p class="px-3 text-xs font-bold text-text-muted dark:text-dark-text-sec uppercase tracking-wider">Comunidad</p></div>
     <a class="flex items-center gap-3 px-3 py-2 text-sm text-text-secondary dark:text-dark-text-sec hover:bg-white/50 dark:hover:bg-dark-border rounded-lg <%= current_page?(blog_path) ? 'bg-primary-light dark:bg-primary/20 text-primary' : '' %>" href="/blog"><span class="text-lg">📖</span> Blog &amp; Guías</a>
     <a class="flex items-center gap-3 px-3 py-2 text-sm text-text-secondary dark:text-dark-text-sec hover:bg-white/50 dark:hover:bg-dark-border rounded-lg" href="#"><span class="text-lg">💬</span> Foros</a>
     <a class="flex items-center gap-3 px-3 py-2 text-sm text-text-secondary dark:text-dark-text-sec hover:bg-white/50 dark:hover:bg-dark-border rounded-lg" href="#"><span class="text-lg">⭐</span> Reviews</a>
+
     <div class="pt-5 pb-1"><p class="px-3 text-xs font-bold text-text-muted dark:text-dark-text-sec uppercase tracking-wider">Cuenta</p></div>
     <a class="flex items-center gap-3 px-3 py-2 text-sm text-text-secondary dark:text-dark-text-sec hover:bg-white/50 dark:hover:bg-dark-border rounded-lg <%= current_page?(perfil_path) ? 'bg-primary-light dark:bg-primary/20 text-primary' : '' %>" href="/perfil"><span class="text-lg">👤</span> Perfil</a>
     <a class="flex items-center gap-3 px-3 py-2 text-sm text-text-secondary dark:text-dark-text-sec hover:bg-white/50 dark:hover:bg-dark-border rounded-lg" href="#"><span class="text-lg">⚙️</span> Configuración</a>
+
+    <% if logged_in? %>
+      <a class="flex items-center gap-3 px-3 py-2 text-sm text-rose-600 dark:text-rose-400 hover:bg-rose-500/10 rounded-lg transition-colors font-semibold" href="/logout">
+        <span class="text-lg">🚪</span> Cerrar sesión
+      </a>
+    <% else %>
+      <a class="flex items-center gap-3 px-3 py-2 text-sm text-primary hover:bg-primary-light dark:hover:bg-primary/20 rounded-lg font-semibold" href="/login">
+        <span class="text-lg">🔑</span> Iniciar sesión
+      </a>
+      <a class="flex items-center gap-3 px-3 py-2 text-sm text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 rounded-lg font-semibold" href="/registro">
+        <span class="text-lg">✨</span> Crear cuenta
+      </a>
+    <% end %>
   </nav>
 
-  <div class="mt-6 bg-[#0D4155] dark:bg-primary/30 p-4 rounded-lg text-white relative">
+  <div class="mt-6 bg-[#0D4155] dark:bg-primary/30 p-4 rounded-xl text-white relative shadow-card">
     <span class="absolute top-3 right-3 text-accent text-xl">👑</span>
-    <h3 class="font-bold text-base mb-2">Hazte PRO</h3>
-    <ul class="text-xs sm:text-sm space-y-1.5 mb-4 opacity-90">
+    <h3 class="font-bold text-base mb-2 font-poppins">Hazte PRO</h3>
+    <ul class="text-xs space-y-1.5 mb-4 opacity-90">
       <li class="flex items-center gap-1.5">✓ Itinerarios ilimitados</li>
       <li class="flex items-center gap-1.5">✓ Alertas de precios</li>
       <li class="flex items-center gap-1.5">✓ Sin anuncios</li>
       <li class="flex items-center gap-1.5">✓ Descuentos exclusivos</li>
     </ul>
-    <button class="w-full bg-primary text-white py-2.5 rounded-xs text-sm font-bold hover:bg-primary-dark transition-colors">Upgrade ahora</button>
+    <a href="/registro" class="w-full inline-block text-center bg-primary text-white py-2.5 rounded-lg text-sm font-bold hover:bg-primary-dark transition-colors shadow-sm">Upgrade ahora</a>
   </div>
 </aside>
-

@@ -7,15 +7,18 @@
 
   <!-- MAIN CONTENT - HOTELS INDEX -->
   <main class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 bg-background dark:bg-dark-bg lg:col-start-2 lg:row-start-2">
+    <!-- Header -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
       <div>
-        <h1 class="text-xl sm:text-2xl font-bold text-text-primary dark:text-dark-text font-poppins">Explorar hoteles</h1>
-        <p class="text-xs sm:text-sm text-text-secondary dark:text-dark-text-sec mt-0.5"><%= @hotels.length %> hoteles seleccionados para tu próxima estadía.</p>
+        <h1 class="text-xl sm:text-2xl font-bold text-text-primary dark:text-dark-text font-poppins flex items-center gap-2">
+          <span>🏨</span> Explorar Hoteles &amp; Resorts
+        </h1>
+        <p class="text-xs sm:text-sm text-text-secondary dark:text-dark-text-sec mt-0.5"><%= @hotels.length %> alojamientos seleccionados con la mejor valoración de viajeros.</p>
       </div>
 
       <div class="relative w-full sm:w-72">
         <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted dark:text-dark-text-sec text-base">search</span>
-        <input class="w-full pl-9 pr-4 py-2 bg-surface dark:bg-dark-surface border border-border dark:border-dark-border rounded-xl text-xs sm:text-sm outline-none focus:ring-2 focus:ring-primary text-text-primary dark:text-dark-text placeholder:text-text-muted" placeholder="Buscar hoteles..." type="text"/>
+        <input id="hotel-search-input" onkeyup="filterHotels()" class="w-full pl-9 pr-4 py-2 bg-surface dark:bg-dark-surface border border-border dark:border-dark-border rounded-xl text-xs sm:text-sm outline-none focus:ring-2 focus:ring-primary text-text-primary dark:text-dark-text placeholder:text-text-muted" placeholder="Buscar por nombre o ciudad..." type="text"/>
       </div>
     </div>
 
@@ -23,10 +26,10 @@
     <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 bg-surface dark:bg-dark-surface rounded-xl border border-border dark:border-dark-border p-3 sm:p-4 shadow-card">
       <div class="flex items-center gap-2 flex-1 min-w-[140px]">
         <span class="material-symbols-outlined text-text-muted dark:text-dark-text-sec text-base">location_on</span>
-        <select class="w-full bg-gray-50 dark:bg-dark-bg border border-border dark:border-dark-border rounded-lg text-xs sm:text-sm px-2.5 py-1.5 text-text-secondary dark:text-dark-text-sec outline-none">
-          <option>Todos los destinos</option>
+        <select id="destination-filter" onchange="filterHotels()" class="w-full bg-gray-50 dark:bg-dark-bg border border-border dark:border-dark-border rounded-lg text-xs sm:text-sm px-2.5 py-1.5 text-text-secondary dark:text-dark-text-sec outline-none cursor-pointer">
+          <option value="">Todos los destinos</option>
           <% @destinations.each do |d| %>
-            <option><%= d %></option>
+            <option value="<%= d %>"><%= d %></option>
           <% end %>
         </select>
       </div>
@@ -35,10 +38,10 @@
 
       <div class="flex items-center gap-2 flex-1 min-w-[140px]">
         <span class="material-symbols-outlined text-text-muted dark:text-dark-text-sec text-base">star</span>
-        <select class="w-full bg-gray-50 dark:bg-dark-bg border border-border dark:border-dark-border rounded-lg text-xs sm:text-sm px-2.5 py-1.5 text-text-secondary dark:text-dark-text-sec outline-none">
-          <option>Cualquier categoría</option>
+        <select id="stars-filter" onchange="filterHotels()" class="w-full bg-gray-50 dark:bg-dark-bg border border-border dark:border-dark-border rounded-lg text-xs sm:text-sm px-2.5 py-1.5 text-text-secondary dark:text-dark-text-sec outline-none cursor-pointer">
+          <option value="">Todas las estrellas</option>
           <% @star_options.each do |s| %>
-            <option><%= s %> estrellas</option>
+            <option value="<%= s %>"><%= s %> estrellas</option>
           <% end %>
         </select>
       </div>
@@ -47,39 +50,42 @@
 
       <div class="flex items-center gap-2 flex-1 min-w-[140px]">
         <span class="material-symbols-outlined text-text-muted dark:text-dark-text-sec text-base">payments</span>
-        <select class="w-full bg-gray-50 dark:bg-dark-bg border border-border dark:border-dark-border rounded-lg text-xs sm:text-sm px-2.5 py-1.5 text-text-secondary dark:text-dark-text-sec outline-none">
-          <option>Cualquier precio</option>
-          <% @price_ranges.each do |r| %>
-            <option><%= r %></option>
-          <% end %>
+        <select id="price-filter" onchange="filterHotels()" class="w-full bg-gray-50 dark:bg-dark-bg border border-border dark:border-dark-border rounded-lg text-xs sm:text-sm px-2.5 py-1.5 text-text-secondary dark:text-dark-text-sec outline-none cursor-pointer">
+          <option value="">Cualquier precio</option>
+          <option value="low">Menos de $200</option>
+          <option value="mid">$200 - $600</option>
+          <option value="high">Más de $600</option>
         </select>
       </div>
 
       <div class="flex items-center gap-1.5 ml-auto shrink-0">
-        <button class="p-2 rounded-lg bg-primary-light dark:bg-primary/20 text-primary">
+        <button class="p-2 rounded-lg bg-primary-light dark:bg-primary/20 text-primary cursor-pointer" title="Cuadrícula">
           <span class="material-symbols-outlined text-base">grid_view</span>
-        </button>
-        <button class="p-2 rounded-lg bg-gray-100 dark:bg-dark-bg text-text-muted dark:text-dark-text-sec hover:bg-gray-200 transition-colors">
-          <span class="material-symbols-outlined text-base">view_list</span>
         </button>
       </div>
     </div>
 
     <!-- Hotel Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+    <div id="hotels-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
       <% @hotels.each do |hotel| %>
-        <div class="bg-surface dark:bg-dark-surface rounded-xl border border-border dark:border-dark-border overflow-hidden hover:shadow-hover transition-all duration-200 group cursor-pointer flex flex-col">
+        <div class="hotel-card bg-surface dark:bg-dark-surface rounded-xl border border-border dark:border-dark-border overflow-hidden hover:shadow-hover transition-all duration-200 group flex flex-col"
+             data-name="<%= hotel[:name].downcase %>"
+             data-destination="<%= hotel[:destination] %>"
+             data-stars="<%= hotel[:stars] %>"
+             data-price="<%= hotel[:price] %>">
           <div class="relative h-44 sm:h-48 overflow-hidden">
-            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<%= hotel[:img] %>" alt="<%= hotel[:name] %>"/>
+            <a href="/hoteles/<%= hotel[:slug] %>" class="block w-full h-full">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<%= hotel[:img] %>" alt="<%= hotel[:name] %>"/>
+            </a>
             <div class="absolute top-3 left-3">
               <span class="bg-white/90 backdrop-blur-sm text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full text-text-primary"><%= hotel[:tag] %></span>
             </div>
             <div class="absolute top-3 right-3">
-              <button class="p-1.5 bg-white/30 backdrop-blur-sm rounded-full text-white hover:bg-white/50 transition-colors">
+              <button onclick="toggleFav(this)" class="p-1.5 bg-white/40 backdrop-blur-sm rounded-full text-white hover:bg-white/70 hover:text-rose-500 transition-all cursor-pointer">
                 <span class="material-symbols-outlined text-sm">favorite</span>
               </button>
             </div>
-            <div class="absolute bottom-3 left-3 flex items-center gap-0.5 bg-black/50 backdrop-blur-sm px-2 py-0.5 rounded-lg">
+            <div class="absolute bottom-3 left-3 flex items-center gap-0.5 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded-lg">
               <% (1..hotel[:stars]).each do %>
                 <span class="text-yellow-400 text-xs">★</span>
               <% end %>
@@ -89,7 +95,9 @@
           <div class="p-4 flex-1 flex flex-col justify-between">
             <div>
               <div class="flex items-start justify-between mb-1 gap-2">
-                <h3 class="font-bold text-text-primary dark:text-dark-text text-xs sm:text-sm group-hover:text-primary transition-colors truncate"><%= hotel[:name] %></h3>
+                <a href="/hoteles/<%= hotel[:slug] %>" class="font-bold text-text-primary dark:text-dark-text text-xs sm:text-sm group-hover:text-primary transition-colors truncate hover:underline">
+                  <%= hotel[:name] %>
+                </a>
                 <div class="flex items-center gap-0.5 shrink-0">
                   <span class="text-yellow-500 text-xs">★</span>
                   <span class="text-xs font-bold text-text-primary dark:text-dark-text"><%= hotel[:rating] %></span>
@@ -116,7 +124,9 @@
                 <span class="text-[11px] text-text-muted dark:text-dark-text-sec">Desde</span>
                 <p class="text-sm sm:text-base font-bold text-primary"><%= hotel[:currency] %><%= hotel[:price] %> <span class="text-xs text-text-secondary dark:text-dark-text-sec font-normal">/ noche</span></p>
               </div>
-              <button class="text-xs font-bold text-primary bg-primary-light dark:bg-primary/20 px-3.5 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-all">Reservar</button>
+              <a href="/hoteles/<%= hotel[:slug] %>" class="text-xs font-bold text-primary bg-primary-light dark:bg-primary/20 px-3.5 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-all cursor-pointer">
+                Ver Detalles →
+              </a>
             </div>
           </div>
         </div>
@@ -132,3 +142,38 @@
 
 <!-- Floating Mobile Navigation -->
 <%= render partial: "shared/bottom_nav" %>
+
+<script>
+  function filterHotels() {
+    const search = document.getElementById('hotel-search-input').value.toLowerCase();
+    const dest = document.getElementById('destination-filter').value;
+    const stars = document.getElementById('stars-filter').value;
+    const price = document.getElementById('price-filter').value;
+
+    document.querySelectorAll('.hotel-card').forEach(card => {
+      const name = card.dataset.name;
+      const destination = card.dataset.destination;
+      const cardStars = card.dataset.stars;
+      const cardPrice = parseFloat(card.dataset.price);
+
+      let matchSearch = name.includes(search) || destination.toLowerCase().includes(search);
+      let matchDest = !dest || destination === dest;
+      let matchStars = !stars || cardStars === stars;
+      let matchPrice = true;
+
+      if (price === 'low') matchPrice = cardPrice < 200;
+      else if (price === 'mid') matchPrice = cardPrice >= 200 && cardPrice <= 600;
+      else if (price === 'high') matchPrice = cardPrice > 600;
+
+      if (matchSearch && matchDest && matchStars && matchPrice) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function toggleFav(btn) {
+    btn.classList.toggle('text-rose-500');
+  }
+</script>

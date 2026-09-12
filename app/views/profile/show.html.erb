@@ -7,11 +7,49 @@
 
   <!-- MAIN CONTENT - PROFILE -->
   <main class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 bg-background dark:bg-dark-bg lg:col-start-2 lg:row-start-2">
+    <!-- Flash Messages -->
+    <% if flash[:notice] %>
+      <div class="p-3.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm font-semibold rounded-xl flex items-center justify-between gap-2 shadow-sm">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-base">check_circle</span>
+          <%= flash[:notice] %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="p-3.5 bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-400 text-xs sm:text-sm font-semibold rounded-xl flex items-center justify-between gap-2 shadow-sm">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-base">warning</span>
+          <%= flash[:alert] %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @is_guest %>
+      <!-- Guest Notice Banner -->
+      <div class="bg-gradient-to-r from-amber-500/15 via-amber-400/10 to-orange-500/15 border border-amber-500/30 p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-card">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl shrink-0">
+            <span class="material-symbols-outlined">visibility</span>
+          </div>
+          <div>
+            <h3 class="text-sm sm:text-base font-bold text-text-primary dark:text-dark-text">Estás explorando en Modo Invitado</h3>
+            <p class="text-xs text-text-secondary dark:text-dark-text-sec">Regístrate gratis para guardar tus itinerarios, preferencias y recompensas de viaje.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 w-full sm:w-auto shrink-0">
+          <a href="/login" class="flex-1 sm:flex-none px-4 py-2 bg-surface dark:bg-dark-surface border border-border dark:border-dark-border text-text-primary dark:text-dark-text text-xs font-bold rounded-xl text-center hover:bg-gray-100 dark:hover:bg-dark-border transition-colors">Iniciar sesión</a>
+          <a href="/registro" class="flex-1 sm:flex-none px-4 py-2 bg-primary text-white text-xs font-bold rounded-xl text-center shadow-md hover:bg-primary-dark transition-all">Crear cuenta</a>
+        </div>
+      </div>
+    <% end %>
+
     <!-- Profile Header -->
     <header class="flex flex-col sm:flex-row items-center sm:items-end text-center sm:text-left gap-4 sm:gap-6 bg-surface dark:bg-dark-surface p-4 sm:p-6 rounded-2xl border border-border dark:border-dark-border shadow-card">
       <div class="relative shrink-0">
         <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 border-white dark:border-dark-border overflow-hidden shadow-card">
-          <img class="w-full h-full object-cover" alt="Avatar de Laura" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3viZcjXNlcjtPiOyE9cIt502FJAg1QwkSJUiRU516JmoQK9J7m5qihozGX-Hx04SBI4sFkMrgg26QtXegluG1y6sKnECHCpUFf4u2dPr7Se2mvduN7kU8jYWKcgq2_tLoYd8EkpdDw1vRmGcD-2j_-JuP1FRRpyNH2JYjFTRN1puPKo6YEHI7C5x2unPSsojCtpVZYKF_MR9Ly-WS-4GoSh4YXIs2y60Vf41aIBkq8TIbvVM2rHQfPc07wZ9gFUZp1-jiPnCo8vtx"/>
+          <img class="w-full h-full object-cover" alt="Avatar de usuario" src="<%= @user&.avatar.presence || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80" %>"/>
         </div>
         <button class="absolute bottom-0 right-0 p-1.5 bg-primary text-white rounded-full shadow-lg border-2 border-white dark:border-dark-border hover:scale-110 transition-transform">
           <span class="material-symbols-outlined text-[18px]">edit</span>
@@ -20,21 +58,34 @@
 
       <div class="flex-1 min-w-0">
         <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1">
-          <h2 class="font-poppins text-xl sm:text-2xl font-bold text-text-primary dark:text-dark-text truncate">Laura</h2>
-          <span class="px-2.5 py-0.5 bg-primary-light dark:bg-primary/20 text-primary text-xs font-bold rounded-full flex items-center gap-1">
-            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
-            Exploradora
+          <h2 class="font-poppins text-xl sm:text-2xl font-bold text-text-primary dark:text-dark-text truncate">
+            <%= @user&.username || (@is_guest ? "Invitado" : "Usuario TravelIA") %>
+          </h2>
+          <span class="px-2.5 py-0.5 <%= @is_guest ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" : "bg-primary-light text-primary dark:bg-primary/20" %> text-xs font-bold rounded-full flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">
+              <%= @is_guest ? "visibility" : "workspace_premium" %>
+            </span>
+            <%= @is_guest ? "Invitado" : "Explorador Pro" %>
           </span>
         </div>
         <p class="text-text-secondary dark:text-dark-text-sec text-xs sm:text-sm flex items-center justify-center sm:justify-start gap-1">
           <span class="material-symbols-outlined text-base">location_on</span>
-          Miami, FL • Se unió en Enero 2024
+          <%= @user&.email || "invitado@travelia.vip" %>
         </p>
       </div>
 
-      <div class="flex gap-2 w-full sm:w-auto">
-        <button class="flex-1 sm:flex-none px-4 py-2 bg-primary text-white rounded-xl text-xs sm:text-sm font-bold shadow-card hover:bg-primary-dark transition-all">Editar perfil</button>
-        <button class="flex-1 sm:flex-none px-4 py-2 bg-gray-100 dark:bg-dark-bg text-text-primary dark:text-dark-text rounded-xl text-xs sm:text-sm font-semibold border border-border dark:border-dark-border hover:bg-gray-200 transition-colors">Compartir</button>
+      <!-- Action buttons including REQUIRED Logout Button -->
+      <div class="flex flex-wrap sm:flex-nowrap gap-2 w-full sm:w-auto">
+        <% if @is_guest %>
+          <a href="/login" class="flex-1 sm:flex-none px-4 py-2 bg-primary text-white rounded-xl text-xs sm:text-sm font-bold shadow-card hover:bg-primary-dark transition-all text-center">Iniciar sesión</a>
+          <a href="/registro" class="flex-1 sm:flex-none px-4 py-2 bg-surface dark:bg-dark-surface text-text-primary dark:text-dark-text rounded-xl text-xs sm:text-sm font-semibold border border-border dark:border-dark-border hover:bg-gray-100 dark:hover:bg-dark-border transition-colors text-center">Registrarse</a>
+        <% else %>
+          <button class="flex-1 sm:flex-none px-4 py-2 bg-primary text-white rounded-xl text-xs sm:text-sm font-bold shadow-card hover:bg-primary-dark transition-all">Editar perfil</button>
+          <a href="/logout" class="flex-1 sm:flex-none px-4 py-2 bg-rose-500/10 text-rose-600 dark:text-rose-400 rounded-xl text-xs sm:text-sm font-bold border border-rose-500/30 hover:bg-rose-500 hover:text-white transition-all flex items-center justify-center gap-1.5 shadow-sm">
+            <span class="material-symbols-outlined text-base">logout</span>
+            Cerrar sesión
+          </a>
+        <% end %>
       </div>
     </header>
 
@@ -54,7 +105,7 @@
             <span class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary-light dark:bg-primary/20 flex items-center justify-center text-primary mb-2">
               <span class="material-symbols-outlined text-lg sm:text-xl">public</span>
             </span>
-            <span class="text-base sm:text-xl font-bold text-text-primary dark:text-dark-text">24</span>
+            <span class="text-base sm:text-xl font-bold text-text-primary dark:text-dark-text"><%= @is_guest ? "0" : "24" %></span>
             <span class="text-text-secondary dark:text-dark-text-sec text-[10px] sm:text-xs font-medium">Países visitados</span>
           </div>
 
@@ -62,7 +113,7 @@
             <span class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 mb-2">
               <span class="material-symbols-outlined text-lg sm:text-xl">flight_takeoff</span>
             </span>
-            <span class="text-base sm:text-xl font-bold text-text-primary dark:text-dark-text">142k</span>
+            <span class="text-base sm:text-xl font-bold text-text-primary dark:text-dark-text"><%= @is_guest ? "0" : "142k" %></span>
             <span class="text-text-secondary dark:text-dark-text-sec text-[10px] sm:text-xs font-medium">Millas recorridas</span>
           </div>
 
@@ -70,7 +121,7 @@
             <span class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center text-sky-600 mb-2">
               <span class="material-symbols-outlined text-lg sm:text-xl">calendar_today</span>
             </span>
-            <span class="text-base sm:text-xl font-bold text-text-primary dark:text-dark-text">3</span>
+            <span class="text-base sm:text-xl font-bold text-text-primary dark:text-dark-text"><%= @is_guest ? "0" : "3" %></span>
             <span class="text-text-secondary dark:text-dark-text-sec text-[10px] sm:text-xs font-medium">Próximos viajes</span>
           </div>
         </div>
@@ -88,11 +139,11 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="space-y-1">
               <label class="text-[10px] sm:text-xs font-semibold text-text-muted dark:text-dark-text-sec uppercase tracking-wider">Nombre completo</label>
-              <p class="text-xs sm:text-sm p-3 bg-gray-50 dark:bg-dark-bg rounded-lg text-text-primary dark:text-dark-text font-medium">Laura</p>
+              <p class="text-xs sm:text-sm p-3 bg-gray-50 dark:bg-dark-bg rounded-lg text-text-primary dark:text-dark-text font-medium"><%= @user&.username || "Invitado" %></p>
             </div>
             <div class="space-y-1">
               <label class="text-[10px] sm:text-xs font-semibold text-text-muted dark:text-dark-text-sec uppercase tracking-wider">Correo electrónico</label>
-              <p class="text-xs sm:text-sm p-3 bg-gray-50 dark:bg-dark-bg rounded-lg text-text-primary dark:text-dark-text font-medium truncate">laura@travelia.vip</p>
+              <p class="text-xs sm:text-sm p-3 bg-gray-50 dark:bg-dark-bg rounded-lg text-text-primary dark:text-dark-text font-medium truncate"><%= @user&.email || "invitado@travelia.vip" %></p>
             </div>
             <div class="space-y-1">
               <label class="text-[10px] sm:text-xs font-semibold text-text-muted dark:text-dark-text-sec uppercase tracking-wider">Teléfono</label>
@@ -115,9 +166,9 @@
             Conserje IA
           </h3>
           <p class="text-text-secondary dark:text-dark-text-sec text-xs sm:text-sm mb-4 leading-relaxed">
-            "Laura, he encontrado una bajada del 15% en tu próximo viaje a Tokio. ¿Quieres reprogramar ahora?"
+            "<%= @user&.username || "Invitado" %>, he encontrado una bajada del 15% en viajes a Tokio. ¿Quieres planificar ahora?"
           </p>
-          <button class="w-full py-2.5 bg-primary text-white rounded-xl text-xs sm:text-sm font-bold shadow-md hover:bg-primary-dark transition-all">Revisar insights</button>
+          <a href="/planificador" class="w-full py-2.5 bg-primary text-white rounded-xl text-xs sm:text-sm font-bold shadow-md hover:bg-primary-dark transition-all text-center block">Revisar itinerario</a>
         </div>
 
         <!-- Saved Places -->
@@ -126,42 +177,15 @@
           <div class="space-y-3">
             <div class="flex gap-3 group cursor-pointer">
               <div class="w-16 h-16 rounded-lg overflow-hidden shrink-0">
-                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Kioto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoQ8r7UXt84t7SAocq7_OES-ZQNhthAtzgmSzAB_gyQg9rszqMd0agR_mX6764WyU__Oqkjdz5viBVf2Xe8l8dJi8SIbB5JhYK_8sOusosL9BzAIQxZwqgVXpQ-p1WK6HnSW85iTw7cP4v30Aw8Ilx8N_DRFaepEgFsZNrJyxCZrHDlXSwuarUHaKAosmfzjwhZF98TBhrbugTxQ1HN_FXeBzk4nteO5m69r5GTWO3NDZ9zXDEwSwODY3FSbBHHee-nIyeG5yWq7oz"/>
+                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Kioto" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=400&q=80"/>
               </div>
               <div class="flex flex-col justify-center min-w-0">
                 <span class="text-xs sm:text-sm font-bold text-text-primary dark:text-dark-text truncate">Kioto, Japón</span>
-                <span class="text-[11px] text-text-muted dark:text-dark-text-sec">Añadido hace 2 días</span>
+                <span class="text-[11px] text-text-muted dark:text-dark-text-sec">Añadido recientemente</span>
                 <span class="text-primary text-xs font-semibold mt-0.5">$1,240 vuelo prom.</span>
               </div>
             </div>
-
-            <div class="flex gap-3 group cursor-pointer">
-              <div class="w-16 h-16 rounded-lg overflow-hidden shrink-0">
-                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Santorini" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjvcpnDVRiJAbFCXpzsVUFUeoj5H3pcN0pDj_m_FNUsNr_UiJzcan2tS7tm6jrvnJkC8y5EBe_VvWsurO3BSFAv-h2louQOToHMNHrnxo88cf2su2xyoPvX1bBWKP2kQHoPML1mQLlgB_OiGoNmqW-R1ekQT-HalHW--SznwxaAyQ6fmV82jC51tFuMRDsCwyLth8f7TVQ7qNj1HBGpoloSc2_7zoAfrTH9HBQQOG-HPKhdl5B5IwblwVDoE-PUN9b8UWqLz1L6ejZ"/>
-              </div>
-              <div class="flex flex-col justify-center min-w-0">
-                <span class="text-xs sm:text-sm font-bold text-text-primary dark:text-dark-text truncate">Santorini, Grecia</span>
-                <span class="text-[11px] text-text-muted dark:text-dark-text-sec">Añadido hace 1 sem</span>
-                <span class="text-primary text-xs font-semibold mt-0.5">Estadías de lujo</span>
-              </div>
-            </div>
           </div>
-          <button class="w-full mt-4 py-2 text-primary text-xs font-bold border border-primary/20 rounded-xl hover:bg-primary-light transition-colors">Ver todos los guardados</button>
-        </div>
-
-        <!-- Membership Progress -->
-        <div class="p-4 sm:p-5 bg-surface dark:bg-dark-surface rounded-xl shadow-card border border-border dark:border-dark-border">
-          <h3 class="text-base font-bold text-text-primary dark:text-dark-text mb-3">Progreso de membresía</h3>
-          <div class="flex justify-between text-xs font-semibold text-text-muted dark:text-dark-text-sec mb-1">
-            <span>Exploradora</span>
-            <span>Nómada Global</span>
-          </div>
-          <div class="w-full h-2 bg-gray-200 dark:bg-dark-border rounded-full overflow-hidden mb-2">
-            <div class="w-3/4 h-full bg-primary rounded-full"></div>
-          </div>
-          <p class="text-xs text-text-secondary dark:text-dark-text-sec">
-            Viaja <span class="text-primary font-bold">2,400 millas</span> más para alcanzar el estatus <span class="text-primary font-bold">Nómada Global</span>.
-          </p>
         </div>
       </section>
     </div>

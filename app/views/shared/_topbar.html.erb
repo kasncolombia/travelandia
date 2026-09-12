@@ -11,7 +11,7 @@
         <span class="text-base">🌴</span>
       </div>
       <div>
-        <h1 class="text-base sm:text-lg font-bold text-text-primary dark:text-dark-text leading-none">Travel<span class="text-primary">IA</span></h1>
+        <h1 class="text-base sm:text-lg font-bold text-text-primary dark:text-dark-text leading-none font-poppins">Travel<span class="text-primary">IA</span></h1>
         <p class="hidden sm:block text-[11px] text-text-muted dark:text-dark-text-sec">Descubre. Planifica. Vive.</p>
       </div>
     </a>
@@ -43,10 +43,14 @@
     <!-- Profile Badge -->
     <a href="/perfil" class="flex items-center gap-2 border-l border-border dark:border-dark-border pl-3 sm:pl-4 cursor-pointer hover:opacity-80 transition-opacity">
       <div class="text-right hidden md:block">
-        <p class="text-sm font-semibold text-text-primary dark:text-dark-text leading-tight">Laura M.</p>
-        <p class="text-[11px] text-text-muted dark:text-dark-text-sec">Exploradora</p>
+        <p class="text-sm font-semibold text-text-primary dark:text-dark-text leading-tight truncate max-w-[120px]">
+          <%= current_user&.username || (guest_user? ? "Invitado" : "Mi perfil") %>
+        </p>
+        <p class="text-[11px] text-text-muted dark:text-dark-text-sec">
+          <%= guest_user? ? "Navegando" : "Explorador" %>
+        </p>
       </div>
-      <img class="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-primary-light dark:border-primary/30 shadow-card object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdVekUkC-22ClIgOMESzmQntk28dTJP1nGhvdwuuvcT8n6rX_0A87YwgTP-evTmT5SaHSvxyG_TOrBdOQZzBdJ7MK6YU4FkG87F6-Bp-V2NkXvbR_oVpOrEJRww7ABrYyy3s6dSDLDaOhTC4N3rieNWW05Gl8cZcXWhc5InBT8fBfNcr8fxenl1s87PqFJ9D0HMZJw7r60tb76vxjJhaDRhndrbJUEL5ykBUraFrQWYk8qPciCK7DEKATGiMRucuIueVr_s4QC2fby" alt="Avatar"/>
+      <img class="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-primary-light dark:border-primary/30 shadow-card object-cover" src="<%= current_user&.avatar.presence || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80" %>" alt="Avatar"/>
     </a>
   </div>
 </header>
@@ -58,4 +62,3 @@
     <input class="w-full pl-9 pr-3 py-2 bg-gray-100 dark:bg-dark-bg border border-transparent dark:border-dark-border rounded-lg text-sm outline-none text-text-primary dark:text-dark-text" placeholder="Buscar destinos, experiencias..." type="text"/>
   </div>
 </div>
-
