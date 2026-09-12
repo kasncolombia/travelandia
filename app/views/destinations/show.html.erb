@@ -7,229 +7,231 @@
   <meta property="og:type" content="website">
   <link rel="canonical" href="<%= destination_url(@slug) %>">
 <% end %>
+
 <%= render partial: "shared/head" %>
-<div class="h-screen overflow-hidden grid bg-background dark:bg-dark-bg" style="grid-template-rows: 60px 1fr; grid-template-columns: 280px 1fr 320px;">
+
+<div class="min-h-screen bg-background dark:bg-dark-bg flex flex-col lg:grid lg:grid-rows-[60px_1fr] lg:grid-cols-[260px_1fr_300px] xl:grid-cols-[280px_1fr_320px] lg:h-screen lg:overflow-hidden pb-16 lg:pb-0">
+
   <%= render partial: "shared/topbar" %>
   <%= render partial: "shared/sidebar" %>
-  <main class="overflow-y-auto p-6 space-y-6 bg-background dark:bg-dark-bg" style="grid-column: 2; grid-row: 2;">
+
+  <!-- MAIN CONTENT - DESTINATION DETAIL -->
+  <main class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 bg-background dark:bg-dark-bg lg:col-start-2 lg:row-start-2">
     <% d = @destination %>
     <% img_count = d[:images].size %>
-    <div class="flex items-center gap-2 text-sm text-text-secondary mb-2">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-1.5 text-xs sm:text-sm text-text-secondary dark:text-dark-text-sec">
       <a href="/destinos" class="hover:text-primary transition-colors">Destinos</a>
-      <span class="material-symbols-outlined text-base text-text-muted">chevron_right</span>
-      <span class="text-text-primary font-medium"><%= d[:name] %>, <%= d[:country] %></span>
+      <span class="material-symbols-outlined text-xs sm:text-base text-text-muted">chevron_right</span>
+      <span class="text-text-primary dark:text-dark-text font-medium truncate"><%= d[:name] %>, <%= d[:country] %></span>
     </div>
-    <section class="relative h-[500px] rounded-xl overflow-hidden group">
-      <div class="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-2">
-        <div class="col-span-2 row-span-2 relative overflow-hidden rounded-lg">
+
+    <!-- Hero Image Gallery -->
+    <section class="relative min-h-[320px] sm:h-[400px] lg:h-[480px] rounded-xl sm:rounded-2xl overflow-hidden group shadow-card">
+      <div class="absolute inset-0 grid grid-cols-2 md:grid-cols-4 grid-rows-2 gap-1.5 sm:gap-2">
+        <div class="col-span-2 row-span-2 relative overflow-hidden">
           <img alt="<%= d[:name] %>" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<%= d[:cover_image] %>"/>
         </div>
         <% if img_count >= 2 %>
-          <div class="col-span-2 row-span-1 relative overflow-hidden rounded-lg">
+          <div class="hidden sm:block col-span-2 row-span-1 relative overflow-hidden">
             <img alt="<%= d[:name] %>" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<%= d[:images][0] %>"/>
           </div>
         <% end %>
         <% if img_count >= 3 %>
-          <div class="col-span-1 row-span-1 relative overflow-hidden rounded-lg">
+          <div class="hidden md:block col-span-1 row-span-1 relative overflow-hidden">
             <img alt="<%= d[:name] %>" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<%= d[:images][1] %>"/>
           </div>
         <% end %>
         <% if img_count >= 4 %>
-          <div class="col-span-1 row-span-1 relative overflow-hidden rounded-lg">
+          <div class="hidden md:block col-span-1 row-span-1 relative overflow-hidden">
             <img alt="<%= d[:name] %>" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<%= d[:images][2] %>"/>
           </div>
         <% end %>
       </div>
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
-        <div class="flex justify-between items-end">
+
+      <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-4 sm:p-6 lg:p-8">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
           <div>
-            <div class="flex items-center gap-2 mb-2">
-              <span class="bg-primary text-white px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider">Destino Destacado</span>
-              <span class="bg-yellow-400/20 backdrop-blur-sm text-yellow-400 px-3 py-0.5 rounded-full text-xs font-semibold">★ <%= d[:rating] %></span>
+            <div class="flex items-center gap-2 mb-1.5 sm:mb-2">
+              <span class="bg-primary text-white px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-wider">Destino Destacado</span>
+              <span class="bg-yellow-400/20 backdrop-blur-sm text-yellow-300 px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold">★ <%= d[:rating] %></span>
             </div>
-            <h1 class="text-3xl md:text-4xl font-bold text-white font-poppins"><%= d[:name] %>, <%= d[:country] %></h1>
-            <p class="text-base text-white/80 max-w-xl mt-1"><%= d[:description].truncate(120) %></p>
-            <div class="flex items-center gap-3 mt-3">
-              <span class="bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-xs flex items-center gap-1">
-                <span class="material-symbols-outlined text-sm">sell</span> <%= d[:price_range] %>
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-poppins"><%= d[:name] %>, <%= d[:country] %></h1>
+            <p class="text-xs sm:text-sm text-white/90 max-w-xl mt-1 line-clamp-2 sm:line-clamp-none"><%= d[:description].truncate(120) %></p>
+            <div class="flex flex-wrap items-center gap-2 mt-3">
+              <span class="bg-white/15 backdrop-blur-sm text-white px-2.5 py-1 rounded-lg text-xs flex items-center gap-1">
+                <span class="material-symbols-outlined text-xs">sell</span> <%= d[:price_range] %>
               </span>
-              <span class="bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-xs flex items-center gap-1">
-                <span class="material-symbols-outlined text-sm">schedule</span> <%= d[:best_season] %>
+              <span class="bg-white/15 backdrop-blur-sm text-white px-2.5 py-1 rounded-lg text-xs flex items-center gap-1">
+                <span class="material-symbols-outlined text-xs">schedule</span> <%= d[:best_season] %>
               </span>
             </div>
           </div>
-          <div class="flex gap-2">
-            <button class="bg-white/15 backdrop-blur-sm text-white px-4 py-2.5 rounded-lg flex items-center gap-1.5 hover:bg-white/25 transition-all text-sm">
+          <div class="flex gap-2 w-full sm:w-auto">
+            <button class="flex-1 sm:flex-none bg-white/20 backdrop-blur-sm text-white px-3.5 py-2 rounded-lg flex items-center justify-center gap-1.5 hover:bg-white/30 transition-all text-xs sm:text-sm font-medium">
               <span class="material-symbols-outlined text-sm">share</span> Compartir
             </button>
-            <button class="bg-primary text-white px-4 py-2.5 rounded-lg flex items-center gap-1.5 shadow-md hover:bg-teal-700 transition-all text-sm">
+            <button class="flex-1 sm:flex-none bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center gap-1.5 shadow-md hover:bg-primary-dark transition-all text-xs sm:text-sm font-semibold">
               <span class="material-symbols-outlined text-sm">bookmark</span> Guardar
             </button>
           </div>
         </div>
       </div>
     </section>
-    <div class="grid grid-cols-4 gap-4">
+
+    <!-- Quick Stats Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
       <% { 'Valoración' => "★ #{d[:rating]}", 'Opiniones' => d[:reviews], 'Presupuesto' => d[:price_range], 'Mejor época' => d[:best_season] }.each do |label, value| %>
-        <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-4 text-center hover:shadow-hover transition-shadow">
-          <p class="text-lg font-bold text-text-primary"><%= value %></p>
-          <p class="text-xs text-text-muted"><%= label %></p>
+        <div class="bg-surface dark:bg-dark-surface rounded-xl border border-border dark:border-dark-border p-3.5 text-center hover:shadow-hover transition-shadow">
+          <p class="text-base sm:text-lg font-bold text-text-primary dark:text-dark-text"><%= value %></p>
+          <p class="text-[11px] text-text-muted dark:text-dark-text-sec mt-0.5"><%= label %></p>
         </div>
       <% end %>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8">
+
+    <!-- Main Content & Sidebar Details Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6 sm:gap-8">
       <div class="space-y-6">
-        <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-6">
-          <h2 class="text-xl font-bold text-text-primary font-poppins mb-4">Acerca de <%= d[:name] %></h2>
-          <p class="text-text-secondary leading-relaxed"><%= d[:description] %></p>
-          <div class="flex flex-wrap gap-2 mt-4">
+        <!-- About Section -->
+        <div class="bg-surface dark:bg-dark-surface rounded-xl border border-border dark:border-dark-border p-4 sm:p-6 shadow-card">
+          <h2 class="text-lg sm:text-xl font-bold text-text-primary dark:text-dark-text font-poppins mb-3">Acerca de <%= d[:name] %></h2>
+          <p class="text-xs sm:text-sm text-text-secondary dark:text-dark-text-sec leading-relaxed"><%= d[:description] %></p>
+          <div class="flex flex-wrap gap-1.5 sm:gap-2 mt-4">
             <% d[:tags].each do |tag| %>
-              <span class="bg-primary-light text-primary text-xs font-semibold px-3 py-1 rounded-full">#<%= tag.delete(' ').downcase %></span>
+              <span class="bg-primary-light dark:bg-primary/20 text-primary text-[11px] sm:text-xs font-semibold px-2.5 py-1 rounded-full">#<%= tag.delete(' ').downcase %></span>
             <% end %>
-            <span class="bg-background text-text-secondary text-xs px-3 py-1 rounded-full border border-border dark:border-dark-border">#TravelIA</span>
+            <span class="bg-gray-100 dark:bg-dark-bg text-text-secondary dark:text-dark-text-sec text-[11px] sm:text-xs px-2.5 py-1 rounded-full border border-border dark:border-dark-border">#TravelIA</span>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-6 border-t border-border dark:border-dark-border">
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5 pt-5 border-t border-border dark:border-dark-border">
             <% d[:highlights].each do |key, val| %>
-              <div class="text-center">
-                <p class="text-xl font-bold text-primary"><%= val %></p>
-                <p class="text-xs text-text-muted capitalize"><%= key.to_s.humanize %></p>
+              <div class="text-center p-2 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                <p class="text-base sm:text-lg font-bold text-primary"><%= val %></p>
+                <p class="text-[11px] text-text-muted dark:text-dark-text-sec capitalize mt-0.5"><%= key.to_s.humanize %></p>
               </div>
             <% end %>
           </div>
         </div>
-        <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-6">
-          <h2 class="text-xl font-bold text-text-primary font-poppins mb-4">Actividades destacadas</h2>
-          <div class="grid sm:grid-cols-2 gap-4">
+
+        <!-- Activities Section -->
+        <div class="bg-surface dark:bg-dark-surface rounded-xl border border-border dark:border-dark-border p-4 sm:p-6 shadow-card">
+          <h2 class="text-lg sm:text-xl font-bold text-text-primary dark:text-dark-text font-poppins mb-4">Actividades destacadas</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <% d[:activities].each do |act| %>
-              <div class="bg-background rounded-lg border border-border dark:border-dark-border overflow-hidden hover:shadow-hover transition-shadow group cursor-pointer">
-                <div class="h-36 overflow-hidden">
+              <div class="bg-gray-50 dark:bg-dark-bg rounded-xl border border-border dark:border-dark-border overflow-hidden hover:shadow-hover transition-shadow group cursor-pointer">
+                <div class="h-32 sm:h-36 overflow-hidden">
                   <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<%= act[:img] %>" alt="<%= act[:title] %>"/>
                 </div>
-                <div class="p-3">
-                  <div class="flex items-center justify-between mb-1">
-                    <h3 class="font-semibold text-text-primary text-sm"><%= act[:title] %></h3>
-                    <span class="bg-primary-light text-primary text-[10px] font-bold px-2 py-0.5 rounded"><%= act[:tag] %></span>
+                <div class="p-3.5">
+                  <div class="flex items-center justify-between gap-2 mb-1">
+                    <h3 class="font-bold text-text-primary dark:text-dark-text text-xs sm:text-sm truncate"><%= act[:title] %></h3>
+                    <span class="bg-primary-light dark:bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded shrink-0"><%= act[:tag] %></span>
                   </div>
-                  <p class="text-xs text-text-muted line-clamp-2"><%= act[:desc] %></p>
-                  <div class="flex items-center justify-between mt-2 pt-2 border-t border-border dark:border-dark-border">
+                  <p class="text-xs text-text-muted dark:text-dark-text-sec line-clamp-2"><%= act[:desc] %></p>
+                  <div class="flex items-center justify-between mt-3 pt-2.5 border-t border-border dark:border-dark-border">
                     <span class="text-xs font-bold text-primary"><%= act[:price] %></span>
-                    <span class="text-xs text-primary flex items-center gap-0.5 hover:underline cursor-pointer">Ver más <span class="material-symbols-outlined text-xs">arrow_forward</span></span>
+                    <span class="text-xs text-primary flex items-center gap-0.5 font-semibold hover:underline">Ver más <span class="material-symbols-outlined text-xs">arrow_forward</span></span>
                   </div>
                 </div>
               </div>
             <% end %>
           </div>
         </div>
-        <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-6">
-          <h2 class="text-xl font-bold text-text-primary font-poppins mb-4">Dónde hospedarse</h2>
-          <div class="grid sm:grid-cols-2 gap-4">
+
+        <!-- Hotels Section -->
+        <div class="bg-surface dark:bg-dark-surface rounded-xl border border-border dark:border-dark-border p-4 sm:p-6 shadow-card">
+          <h2 class="text-lg sm:text-xl font-bold text-text-primary dark:text-dark-text font-poppins mb-4">Dónde hospedarse</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <% d[:hotels].each do |hotel| %>
-              <div class="flex gap-3 bg-background rounded-lg border border-border dark:border-dark-border p-3 hover:shadow-hover transition-shadow group cursor-pointer">
-                <div class="w-24 h-24 rounded-lg overflow-hidden shrink-0">
+              <div class="flex gap-3 bg-gray-50 dark:bg-dark-bg rounded-xl border border-border dark:border-dark-border p-3 hover:shadow-hover transition-shadow group cursor-pointer">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden shrink-0">
                   <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" src="<%= hotel[:img] %>" alt="<%= hotel[:name] %>"/>
                 </div>
                 <div class="flex flex-col justify-between py-0.5 min-w-0">
                   <div>
-                    <h4 class="font-semibold text-text-primary text-sm truncate"><%= hotel[:name] %></h4>
-                    <div class="flex items-center gap-1 mt-0.5">
+                    <h4 class="font-bold text-text-primary dark:text-dark-text text-xs sm:text-sm truncate"><%= hotel[:name] %></h4>
+                    <div class="flex items-center gap-1 mt-1">
                       <span class="text-yellow-500 text-xs">★</span>
-                      <span class="text-xs text-text-secondary"><%= hotel[:rating] %></span>
-                      <span class="text-xs text-text-muted">· <%= hotel[:location] %></span>
+                      <span class="text-xs text-text-secondary dark:text-dark-text-sec font-semibold"><%= hotel[:rating] %></span>
+                      <span class="text-xs text-text-muted dark:text-dark-text-sec truncate">· <%= hotel[:location] %></span>
                     </div>
                   </div>
-                  <span class="text-xs font-bold text-primary"><%= hotel[:price] %></span>
+                  <span class="text-xs font-bold text-primary mt-2"><%= hotel[:price] %></span>
                 </div>
               </div>
             <% end %>
           </div>
         </div>
       </div>
+
+      <!-- Destination Details Sidebar -->
       <aside class="space-y-4">
-        <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-5">
-          <h3 class="font-bold text-text-primary text-sm mb-3">Información del destino</h3>
-          <div class="space-y-3 text-sm">
+        <div class="bg-surface dark:bg-dark-surface rounded-xl border border-border dark:border-dark-border p-4 sm:p-5 shadow-card">
+          <h3 class="font-bold text-text-primary dark:text-dark-text text-xs sm:text-sm mb-3">Información del destino</h3>
+          <div class="space-y-3 text-xs sm:text-sm">
             <div class="flex items-center gap-3">
               <span class="material-symbols-outlined text-primary text-base">location_on</span>
-              <div><span class="text-text-secondary">Ubicación</span><p class="text-text-primary font-medium"><%= d[:name] %>, <%= d[:country] %></p></div>
+              <div><span class="text-text-muted dark:text-dark-text-sec text-xs">Ubicación</span><p class="text-text-primary dark:text-dark-text font-semibold"><%= d[:name] %>, <%= d[:country] %></p></div>
             </div>
             <div class="flex items-center gap-3">
               <span class="material-symbols-outlined text-primary text-base">thermostat</span>
-              <div><span class="text-text-secondary">Clima</span><p class="text-text-primary font-medium"><%= d[:temp] %></p></div>
+              <div><span class="text-text-muted dark:text-dark-text-sec text-xs">Clima</span><p class="text-text-primary dark:text-dark-text font-semibold"><%= d[:temp] %></p></div>
             </div>
             <div class="flex items-center gap-3">
               <span class="material-symbols-outlined text-primary text-base">currency_exchange</span>
-              <div><span class="text-text-secondary">Moneda</span><p class="text-text-primary font-medium"><%= d[:currency] %> · <%= d[:exchange] %></p></div>
+              <div><span class="text-text-muted dark:text-dark-text-sec text-xs">Moneda</span><p class="text-text-primary dark:text-dark-text font-semibold"><%= d[:currency] %> · <%= d[:exchange] %></p></div>
             </div>
             <div class="flex items-center gap-3">
               <span class="material-symbols-outlined text-primary text-base">translate</span>
-              <div><span class="text-text-secondary">Idioma</span><p class="text-text-primary font-medium"><%= d[:language] %></p></div>
+              <div><span class="text-text-muted dark:text-dark-text-sec text-xs">Idioma</span><p class="text-text-primary dark:text-dark-text font-semibold"><%= d[:language] %></p></div>
             </div>
             <div class="flex items-center gap-3">
               <span class="material-symbols-outlined text-primary text-base">schedule</span>
-              <div><span class="text-text-secondary">Mejor época</span><p class="text-text-primary font-medium"><%= d[:best_season] %></p></div>
+              <div><span class="text-text-muted dark:text-dark-text-sec text-xs">Mejor época</span><p class="text-text-primary dark:text-dark-text font-semibold"><%= d[:best_season] %></p></div>
             </div>
           </div>
         </div>
-        <div class="bg-gradient-to-br from-teal-900 via-teal-800 to-emerald-900 rounded-xl p-5 text-white relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+
+        <!-- AI Itinerary Banner -->
+        <div class="bg-gradient-to-br from-teal-900 via-teal-800 to-emerald-900 rounded-xl p-4 sm:p-5 text-white relative overflow-hidden shadow-card">
           <div class="relative z-10">
-            <span class="material-symbols-outlined text-3xl mb-2">auto_awesome</span>
-            <h3 class="font-bold text-base mb-1">Itinerario IA</h3>
-            <p class="text-sm text-white/70 mb-4">Crea un plan de viaje personalizado para <%= d[:name] %> con inteligencia artificial.</p>
-            <button class="w-full bg-white/20 backdrop-blur-sm text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-white/30 transition-colors border border-white/10 cursor-pointer flex items-center justify-center gap-2">
-              <span class="material-symbols-outlined text-base">auto_awesome</span>
+            <span class="material-symbols-outlined text-2xl sm:text-3xl mb-2 text-accent">auto_awesome</span>
+            <h3 class="font-bold text-sm sm:text-base mb-1">Itinerario IA</h3>
+            <p class="text-xs text-white/80 mb-4">Crea un plan de viaje personalizado para <%= d[:name] %> con inteligencia artificial.</p>
+            <a href="/planificador" class="w-full bg-white/20 backdrop-blur-sm text-white py-2.5 rounded-lg text-xs sm:text-sm font-semibold hover:bg-white/30 transition-colors border border-white/10 flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-sm">auto_awesome</span>
               Generar itinerario
-            </button>
+            </a>
           </div>
         </div>
-        <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-5">
-          <h3 class="font-bold text-text-primary text-sm mb-3">Presupuesto estimado</h3>
+
+        <!-- Budget Breakdown -->
+        <div class="bg-surface dark:bg-dark-surface rounded-xl border border-border dark:border-dark-border p-4 sm:p-5 shadow-card">
+          <h3 class="font-bold text-text-primary dark:text-dark-text text-xs sm:text-sm mb-3">Presupuesto estimado</h3>
           <div class="space-y-3">
             <% [['Lujo', d[:budget_luxury], 'w-full'], ['Gama media', d[:budget_mid], 'w-3/5'], ['Mochilero', d[:budget_backpacker], 'w-1/3']].each do |level, price, width| %>
               <div>
                 <div class="flex justify-between text-xs mb-1">
-                  <span class="text-text-secondary"><%= level %></span>
-                  <span class="font-bold text-text-primary"><%= price %></span>
+                  <span class="text-text-secondary dark:text-dark-text-sec"><%= level %></span>
+                  <span class="font-bold text-text-primary dark:text-dark-text"><%= price %></span>
                 </div>
-                <div class="w-full bg-gray-100 rounded-full h-1.5">
+                <div class="w-full bg-gray-100 dark:bg-dark-border rounded-full h-1.5 overflow-hidden">
                   <div class="bg-primary h-1.5 rounded-full <%= width %>"></div>
                 </div>
               </div>
             <% end %>
           </div>
         </div>
-        <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-5">
-          <div class="flex items-center gap-2 mb-3">
-            <span class="material-symbols-outlined text-primary text-base">event</span>
-            <h3 class="font-bold text-text-primary text-sm">Temporadas</h3>
-          </div>
-          <div class="space-y-2 text-sm">
-            <div class="flex items-center justify-between bg-primary-light/50 rounded-lg px-3 py-2">
-              <span class="text-text-secondary">Temporada alta</span>
-              <span class="text-text-primary font-medium text-xs"><%= d[:season_peak] %></span>
-            </div>
-            <div class="flex items-center justify-between bg-background rounded-lg px-3 py-2">
-              <span class="text-text-secondary">Mejor calidad-precio</span>
-              <span class="text-text-primary font-medium text-xs"><%= d[:season_value] %></span>
-            </div>
-          </div>
-        </div>
-        <div class="bg-surface rounded-xl border border-border dark:border-dark-border p-5">
-          <h3 class="font-bold text-text-primary text-sm mb-3">Compartir</h3>
-          <div class="flex gap-2">
-            <% [
-              { icon: 'share', label: 'Compartir' },
-              { icon: 'bookmark', label: 'Guardar' },
-              { icon: 'favorite', label: 'Favorito' },
-            ].each do |action| %>
-              <button class="flex-1 flex items-center justify-center gap-1.5 border border-border dark:border-dark-border rounded-lg py-2 text-xs text-text-secondary hover:bg-primary-light hover:text-primary hover:border-primary/20 transition-all cursor-pointer">
-                <span class="material-symbols-outlined text-base"><%= action[:icon] %></span>
-              </button>
-            <% end %>
-          </div>
-        </div>
       </aside>
     </div>
   </main>
-  <%= render partial: "shared/right_panel" %>
+
+  <div class="hidden lg:block lg:col-start-3 lg:row-start-2">
+    <%= render partial: "shared/right_panel" %>
+  </div>
+
 </div>
+
+<!-- Floating Mobile Navigation -->
+<%= render partial: "shared/bottom_nav" %>

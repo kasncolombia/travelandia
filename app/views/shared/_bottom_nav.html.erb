@@ -1,0 +1,26 @@
+<nav class="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-surface/95 dark:bg-dark-surface/95 backdrop-blur-md border-t border-border dark:border-dark-border px-2 py-2 flex items-center justify-around shadow-lg transition-all duration-200">
+  <a href="/" class="flex flex-col items-center gap-1 px-3 py-1 rounded-xl transition-all <%= current_page?(root_path) ? 'text-primary font-bold' : 'text-text-secondary dark:text-dark-text-sec hover:text-primary' %>">
+    <span class="text-xl">🏠</span>
+    <span class="text-[11px] font-medium">Inicio</span>
+  </a>
+
+  <a href="/destinos" class="flex flex-col items-center gap-1 px-3 py-1 rounded-xl transition-all <%= current_page?(destinos_path) ? 'text-primary font-bold' : 'text-text-secondary dark:text-dark-text-sec hover:text-primary' %>">
+    <span class="text-xl">🧭</span>
+    <span class="text-[11px] font-medium">Destinos</span>
+  </a>
+
+  <a href="/planificador" class="relative -top-3 flex flex-col items-center justify-center w-12 h-12 bg-gradient-to-tr from-primary to-secondary text-white rounded-full shadow-lg shadow-primary/30 hover:scale-105 transition-transform active:scale-95">
+    <span class="text-xl">✨</span>
+    <span class="sr-only">Planificador IA</span>
+  </a>
+
+  <a href="/hoteles" class="flex flex-col items-center gap-1 px-3 py-1 rounded-xl transition-all <%= current_page?('/hoteles') ? 'text-primary font-bold' : 'text-text-secondary dark:text-dark-text-sec hover:text-primary' %>">
+    <span class="text-xl">🏨</span>
+    <span class="text-[11px] font-medium">Hoteles</span>
+  </a>
+
+  <button onclick="toggleMobileSidebar()" type="button" class="flex flex-col items-center gap-1 px-3 py-1 rounded-xl text-text-secondary dark:text-dark-text-sec hover:text-primary transition-all">
+    <span class="text-xl">☰</span>
+    <span class="text-[11px] font-medium">Menú</span>
+  </button>
+</nav>

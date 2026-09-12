@@ -1,57 +1,62 @@
 <%= render partial: "shared/head" %>
-<div class="h-screen overflow-hidden grid bg-background dark:bg-dark-bg" style="grid-template-rows: 60px 1fr; grid-template-columns: 280px 1fr 320px;">
+
+<div class="min-h-screen bg-background dark:bg-dark-bg flex flex-col lg:grid lg:grid-rows-[60px_1fr] lg:grid-cols-[260px_1fr_300px] xl:grid-cols-[280px_1fr_320px] lg:h-screen lg:overflow-hidden pb-16 lg:pb-0">
+
   <%= render partial: "shared/topbar" %>
   <%= render partial: "shared/sidebar" %>
-  <main class="overflow-y-auto p-6 bg-background dark:bg-dark-bg" style="grid-column: 2; grid-row: 2;">
+
+  <!-- MAIN CONTENT - ARTICLE DETAIL -->
+  <main class="flex-1 overflow-y-auto p-4 sm:p-6 bg-background dark:bg-dark-bg lg:col-start-2 lg:row-start-2">
     <!-- Hero Section -->
-    <section class="relative h-[614px] min-h-[500px] w-full overflow-hidden rounded-xl shadow-card mb-8">
+    <section class="relative min-h-[320px] sm:h-[420px] lg:h-[500px] w-full overflow-hidden rounded-xl sm:rounded-2xl shadow-card mb-6 sm:mb-8">
       <img alt="Vista de la Costa Amalfitana" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJlmudwMqPPVd1XeIEMOhN5As4oycv-c0lM_qv8P3j1vgsQAA2omokYc6_wsncufNCB_jC8bEgxqkUTQzCE17qYOHGusrMxprtjwAaeAguNb6LEda3kaIF03wls1g0xWYR4opQX5GKXaYfk_NcmJZdtGbrH_9xKl5Ts1fWOZwWIE_HSdIFhi1v_WSWArNTQoWJ7v8FaC8iEwN29yo-ZZHYvZt-AmHPLqjlJLgg2Nrx77DWOUtRsk5lcTy-pSaYiVns7EpB1YGbqixy"/>
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8">
-        <div class="flex gap-3 mb-4">
-          <span class="bg-primary text-on-primary px-4 py-1 rounded-full text-label-sm uppercase tracking-wider">Viajes de Lujo</span>
-          <span class="bg-white/20 backdrop-blur-sm text-white px-4 py-1 rounded-full text-label-sm uppercase tracking-wider">8 min de lectura</span>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent flex flex-col justify-end p-4 sm:p-6 lg:p-8">
+        <div class="flex flex-wrap items-center gap-2 mb-2 sm:mb-3">
+          <span class="bg-primary text-white px-3 py-0.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider">Viajes de Lujo</span>
+          <span class="bg-white/20 backdrop-blur-sm text-white px-3 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold">8 min lectura</span>
         </div>
-        <h1 class="text-white font-display-lg text-display-lg max-w-4xl mb-4">Más Allá de Positano: Descubriendo las Calas Escondidas de la Costa Amalfitana</h1>
-        <div class="flex items-center gap-4">
-          <img alt="Avatar de la autora" class="w-12 h-12 rounded-full border-2 border-white/30 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdQIiLTaSWXgqvwuVkEFqYULTcNbvI-Fuoi_bsPlONEdISQs1jdFQiTVkLRyqr6zZNR_lIG4F9Hy4it321RArPM7BkUCeptzsLQAliJqd4uMpPbsEWCirdMqdJ2v0NYYWLpP1-zSQCoNGYKC10UnUbUTfmJ9jUVw9AsA6MSok_f4qxDy1v3imvu8VbwDZzHstVhtmikfu561ZSeqrhDNJODrRhAr9r5bQX41hiJuDFFWfEQZ8q6xLWawmK4B9RUsvomtvoZGpPqjmk"/>
-          <div class="text-white">
-            <p class="font-label-md">Elena Rodríguez</p>
-            <p class="text-label-sm opacity-80">24 de Septiembre, 2024 • Editora Senior de Viajes</p>
+        <h1 class="text-xl sm:text-3xl md:text-4xl font-bold text-white font-poppins max-w-4xl mb-3 leading-tight">Más Allá de Positano: Descubriendo las Calas Escondidas de la Costa Amalfitana</h1>
+        <div class="flex items-center gap-3">
+          <img alt="Avatar de la autora" class="w-10 h-10 rounded-full border-2 border-white/30 object-cover shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdQIiLTaSWXgqvwuVkEFqYULTcNbvI-Fuoi_bsPlONEdISQs1jdFQiTVkLRyqr6zZNR_lIG4F9Hy4it321RArPM7BkUCeptzsLQAliJqd4uMpPbsEWCirdMqdJ2v0NYYWLpP1-zSQCoNGYKC10UnUbUTfmJ9jUVw9AsA6MSok_f4qxDy1v3imvu8VbwDZzHstVhtmikfu561ZSeqrhDNJODrRhAr9r5bQX41hiJuDFFWfEQZ8q6xLWawmK4B9RUsvomtvoZGpPqjmk"/>
+          <div class="text-white min-w-0">
+            <p class="text-xs sm:text-sm font-bold truncate">Elena Rodríguez</p>
+            <p class="text-[10px] sm:text-xs text-white/80 truncate">24 de Septiembre, 2024 • Editora Senior</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Content Layout -->
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6 sm:gap-8">
       <!-- Article Body -->
       <article class="space-y-6">
-        <div class="space-y-4 text-text-secondary leading-relaxed">
-          <p class="text-body-lg first-letter:text-5xl first-letter:font-bold first-letter:text-primary first-letter:mr-3 first-letter:float-left">
-            La Costa Amalfitana es a menudo sinónimo de la extensión vertical de Positano y las bulliciosas plazas de Amalfi. Sin embargo, más allá de los caminos trillados de los clubes de playa frecuentados por celebridades y las tiendas de souvenirs de limón, se esconde una red de calas ocultas y grutas silenciosas que permanecen en gran parte intactas por la mano pesada del turismo masivo.
+        <div class="space-y-4 text-text-secondary dark:text-dark-text-sec text-xs sm:text-sm leading-relaxed">
+          <p class="text-sm sm:text-base leading-relaxed first-letter:text-4xl sm:first-letter:text-5xl first-letter:font-bold first-letter:text-primary first-letter:mr-2 first-letter:float-left">
+            La Costa Amalfitana es a menudo sinónimo de la extensión vertical de Positano y las bulliciosas plazas de Amalfi. Sin embargo, más allá de los caminos trillados de los clubes de playa frecuentados por celebridades, se esconde una red de calas ocultas y grutas silenciosas.
           </p>
-          <p class="text-body-md">
-            Nuestro viaje comienza no en el corazón de los pueblos principales, sino en el tranquilo y elevado pueblo de Ravello. Conocido principalmente por sus festivales de música y los jardines etéreos de Villa Cimbrone, Ravello sirve como el punto de vista perfecto para trazar un itinerario que evita las multitudes mientras captura el alma verdadera del Mediterráneo.
+          <p>
+            Nuestro viaje comienza no en el corazón de los pueblos principales, sino en el tranquilo y elevado pueblo de Ravello. Conocido principalmente por sus festivales de música y los jardines etéreos de Villa Cimbrone, Ravello sirve como el punto de vista perfecto para trazar un itinerario sin multitudes.
           </p>
-          <h2 class="font-headline-xl text-headline-xl text-text-primary pt-4">El Camino Secreto de las Sirenas</h2>
-          <p class="text-body-md">
-            Para encontrar los lugares más recónditos, hay que estar dispuesto a caminar. El Sendero de los Dioses es legendario, pero para una exclusividad real, recomendamos la caminata menos conocida de 'Cala di Mitigliano'. Es un descenso a través de olivares y acantilados de piedra caliza que recompensa al viajero persistente con una playa de guijarros que mira directamente a los Farallones de Capri.
+
+          <h2 class="text-base sm:text-xl font-bold text-text-primary dark:text-dark-text font-poppins pt-2">El Camino Secreto de las Sirenas</h2>
+          <p>
+            Para encontrar los lugares más recónditos, hay que estar dispuesto a caminar. El Sendero de los Dioses es legendario, pero para una exclusividad real, recomendamos la caminata menos conocida de 'Cala di Mitigliano'. Es un descenso a través de olivares y acantilados de piedra caliza que recompensa al viajero persistente.
           </p>
 
           <!-- Pull Quote -->
-          <div class="border-l-4 border-primary-container bg-surface p-8 my-8 rounded-r-xl shadow-card">
-            <blockquote class="italic font-headline-lg text-headline-lg text-primary leading-snug">
+          <div class="border-l-4 border-primary bg-surface dark:bg-dark-surface p-4 sm:p-6 my-6 rounded-r-xl shadow-card border-y border-r border-border dark:border-dark-border">
+            <blockquote class="italic text-sm sm:text-base font-medium text-primary leading-snug">
               "Viajar no se trata del destino que encuentras en un mapa, sino de la sensación de ser el primero en despertar en un lugar que ha existido durante siglos."
             </blockquote>
-            <cite class="block mt-4 font-label-md text-text-primary">— Pescador local, Praiano</cite>
+            <cite class="block mt-3 text-xs font-bold text-text-primary dark:text-dark-text">— Pescador local, Praiano</cite>
           </div>
 
-          <h2 class="font-headline-xl text-headline-xl text-text-primary pt-4">Gastronomía Subterránea</h2>
-          <p class="text-body-md">
-            En cuanto a la gastronomía, las experiencias más memorables suelen encontrarse donde termina el camino. Descubrimos una pequeña trattoria familiar accesible solo en barco desde Conca dei Marini. Allí, el 'Spaghetti alla Nerano' no es solo un plato; es un secreto generacional servido con una pizca de spray marino y el sonido de las olas golpeando los cimientos de piedra del restaurante.
+          <h2 class="text-base sm:text-xl font-bold text-text-primary dark:text-dark-text font-poppins pt-2">Gastronomía Subterránea</h2>
+          <p>
+            En cuanto a la gastronomía, las experiencias más memorables suelen encontrarse donde termina el camino. Descubrimos una pequeña trattoria familiar accesible solo en barco desde Conca dei Marini. Allí, el 'Spaghetti alla Nerano' es un secreto generacional servido con la brisa marina.
           </p>
 
-          <div class="grid grid-cols-2 gap-4 my-8">
+          <div class="grid grid-cols-2 gap-3 sm:gap-4 my-6">
             <div class="rounded-xl overflow-hidden aspect-square shadow-card">
               <img alt="Cocina Italiana" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6rvFED7_9w5-SVyqPhIW5FLEM21YhUvE50S4_T68DhPHhk8sQP7aXxroycrg3c483ODSy12BsqnV2JczZHkY6rkl_zAe7DL_taetonkyTiYVCKk6HWXn0qO6t2CdmI6s_LLaJ6N64fkI4hlOafAahV3WqSCFnTV9QiCndMMVLHJwH-P5QerMY9Fhgq1KTqU7aoBeebVE0HTx3PGDj9pu3z1ZwD8mLA0jB8vB1DFGEp2csZhZjIhAUs5MDGv-tOrdsiy0eoWv7r_-h"/>
             </div>
@@ -60,26 +65,27 @@
             </div>
           </div>
 
-          <p class="text-body-md">
-            Cuando el sol comienza a ocultarse detrás de los Montes Lattari, la costa se transforma. La dura luz del mediodía se suaviza en una paleta de violeta y dorado. Esta es la hora de la 'passeggiata', pero en lugar de unirte a las multitudes en Amalfi, sugerimos dirigirte al fiordo de Furore. Es una de las características geológicas más dramáticas de la región, donde un puente estrecho cruza una profunda hendidura en las montañas, llevando a una pequeña y protegida playa.
+          <p>
+            Cuando el sol comienza a ocultarse detrás de los Montes Lattari, la costa se transforma. Esta es la hora de la 'passeggiata', pero en lugar de unirte a las multitudes en Amalfi, sugerimos dirigirte al fiordo de Furore.
           </p>
         </div>
 
         <!-- Tags & Share -->
-        <div class="pt-8 border-t border-border dark:border-dark-border flex flex-wrap justify-between items-center gap-4">
-          <div class="flex gap-2">
-            <span class="px-4 py-1 bg-surface rounded-full text-label-sm text-text-secondary hover:bg-primary-container hover:text-white transition-colors cursor-pointer">#Italia</span>
-            <span class="px-4 py-1 bg-surface rounded-full text-label-sm text-text-secondary hover:bg-primary-container hover:text-white transition-colors cursor-pointer">#TesorosOcultos</span>
-            <span class="px-4 py-1 bg-surface rounded-full text-label-sm text-text-secondary hover:bg-primary-container hover:text-white transition-colors cursor-pointer">#Verano2024</span>
+        <div class="pt-6 border-t border-border dark:border-dark-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-3 py-1 bg-surface dark:bg-dark-surface border border-border dark:border-dark-border rounded-full text-xs font-semibold text-text-secondary dark:text-dark-text-sec">#Italia</span>
+            <span class="px-3 py-1 bg-surface dark:bg-dark-surface border border-border dark:border-dark-border rounded-full text-xs font-semibold text-text-secondary dark:text-dark-text-sec">#TesorosOcultos</span>
+            <span class="px-3 py-1 bg-surface dark:bg-dark-surface border border-border dark:border-dark-border rounded-full text-xs font-semibold text-text-secondary dark:text-dark-text-sec">#Verano2024</span>
           </div>
-          <div class="flex items-center gap-4">
-            <span class="text-label-md text-text-secondary">Comparte esta historia:</span>
+
+          <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+            <span class="text-xs font-semibold text-text-muted dark:text-dark-text-sec">Compartir:</span>
             <div class="flex gap-2">
-              <button class="w-10 h-10 rounded-full bg-surface flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-card">
-                <span class="material-symbols-outlined text-md" data-icon="share">share</span>
+              <button class="w-8 h-8 rounded-full bg-surface dark:bg-dark-surface border border-border dark:border-dark-border flex items-center justify-center text-text-secondary dark:text-dark-text-sec hover:bg-primary hover:text-white transition-all shadow-card">
+                <span class="material-symbols-outlined text-sm">share</span>
               </button>
-              <button class="w-10 h-10 rounded-full bg-surface flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-card">
-                <span class="material-symbols-outlined text-md" data-icon="bookmark">bookmark</span>
+              <button class="w-8 h-8 rounded-full bg-surface dark:bg-dark-surface border border-border dark:border-dark-border flex items-center justify-center text-text-secondary dark:text-dark-text-sec hover:bg-primary hover:text-white transition-all shadow-card">
+                <span class="material-symbols-outlined text-sm">bookmark</span>
               </button>
             </div>
           </div>
@@ -87,65 +93,41 @@
       </article>
 
       <!-- Sidebar -->
-      <aside class="space-y-6">
+      <aside class="space-y-4 sm:space-y-6">
         <!-- AI Insights Widget -->
-        <div class="bg-surface p-6 rounded-xl border border-border dark:border-dark-border shadow-card">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="material-symbols-outlined text-primary" data-icon="auto_awesome">auto_awesome</span>
-            <h3 class="font-label-md text-primary font-bold uppercase tracking-tight">TravelIA Insights</h3>
+        <div class="bg-surface dark:bg-dark-surface p-4 sm:p-5 rounded-xl border border-border dark:border-dark-border shadow-card">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="material-symbols-outlined text-primary text-xl">auto_awesome</span>
+            <h3 class="text-xs sm:text-sm text-primary font-bold uppercase tracking-tight">TravelIA Insights</h3>
           </div>
-          <p class="text-label-md text-text-secondary mb-4">¿Planeando un viaje a Amalfi? Basado en este artículo, puedo prepararte un itinerario de 4 días enfocado en calas escondidas.</p>
-          <button class="w-full bg-primary text-on-primary py-2 rounded-lg font-label-md hover:bg-primary-container transition-colors">Generar Itinerario</button>
+          <p class="text-xs sm:text-sm text-text-secondary dark:text-dark-text-sec mb-4 leading-relaxed">¿Planeando un viaje a Amalfi? Basado en este artículo, puedo prepararte un itinerario de 4 días en calas escondidas.</p>
+          <a href="/planificador" class="w-full bg-primary text-white py-2 rounded-lg text-xs sm:text-sm font-bold text-center block hover:bg-primary-dark transition-colors">Generar Itinerario</a>
         </div>
 
-        <!-- Newsletter Signup -->
-        <div class="bg-secondary-container/10 p-6 rounded-xl border border-secondary-container/30 shadow-card">
-          <h3 class="font-headline-lg text-text-primary mb-2">La Selección TravelIA</h3>
-          <p class="text-label-md text-text-secondary mb-4">Recibe destinos seleccionados y consejos logísticos cada semana.</p>
-          <div class="space-y-2">
-            <input class="w-full px-4 py-2 rounded-lg bg-surface border border-border dark:border-dark-border focus:ring-2 focus:ring-primary text-body-md" placeholder="Tu correo electrónico" type="email"/>
-            <button class="w-full bg-text-primary text-white py-2 rounded-lg font-label-md hover:opacity-90 transition-opacity">Suscribirse</button>
-          </div>
-          <p class="text-[10px] text-text-secondary mt-4 text-center">Al suscribirte, aceptas nuestra Política de Privacidad.</p>
-        </div>
-
-        <!-- Related Articles -->
-        <div>
-          <h3 class="font-headline-lg text-text-primary mb-4">Historias Relacionadas</h3>
-          <div class="space-y-4">
-            <!-- Card 1 -->
+        <!-- Related Stories Sidebar -->
+        <div class="bg-surface dark:bg-dark-surface p-4 sm:p-5 rounded-xl border border-border dark:border-dark-border shadow-card">
+          <h3 class="font-bold text-text-primary dark:text-dark-text text-sm mb-4">Historias Relacionadas</h3>
+          <div class="space-y-3">
             <a href="/blog/48-horas-capri" class="group block">
-              <div class="flex gap-4">
-                <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden shadow-card">
+              <div class="flex gap-3">
+                <div class="w-16 h-16 rounded-lg overflow-hidden shrink-0">
                   <img alt="Capri" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnEVp806xeYD6O7VcNZT6bY2U0kmz49p9IvW83BKmbxNeX1OM0ML8JnUpavfcEYy7olVIz2ZMC-wdLd1cNDIV8_2bsZhLFuBpeUYsckrq55S4aMkl4rMbCogFIwvnA-wMIoOXVDOptP59yWUOWWcp1Tc8I8xso_Up1RTW-JgfWEvqio0UyPu2Xg6L9v8lubskQ5J65710RzooPoVMP7BQAD2qsGS8HVY7W3-bZgblwxeGF5vpJEHJtUuQcr70JFsW-ZA7b7d5TE1fj"/>
                 </div>
-                <div class="flex flex-col justify-center">
-                  <span class="text-label-sm text-primary uppercase font-bold mb-1">Destinos</span>
-                  <h4 class="font-label-md text-text-primary group-hover:text-primary transition-colors leading-tight">48 Horas en Capri: Guía de un Insider</h4>
+                <div class="flex flex-col justify-center min-w-0">
+                  <span class="text-[10px] text-primary uppercase font-bold mb-0.5">Destinos</span>
+                  <h4 class="text-xs font-bold text-text-primary dark:text-dark-text group-hover:text-primary transition-colors leading-snug line-clamp-2">48 Horas en Capri: Guía Insider</h4>
                 </div>
               </div>
             </a>
-            <!-- Card 2 -->
+
             <a href="/blog/aperitivo-siciliano" class="group block">
-              <div class="flex gap-4">
-                <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden shadow-card">
+              <div class="flex gap-3">
+                <div class="w-16 h-16 rounded-lg overflow-hidden shrink-0">
                   <img alt="Sicilia" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6ak9Vz7gpKQe8IvJWWC5zu-0sfT-9MIDU1Vf88zr36CZSI74XCJlFWaE0qziNO_FWZtUbqLDU6OmanFsTmdxM1f4Iud0rcUb2mBVAhVFDSi7wwcJqrAliB71zkS29tz_pJvXysnxvFiAzWQMMtBXKo1Ttkgn3pZajIZPaXN6ISeOp8s8XNVMeS0kijxfDquheAml-wT5c8Zi0vEgCvEnLCagqAzQFuNRwK0DeVm8Yp80SWAYafzz1SIuHvid15SRGS7Y1KmilTBCW"/>
                 </div>
-                <div class="flex flex-col justify-center">
-                  <span class="text-label-sm text-primary uppercase font-bold mb-1">Gastronomía</span>
-                  <h4 class="font-label-md text-text-primary group-hover:text-primary transition-colors leading-tight">El Arte del Aperitivo Siciliano</h4>
-                </div>
-              </div>
-            </a>
-            <!-- Card 3 -->
-            <a href="/blog/senderismo-dolomitas" class="group block">
-              <div class="flex gap-4">
-                <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden shadow-card">
-                  <img alt="Dolomitas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtEeZFHAWBkZkOXwGYT2OIwOyj8pXfCsEL0irFKAmEwCWiUKKEufeQKDOi9s4BL72Zt_TvtHJP6wgffpoJUh7o7IlrpqUz2mga-D1lROU2FupuZbZT8N3OdGuHKms1uOP74F1G_U97idIN1Ovq5Ka-yENZebRbbZZRUHbYz8TZ3OGplaTFIEkDmb-CNa8Wm28VaR53HZ8vKkf23SJUH38d88Ao_x2moV7I0m3jvZLvPRyOxaDplhOUqcFv2zScYbMyF7xee9gzmCQD"/>
-                </div>
-                <div class="flex flex-col justify-center">
-                  <span class="text-label-sm text-primary uppercase font-bold mb-1">Aventura</span>
-                  <h4 class="font-label-md text-text-primary group-hover:text-primary transition-colors leading-tight">Más Allá de las Pistas: Senderismo en los Dolomitas</h4>
+                <div class="flex flex-col justify-center min-w-0">
+                  <span class="text-[10px] text-primary uppercase font-bold mb-0.5">Gastronomía</span>
+                  <h4 class="text-xs font-bold text-text-primary dark:text-dark-text group-hover:text-primary transition-colors leading-snug line-clamp-2">El Arte del Aperitivo Siciliano</h4>
                 </div>
               </div>
             </a>
@@ -155,52 +137,62 @@
     </div>
 
     <!-- Recommended Section -->
-    <section class="bg-surface rounded-xl p-8 mt-8 shadow-card">
-      <div class="flex justify-between items-end mb-6">
+    <section class="bg-surface dark:bg-dark-surface rounded-xl p-4 sm:p-6 mt-8 shadow-card border border-border dark:border-dark-border">
+      <div class="flex items-center justify-between mb-4">
         <div>
-          <h2 class="font-display-lg text-headline-xl text-text-primary">Continúa Explorando</h2>
-          <p class="text-body-md text-text-secondary">Más historias seleccionadas para ti</p>
+          <h2 class="text-base sm:text-lg font-bold text-text-primary dark:text-dark-text font-poppins">Continúa Explorando</h2>
+          <p class="text-xs text-text-muted dark:text-dark-text-sec">Más historias seleccionadas para ti</p>
         </div>
-        <a href="/blog" class="text-primary font-label-md flex items-center gap-2 group">
-          Ver Todos los Artículos <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+        <a href="/blog" class="text-xs sm:text-sm text-primary font-bold hover:underline flex items-center gap-1">
+          Ver todo <span class="material-symbols-outlined text-sm">arrow_forward</span>
         </a>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Big Card 1 -->
-        <a href="/blog/villas-bambu-bali" class="block bg-surface rounded-xl overflow-hidden shadow-card hover:shadow-md transition-shadow border border-border dark:border-dark-border group">
-          <div class="h-48 overflow-hidden">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Card 1 -->
+        <a href="/blog/villas-bambu-bali" class="block bg-gray-50 dark:bg-dark-bg rounded-xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-200 border border-border dark:border-dark-border group">
+          <div class="h-40 overflow-hidden">
             <img alt="Bali" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGUyofJAU8kOolMPV6MJG20yOReL8ovTqIuw0NZtmkZnp4Wa28OaWZG3T7I7GPuDjOqaeP3YXlgaqbUPHliZDyBEbV8nXBe3pdy3BrOlNb1jxUcqfqMPU4-0hciBzXgTFLJRxooBlnE0DNV-KjT_RX8ZhlKN4gXStKoDrEDbnS4SjbYTteWHnabZ9sLN4RrZKaFKzyTiwJLp_7QXZfn3qi8-PLPwQp7OMlZ5juxbKn1DvNwp4PVKKGbPaZXdgav7-2S9iw-bW9cyZD"/>
           </div>
-          <div class="p-6">
-            <span class="text-label-sm text-primary mb-2 block">Ecoturismo</span>
-            <h3 class="font-headline-lg mb-3 text-text-primary group-hover:text-primary transition-colors">Estancias Sostenibles: La Nueva Ola de Villas de Bambú en Bali</h3>
-            <p class="text-body-md text-text-secondary line-clamp-2">Cómo el lujo y la conservación encuentran un equilibrio armonioso en el corazón de Ubud.</p>
+          <div class="p-4">
+            <span class="text-[10px] text-primary font-bold mb-1 block">Ecoturismo</span>
+            <h3 class="text-xs sm:text-sm font-bold mb-1 text-text-primary dark:text-dark-text group-hover:text-primary transition-colors line-clamp-2">Estancias Sostenibles en Bali</h3>
+            <p class="text-xs text-text-muted dark:text-dark-text-sec line-clamp-2">Lujo y conservación en el corazón de Ubud.</p>
           </div>
         </a>
-        <!-- Big Card 2 -->
-        <a href="/blog/barrios-secretos-paris" class="block bg-surface rounded-xl overflow-hidden shadow-card hover:shadow-md transition-shadow border border-border dark:border-dark-border group">
-          <div class="h-48 overflow-hidden">
+
+        <!-- Card 2 -->
+        <a href="/blog/barrios-secretos-paris" class="block bg-gray-50 dark:bg-dark-bg rounded-xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-200 border border-border dark:border-dark-border group">
+          <div class="h-40 overflow-hidden">
             <img alt="París" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjeLEp-9rRY-qKdlhwiI905klF_kIj-4tXQ_KR8FHWCK0Kz7ZOvxKx1NY-M0KH8O2wxyL-Bp04j-cThf4QFc9kabVxs3bWS_xci9ZPQRkCncxE2Kk3YjWrvXXnPT_hG67F7207pH8hO6eyMqmhhxMnsFH2jNGka1-eTBjR9yYJt5TI85zFCgOvYnINxHsn_tChJfd5CEkw_DAZQph5rf2q2uxzmjBv3cOp8ZEge2dpbWYV6yXklcUNYO7HtMbF4tBhtQ4PjXwa33R8"/>
           </div>
-          <div class="p-6">
-            <span class="text-label-sm text-primary mb-2 block">Guía Urbana</span>
-            <h3 class="font-headline-lg mb-3 text-text-primary group-hover:text-primary transition-colors">París: Los Barrios que Nunca Has Visitado</h3>
-            <p class="text-body-md text-text-secondary line-clamp-2">Saliendo del 1.º y 8.º para encontrar el verdadero pulso creativo de la ciudad.</p>
+          <div class="p-4">
+            <span class="text-[10px] text-primary font-bold mb-1 block">Guía Urbana</span>
+            <h3 class="text-xs sm:text-sm font-bold mb-1 text-text-primary dark:text-dark-text group-hover:text-primary transition-colors line-clamp-2">París: Barrios Desconocidos</h3>
+            <p class="text-xs text-text-muted dark:text-dark-text-sec line-clamp-2">El verdadero pulso creativo de la ciudad de la luz.</p>
           </div>
         </a>
-        <!-- Big Card 3 -->
-        <a href="/blog/trenes-nocturnos-europa" class="block bg-surface rounded-xl overflow-hidden shadow-card hover:shadow-md transition-shadow border border-border dark:border-dark-border group">
-          <div class="h-48 overflow-hidden">
+
+        <!-- Card 3 -->
+        <a href="/blog/trenes-nocturnos-europa" class="block bg-gray-50 dark:bg-dark-bg rounded-xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-200 border border-border dark:border-dark-border group sm:col-span-2 lg:col-span-1">
+          <div class="h-40 overflow-hidden">
             <img alt="Alpes Suizos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCn7IDouSYpnTW4z9y4rK1m1K_ZnOFbBe9hMIbD1K0ApwaOpLnwmFs6qdiY-qAFJyo8DCGw38DK5qPnhoWSYC13P5XQdHcNdtWGVvdnQZM10ONvbqWWl6swLwHxuCNrM2fLMT2ICXUj9yaIMQWJ8ulSyiYXRTBOcgzDCikH9HyYf1c6c4aO1GsPgOaaBBxlCVeZ7jVt3bctsez9CVe4aw50NNZOGRnHI2IUTRiJy76pPD98ksQJEBlNARONagx-6gvY8-HEuPotQQQ"/>
           </div>
-          <div class="p-6">
-            <span class="text-label-sm text-primary mb-2 block">Logística de Lujo</span>
-            <h3 class="font-headline-lg mb-3 text-text-primary group-hover:text-primary transition-colors">La Era Dorada del Ferrocarril: Los Nuevos Trenes Nocturnos de Europa</h3>
-            <p class="text-body-md text-text-secondary line-clamp-2">Por qué la alta velocidad no siempre es la mejor forma de ver los paisajes cambiantes del continente.</p>
+          <div class="p-4">
+            <span class="text-[10px] text-primary font-bold mb-1 block">Logística de Lujo</span>
+            <h3 class="text-xs sm:text-sm font-bold mb-1 text-text-primary dark:text-dark-text group-hover:text-primary transition-colors line-clamp-2">Trenes Nocturnos en Europa</h3>
+            <p class="text-xs text-text-muted dark:text-dark-text-sec line-clamp-2">La era dorada del ferrocarril ha regresado.</p>
           </div>
         </a>
       </div>
     </section>
   </main>
-  <%= render partial: "shared/right_panel" %>
+
+  <div class="hidden lg:block lg:col-start-3 lg:row-start-2">
+    <%= render partial: "shared/right_panel" %>
+  </div>
+
 </div>
+
+<!-- Floating Mobile Navigation -->
+<%= render partial: "shared/bottom_nav" %>

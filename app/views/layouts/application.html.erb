@@ -42,6 +42,21 @@
         html.classList.toggle('dark');
         localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
       }
+      function toggleMobileSidebar() {
+        const sidebar = document.getElementById('main-sidebar');
+        const backdrop = document.getElementById('mobile-sidebar-backdrop');
+        if (sidebar && backdrop) {
+          sidebar.classList.toggle('-translate-x-full');
+          backdrop.classList.toggle('hidden');
+          document.body.classList.toggle('overflow-hidden');
+        }
+      }
+      function toggleMobileSearch() {
+        const searchBar = document.getElementById('mobile-search-bar');
+        if (searchBar) {
+          searchBar.classList.toggle('hidden');
+        }
+      }
       document.addEventListener('turbo:load', function() {
         const html = document.documentElement;
         if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -49,10 +64,14 @@
         }
       });
     </script>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body class="bg-background text-on-surface font-body-md">
+  <body class="bg-background dark:bg-dark-bg text-text-primary dark:text-dark-text font-sans antialiased selection:bg-primary selection:text-white">
     <%= yield %>
   </body>
 </html>

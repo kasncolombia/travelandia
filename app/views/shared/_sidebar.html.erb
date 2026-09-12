@@ -1,4 +1,17 @@
-<aside class="bg-sidebar dark:bg-dark-sidebar border-r border-border dark:border-dark-border overflow-y-auto p-4 flex flex-col" style="grid-column: 1; grid-row: 2;">
+<!-- Mobile Backdrop Overlay -->
+<div id="mobile-sidebar-backdrop" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-black/60 z-40 hidden lg:hidden backdrop-blur-xs transition-opacity duration-300"></div>
+
+<!-- Sidebar Drawer Container -->
+<aside id="main-sidebar" class="fixed inset-y-0 left-0 z-50 w-72 bg-sidebar dark:bg-dark-sidebar border-r border-border dark:border-dark-border overflow-y-auto p-4 flex flex-col transition-transform duration-300 ease-in-out -translate-x-full lg:translate-x-0 lg:static lg:w-full lg:z-auto lg:h-full">
+  <!-- Mobile Header inside Drawer -->
+  <div class="flex items-center justify-between pb-3 mb-2 border-b border-border/60 dark:border-dark-border/60 lg:hidden">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold">🌴</div>
+      <span class="font-bold text-base text-text-primary dark:text-dark-text">Travel<span class="text-primary">IA</span></span>
+    </div>
+    <button onclick="toggleMobileSidebar()" class="p-2 text-text-muted hover:text-text-primary dark:hover:text-dark-text text-lg">✕</button>
+  </div>
+
   <nav class="space-y-0.5 flex-1">
     <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors <%= current_page?(root_path) ? 'bg-primary-light dark:bg-primary/20 text-primary' : 'text-text-secondary dark:text-dark-text-sec hover:bg-white/50 dark:hover:bg-dark-border' %>" href="/"><span class="text-lg">🏠</span> Inicio</a>
     <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors <%= current_page?(destinos_path) ? 'bg-primary-light dark:bg-primary/20 text-primary' : 'text-text-secondary dark:text-dark-text-sec hover:bg-white/50 dark:hover:bg-dark-border' %>" href="/destinos"><span class="text-lg">🧭</span> Explorar destinos</a>
@@ -18,10 +31,11 @@
     <a class="flex items-center gap-3 px-3 py-2 text-sm text-text-secondary dark:text-dark-text-sec hover:bg-white/50 dark:hover:bg-dark-border rounded-lg <%= current_page?(perfil_path) ? 'bg-primary-light dark:bg-primary/20 text-primary' : '' %>" href="/perfil"><span class="text-lg">👤</span> Perfil</a>
     <a class="flex items-center gap-3 px-3 py-2 text-sm text-text-secondary dark:text-dark-text-sec hover:bg-white/50 dark:hover:bg-dark-border rounded-lg" href="#"><span class="text-lg">⚙️</span> Configuración</a>
   </nav>
-  <div class="mt-auto bg-[#0D4155] dark:bg-primary/30 p-4 rounded-lg text-white relative">
+
+  <div class="mt-6 bg-[#0D4155] dark:bg-primary/30 p-4 rounded-lg text-white relative">
     <span class="absolute top-3 right-3 text-accent text-xl">👑</span>
     <h3 class="font-bold text-base mb-2">Hazte PRO</h3>
-    <ul class="text-sm space-y-1.5 mb-4 opacity-90">
+    <ul class="text-xs sm:text-sm space-y-1.5 mb-4 opacity-90">
       <li class="flex items-center gap-1.5">✓ Itinerarios ilimitados</li>
       <li class="flex items-center gap-1.5">✓ Alertas de precios</li>
       <li class="flex items-center gap-1.5">✓ Sin anuncios</li>
@@ -30,3 +44,4 @@
     <button class="w-full bg-primary text-white py-2.5 rounded-xs text-sm font-bold hover:bg-primary-dark transition-colors">Upgrade ahora</button>
   </div>
 </aside>
+
